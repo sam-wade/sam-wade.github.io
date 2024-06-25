@@ -1,0 +1,301 @@
+body {
+	font-family: Arial;
+	color: #111D13;
+	margin: 0;
+}
+
+button {
+	color: #111D13;
+}
+
+input {
+	color: #111D13;
+}
+
+/* Toolbar */
+
+.toolbar {
+    display:flex;
+	border-bottom: 2px solid black;
+	background-color: whitesmoke;
+	padding-left: 2em;
+	column-gap: 0.5em;
+}
+
+.toolbar a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.logo {
+	display: flex;
+    align-items: center;
+	column-gap: 0.5em;
+}
+
+/* Top of the page */
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background: linear-gradient(180deg, whitesmoke 85%, white 50%);
+	margin: 1vh 15vh;
+}
+
+.PageTitle {
+	padding-top: 1em;
+	margin-bottom: 0;
+}
+
+.PageDescription {
+	margin-bottom: 0;
+}
+
+.PageDescription:last-of-type {
+	margin-bottom: 2em;
+}
+
+.GenerateButtons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility:collapse;
+	padding: 3vh;
+	border: 4px solid whitesmoke;
+	margin-top: 2vh;
+	background-color: white;
+}
+
+.GenerateButtons button {
+	margin: 0 1vh;
+	padding: 1em;
+	cursor: pointer;
+	transition: 0.1s;
+}
+
+.NameButton {
+	border: 2px solid #7F6A93;
+	background-color: #7F6A936e;
+}
+
+.NameButton:hover {
+	background-color: #7F6A93b5;
+}
+
+.ATCButton {
+	border: 2px solid #72A276;
+  background-color: #72A2766e;
+}
+
+.ATCButton:hover {
+  background-color: #72A276b5;
+}
+
+/* Container for search boxes */
+
+.DrugContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 4vh 10vh;
+}
+
+/* Individual styling for the ATC vs Name containers */
+
+	.DrugDiv {
+		border: 2px dashed #7F6A93;
+	}
+
+	.DrugDiv button {
+		background-color: #7F6A936e;
+		border: 1.5px solid #7F6A93;
+		transition: 0.1s;
+		cursor: pointer;
+	}
+
+	.DrugDiv button:hover {
+		background-color: #7F6A93b5;
+	}
+
+	.ATCDiv {
+		border: 2px dashed #72A276b5;
+	}
+
+	.ATCDiv button {
+		border: 1.5px solid #72A276;
+	  background-color: #72A2766e;
+		transition: 0.1s;
+		cursor: pointer;
+	}
+
+	.ATCDiv button:hover {
+	  background-color: #72A276b5;
+	}
+
+
+
+/* Containers for the stuff */
+
+.BroadContainer {
+	position: relative;
+	background-color: whitesmoke;
+	width: 100%;
+	margin: 1em;
+	min-height: 10vh;
+	padding: 2vw;
+}
+
+.DeleteNode {
+	right: 2vh;
+  position: absolute;
+}
+
+.DeleteNode button {
+	padding: 0.3em;
+}
+
+.DrugHead {
+	width: 100%;
+}
+
+.InputContainer {
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	padding-bottom: 0.7em;
+}
+
+.InputContainer label {
+	padding-right: 10px;
+}
+
+.ButtonHolder {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	width: 100%;
+}
+
+.ButtonHolder button {
+	padding: 0.3em 1em;
+}
+
+.OutputContainer {
+	display: flex;
+	justify-content: left;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.DrugNode {
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.ItemCodeContainer {
+    flex-direction: row;
+    height:  3vh;
+    display: flex;
+	padding: 0.6em;
+}
+
+.ItemCodeContainer button {
+	padding: 0;
+}
+
+.ItemCode {
+	width: 90px;
+	border: 1px solid #111D13;
+	border-right: none;
+}
+
+.ItemCode.historical {
+	background-color: 	#e3ceb9;
+}
+
+.ItemDelete {
+	/* width: 1vw; */
+    background: red;
+    height: 100%;
+    cursor: pointer;
+}
+
+.DrugTitle {
+	text-transform: capitalize;
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+
+.DrugSubTitle {
+	font-style: italic;
+	font-size: 0.9em;
+	margin-top: 0.2em;
+}
+
+/* Bottom of the page (Output) */
+
+.OutputSection {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 1vh 15vh;
+	padding: 1em;
+
+}
+
+.OutputHead {
+	background-color: whitesmoke;
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 1em;
+	border: 2px solid #3B403B;
+}
+
+.OutputTitle {
+	/* font-weight: bold; */
+	font-size: 1.4em;
+}
+
+.OutputButtons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* padding: 1em; */
+}
+
+.OutputButtons button {
+	margin: 0 1vh;
+	padding: 1em;
+	background-color: white;
+	border-color: #3B403B;
+	cursor: pointer;
+	transition: 0.1s;
+}
+
+.OutputButtons button:hover {
+	background-color: #a9a9a9b5;
+}
+
+.OutputCode {
+	display: none;
+	width: 100%;
+	flex-direction: column;
+}
+
+#OutputCode {
+	margin-bottom: 10vh;
+	min-height: 30vh;
+}

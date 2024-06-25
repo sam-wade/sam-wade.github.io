@@ -1,0 +1,228 @@
+.DrugNode {
+	flex-direction: column;
+}
+
+/* Group of matching item id to atc codes */
+
+.ATCDiv .DrugATCGrouping {
+	border-top: 2px solid #72A276;
+}
+
+.DrugDiv .DrugATCGrouping {
+	border-top: 2px solid #7F6A93;
+}
+
+.DrugTitle {
+	margin-top: 2em;
+}
+
+.ExpandAllButton {
+	margin-bottom: 1em;
+}
+
+.HideCodesButton {
+	width: 100%;
+}
+
+.HideAllCodesButton {
+	padding: 1em;
+	margin: 1em;
+}
+
+.DrugDiv .HideAllCodesButton {
+	border: 2px solid #7F6A93 !important;
+}
+
+.ATCDiv .HideAllCodesButton {
+	border: 2px solid #72A276 !important;
+}
+
+.AuthorityTitle {
+    border: 1px solid black;
+    padding: 1em;
+    background-color: white;
+	  margin-bottom: 0;
+	  font-size: smaller;
+}
+
+.DrugDiv .AuthorityTitle {
+	border: 1px solid #7F6A93;
+}
+
+.ATCDiv .AuthorityTitle {
+	border: 1px solid #72A276;
+}
+
+
+/* Groups the authority codes for a matching Indicaiton and Treatment Phase */
+
+.AuthGroup {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+	gap: 1em;
+	border-top: none;
+	padding: 2em 1em;
+}
+
+.DrugDiv .AuthGroup {
+	border: 2px dashed #7F6A93 !important;
+}
+
+.ATCDiv .AuthGroup {
+	border: 2px dashed #72A276 !important;
+}
+
+.AuthGroup.collapsed {
+	display: none;
+}
+
+/* Holds the individual auth code*/
+
+.AuthCodeContainer {
+	/* display: flex;
+	flex: 1; */
+	max-width: 19.5vw;
+}
+
+.AuthCodeContainer.minimised {
+	.RestrictionText {
+		display:none;
+	}
+	.AuthCodeInfo {
+		max-width:100%
+	}
+	max-width: 45%;
+}
+/* Auth Code info */
+.AuthCodeInfo {
+	padding: 1em;
+
+	border: 1px solid #111D13;
+	background-color: gainsboro;
+}
+
+.AuthCodeInfo .Delete {
+	display: flex;
+	justify-content: center;
+}
+
+.AuthCodeInfo .Delete button {
+	width: 90%;
+	background-color: indianred;
+	border: 1.5px solid #5f1a1a;
+}
+
+.AuthCodeInfo .Delete button:hover {
+	background-color: #b94848;
+}
+
+.AuthCodeContainer.minimised .AuthCodeInfo {
+	width:100%;
+
+}
+
+/* Specific auth code info variables */
+
+.AuthCodeHead {
+
+}
+
+.AuthCodeBody {
+	display: flex;
+	flex-direction: column;
+}
+
+.code {
+	margin-top: 0;
+    font-style: italic;
+    border-bottom: 1px solid grey;
+    padding-bottom: 0.5em;
+}
+
+.restrictiondate {
+    font-style: italic;
+    font-size: small;
+    margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.authoritydate {
+	   font-style: italic;
+    font-size: small;
+    margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.authmethod {
+	font-style: italic;
+	margin-top:0;
+	text-transform: capitalize;
+}
+
+.authmethod.streamlined {
+	color: #4b4b99;
+}
+
+.authmethod.authority_required {
+	color: #c13838;
+}
+
+.authmethod.restricted {
+	color: #753838;
+}
+
+.name {
+	margin-bottom: 0.4em;
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+.AuthCodeBody label {
+	display: flex;
+	font-weight: bold;
+	flex-wrap: wrap;
+	font-size: small;
+	margin-bottom: 0.5em;
+}
+
+.AuthCodeBody input {
+	width: 100%;
+	height: 100%;
+}
+
+/* Auth code restriction info */
+
+.RestrictionButton {
+	width: 1.3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	background-color: #a6a6a6;
+	transition: 0.1s;
+	border-right: 1px solid #111D13;
+	border-top: 1px solid #111D13;
+	border-bottom: 1px solid #111D13;
+	/* margin-left: auto; */
+}
+
+.RestrictionButton:hover {
+	background-color: #6a6a6a;
+}
+
+.RestrictionText {
+	padding: 1em;
+	background-color: white;
+	border: 1px solid #111D13;
+	font-size: x-small;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	min-width: 50vw;
+}
+
+.RestrictionText :first-child {
+	font-weight: bold;
+}

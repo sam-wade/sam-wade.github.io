@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Current Authority Codes | PBS Tools</title>
+	<link rel="stylesheet" href="src/main.css" />
+	<link rel="stylesheet" href="src/authcodes.css" />
+	<link rel="icon" type="image/x-icon" href="src/favicon.ico">
+</head>
+
+<body>
+
+<div class="toolbar">
+
+	<a href="index.html"><div class="logo">
+	<img src="src/icon.png" height="32px" width="32px"/>
+		<p>PBS Tools</p>
+	</div></a>
+	<p>> Current Authority Code Generator</p>
+
+</div>
+
+	<div class="header">
+
+		<h1 class="PageTitle">PBS Current Authority Code Generator</h1>
+		<p class="PageDescription">Start by selecting the authority map file (generate from <a href="https://colab.research.google.com/drive/1v4h9sQqSePbwniX-mirmRTmUj7DR6_Nt?usp=sharing">here</a>).</p>
+		<input type="file" accept=".csv, text/csv" id="MapSelector" />
+
+		<div class="GenerateButtons" id="GenerateButtons">
+			<button type="button" class="NameButton" onclick="GenerateDrugNameDiv();">New Drug Name Search</button>
+			<button type="button" class="ATCButton" onclick="GenerateATCCodeDiv();">New ATC Code Search</button>
+		</div>
+
+	</div>
+
+	<div class="DrugContainer" id="DrugContainer">
+	</div>
+
+
+	<div class="OutputSection" id="OutputSection">
+		<div class="OutputHead">
+		<p class="OutputTitle">Save</p>
+
+		<div class="OutputButtons" id="OutputButtons">
+			<button type="button" onclick="OutputCSV();">Download .csv file</button>
+			<button type="button" onclick="OutputSAS();">Generate SAS data output</button>
+			<button type="button" onclick="OutputR();">Generate R dataframe output</button>
+		</div>
+
+	</div>
+
+		<div class="OutputCode">
+			<p>Output Code:</p>
+			<textarea id="OutputCode"></textarea>
+		</div>
+
+	</div>
+
+	<!-- Templates -->
+
+	<template id="ItemCodeTemplate">
+		<div class="ItemCodeContainer">
+			<input class="ItemCode" />
+			<button class="ItemDelete" title="Delete Item Code" onclick="this.parentElement.remove()">⌫</button>
+		</div>
+	</template>
+
+	<template id="NewItemTemplate">
+		<button type="button" class="NewInputButton" title="New Item Code" onclick="GenerateNewInput(this);">+</button>
+	</template>
+
+	<template id="ExpandAllTemplate">
+		<button type="button" class="ExpandAllButton" title="Expand all authority codes" onclick="ToggleAllRestrictions(this.nextElementSibling);">Toggle all restriction texts</button>
+	</template>
+
+	<template id="AuthCodeContainer">
+		<div class="AuthCodeContainer minimised">
+
+			<div class="AuthCodeInfo">
+				<div class="AuthCodeHead">
+					<p class="name"></p>
+					<p class="authmethod"></p>
+				</div>
+
+				<div class="AuthCodeBody">
+					<label>Item Code: <input disabled class="code" type="text"></input></label>
+					<label>Authority Code: <input disabled class="authcode" type="text"></input></label>
+				</div>
+
+				<div class="Delete">
+					<button type="button" title="Delete Authority Code" onclick="DeleteAuthCode(this.parentElement.parentElement.parentElement);">Delete Code</button>
+				</div>
+
+			</div>
+
+			<div class="RestrictionButton" title="Toggle Restriction Text" onclick="ToggleRestrictionText(this);">
+				<p>⇨</p>
+			</div>
+
+			<div class="RestrictionText">
+				<p>Restriction Text:</p>
+				<p class="restriction"></p>
+			</div>
+
+		</div>
+	</template>
+
+	<template id="DrugNameTemplate">
+		<div class="DrugDiv BroadContainer">
+
+			<div class="DeleteNode">
+				<button type="button" title="Delete Container" onclick="this.parentElement.parentElement.remove();">Delete Search</button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+					<label for="SearchTerm">Search Drug Name: </label>
+					<input id="SearchTerm" onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement)" />
+				</div>
+
+				<div class="ButtonHolder">
+					<button type="button" onclick="GenerateAuthorityCodes(this.parentElement.parentElement.parentElement, 'DrugName')">Find Item Codes</button>
+				</div>
+
+			</div>
+
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<template id="ATCTemplate">
+		<div class="ATCDiv BroadContainer">
+			<div class="DeleteNode">
+				<button type="button" onclick="this.parentElement.parentElement.remove();">Delete Search</button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+					<label for="SearchTerm">Search ATC Code: </label>
+					<input id="SearchTerm" onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement)" />
+				</div>
+
+				<div class="ButtonHolder">
+					<button type="button" onclick="GenerateAuthorityCodes(this.parentElement.parentElement.parentElement, 'ATC')">Find Item Codes</button>
+				</div>
+			</div>
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<script type="text/javascript" src="src/papaparse.min.js"></script>
+
+	<script>
+
+		let DrugMapJson;
+
+		// Load Map file
+
+		const MapSelector = document.getElementById("MapSelector");
+		MapSelector.addEventListener('change', (event) => {
+			const files = event.target.files;
+			console.log(files);
+			LoadMapCSV(files);
+			document.getElementById("GenerateButtons").style.visibility = "visible";
+			document.getElementById("OutputSection").style.display = "flex";
+		});
+
+		function LoadMapCSV(FileInput) {
+			Papa.parse(FileInput[0], {
+				header: true,
+				skipEmptyLines: true,
+				complete: function(results) {
+					console.log(results);
+					DrugMapJson = results.data;
+				}
+			});
+		};
+
+		// Clone templates
+
+		function GenerateDrugNameDiv() {
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("DrugNameTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		function GenerateATCCodeDiv() {
+
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("ATCTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		function GenerateNewInput(NewInputButton) {
+
+			const DrugNode = NewInputButton.parentElement;
+			const InputTemplate = document.getElementById("ItemCodeTemplate");
+			const InputClone = InputTemplate.content.cloneNode(true);
+
+			DrugNode.insertBefore(InputClone, NewInputButton);
+
+		};
+
+		// Let people hit enter in the search box
+
+		function enterKeyPressed(event, DrugDiv) {
+			if (event.keyCode == 13) {
+				 if (DrugDiv.classList.contains("DrugDiv")) {
+					GenerateAuthorityCodes(DrugDiv, "DrugName");
+				 } else if (DrugDiv.classList.contains("ATCDiv")) {
+					GenerateAuthorityCodes(DrugDiv, "ATC");
+				};
+			  };
+		};
+
+		// Toggle the restriction text button
+
+		function ToggleRestrictionText(theButton) {
+
+			theButton.parentElement.classList.toggle('minimised')
+
+			if (theButton.querySelector("p").innerText == "⇨") {
+				theButton.querySelector("p").innerText = "⇦";
+			} else {
+				theButton.querySelector("p").innerText = "⇨";
+			};
+
+		};
+
+
+		// Delete the auth code container, and the whole container if empty
+
+		function DeleteAuthCode(AuthCodeContainer) {
+
+			AuthGroup = AuthCodeContainer.parentElement;
+			DrugATCGrouping = AuthGroup.parentElement;
+
+			AuthCodeContainer.remove();
+
+			if (AuthGroup.children.length == 0) {
+			// remove the title, subtitle, and button
+				AuthGroup.previousElementSibling.remove();
+				AuthGroup.previousElementSibling.remove();
+				AuthGroup.previousElementSibling.remove();
+				AuthGroup.remove();
+			};
+
+			if (DrugATCGrouping.children.length == 0) {
+			// remove the title, and subtitle
+				DrugATCGrouping.previousElementSibling.remove()
+				DrugATCGrouping.previousElementSibling.remove();
+				DrugATCGrouping.remove();
+			};
+
+		};
+
+		// Expand all the restriction texts in an auth container
+
+		function ToggleAllRestrictions(AuthGroup) {
+
+			if (AuthGroup.getAttribute("Expanded") == "False") {
+
+				AuthGroup.setAttribute("Expanded", "True");
+
+				AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
+
+					AuthCodeContainer.classList.remove('minimised');
+
+					let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
+
+					theButton.querySelector("p").innerText = "⇦";
+
+				});
+
+			} else {
+
+				AuthGroup.setAttribute("Expanded", "False");
+
+				AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
+
+					AuthCodeContainer.classList.add('minimised');
+
+					let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
+
+					theButton.querySelector("p").innerText = "⇨";
+
+				});
+
+			};
+
+
+
+		};
+
+		function ToggleAllRestrictionsOld(AuthGroup) {
+
+			AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
+
+				AuthCodeContainer.classList.toggle('minimised');
+
+				let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
+
+				if (theButton.querySelector("p").innerText == "⇨") {
+					theButton.querySelector("p").innerText = "⇦";
+				} else {
+					theButton.querySelector("p").innerText = "⇨";
+				};
+
+			});
+
+		};
+
+
+		function GenerateAuthNode(OutputContainer, IndicationItemDict, FoundDrugNameATC, IndicationPhase) {
+
+			let CurrentIndication	= IndicationPhase.split("|")[0];
+			let CurrentPhase = IndicationPhase.split("|")[1];
+
+			const AuthTemplate = document.getElementById("AuthCodeContainer");
+
+			const DrugNode = document.createElement("div");
+			DrugNode.classList.add("AuthGroup");
+			DrugNode.setAttribute("Indication", CurrentIndication);
+			DrugNode.setAttribute("TreatmentPhase", CurrentPhase);
+			DrugNode.setAttribute("Expanded", "False");
+
+			// Create an input for each item code associated with the drug name
+			// val is a tuple of [drug name, strength/form]
+			IndicationItemDict[IndicationPhase].forEach((val) => {
+				const AuthClone = AuthTemplate.content.cloneNode(true);
+
+				AuthClone.querySelector(".name").innerText = val.DRUG_NAME.toLowerCase() + " | "+ val["FORM/STRENGTH"];
+				AuthClone.querySelector(".code").value = val.ITEM_CODE;
+
+				AuthClone.querySelector(".authmethod").innerText += val.authority_method.toLowerCase().replace("_", " ");
+				AuthClone.querySelector(".authmethod").classList.add(val.authority_method.toLowerCase());
+
+				AuthClone.querySelector(".authcode").value = val.treatment_of_code.split(".")[0];
+				let restriction = val.li_html_text.replaceAll("|", "\n");
+				AuthClone.querySelector(".restriction").innerText += restriction;
+
+				DrugNode.appendChild(AuthClone);
+			});
+
+		   // Append New input button to drug node
+			//const ButtonTemplate = document.getElementById("NewItemTemplate");
+			//const ButtonClone = ButtonTemplate.content.cloneNode(true);
+			//DrugNode.appendChild(ButtonClone);
+
+			//Create the title of the node (i.e. the indication)
+			const Title = document.createElement("p");
+			Title.classList.add("DrugTitle");
+			const node = document.createTextNode(CurrentIndication.toLowerCase());
+			Title.appendChild(node);
+			OutputContainer.appendChild(Title);
+
+			//Create treatment phase for the current node
+			const SubTitle = document.createElement("p");
+			SubTitle.classList.add("DrugSubTitle");
+
+			const SubTitleNode = document.createTextNode("Treatment Phase: " + CurrentPhase);
+			SubTitle.appendChild(SubTitleNode);
+			OutputContainer.appendChild(SubTitle);
+
+			// Add the expand button
+			const ExpandClone = document.getElementById("ExpandAllTemplate").content.cloneNode(true);
+			OutputContainer.appendChild(ExpandClone);
+
+		   OutputContainer.appendChild(DrugNode);
+
+		};
+
+		function GenerateAuthorityCodes(DrugDiv, SearchType="DrugName") {
+
+			Search = DrugDiv.querySelector("#SearchTerm").value.toUpperCase();
+
+			let OutputContainer = DrugDiv.querySelector(".OutputContainer");
+			const DrugHead = DrugDiv.querySelector(".DrugHead");
+
+			let FoundItemsDict = {};
+
+			let FoundItemList = [];
+			let FoundIndicationsList = [];
+
+
+			if (Search) {
+
+				// Reads drugs that match the keyword into a dictionary.
+				for (const Drug of DrugMapJson) {
+
+					if (((SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) && Drug.restriction_indicator == "Y") {
+
+						Drug.Indication = Drug["li_html_text"].split(" | ")[1];
+
+						if (Drug.Indication == undefined) {
+							Drug.Indication = "Not Specified";
+						};
+
+						let treatmentphase = Drug.treatment_phase;
+
+						if (treatmentphase == "") {
+							Drug.treatment_phase = "Not Specified";
+						}
+
+						let DrugNameATC = Drug.DRUG_NAME + "|" + Drug.ATC5_Code;
+
+						if (DrugNameATC in FoundItemsDict) {
+						  FoundItemsDict[DrugNameATC].push(Drug);
+						} else {
+						  FoundItemsDict[DrugNameATC] = [Drug];
+						};
+
+					};
+
+				};
+
+				const SearchTitle = document.createElement("p");
+					SearchTitle.classList.add("DrugTitle");
+					if (SearchType == "DrugName") {
+					SearchTitle.innerText = "Name: ''" + Search + "'' // " + Object.keys(FoundItemsDict).length + " results";
+				} else if (SearchType == "ATC") {;
+					SearchTitle.innerText = "ATC: " + Search + " // " + Object.keys(FoundItemsDict).length + " results";
+				};
+
+				OutputContainer.appendChild(SearchTitle);
+
+
+				for (const FoundItem in FoundItemsDict) {
+
+					let DrugName = FoundItem.split("|")[0];
+					let DrugATC = FoundItem.split("|")[1];
+
+					let FoundIndicationsDict = {};
+
+					// Group the indications for the current drug into a dictionary
+
+					FoundItemsDict[FoundItem].forEach((Drug) => {
+						let IndicationPhase = Drug.Indication + "|" + Drug.treatment_phase;
+
+						if (IndicationPhase in FoundIndicationsDict) {
+						  FoundIndicationsDict[IndicationPhase].push(Drug);
+						} else {
+						  FoundIndicationsDict[IndicationPhase] = [Drug];
+						};
+
+					});
+
+					const Title = document.createElement("p");
+					Title.classList.add("DrugTitle");
+					const node = document.createTextNode(DrugName  + " // " + Object.keys(FoundIndicationsDict).length);
+					Title.appendChild(node);
+					OutputContainer.appendChild(Title);
+
+					const SubTitle = document.createElement("p");
+					SubTitle.classList.add("DrugSubTitle");
+					const node2 = document.createTextNode(DrugATC);
+					SubTitle.appendChild(node2);
+					OutputContainer.appendChild(SubTitle);
+
+
+					const DrugATCGroup = document.createElement("div");
+					DrugATCGroup.classList.add("DrugATCGrouping");
+					DrugATCGroup.setAttribute("DrugName", DrugName);
+					DrugATCGroup.setAttribute("DrugATC", DrugATC);
+
+
+					for (const Indication in FoundIndicationsDict) {
+						GenerateAuthNode(DrugATCGroup, FoundIndicationsDict, FoundItem, Indication);
+					}
+
+					OutputContainer.appendChild(DrugATCGroup);
+
+
+
+				};
+
+				//Check if there wasn't a result
+
+				if (Object.keys(FoundItemsDict).length == 0) {
+					const ErrorMsg = document.createElement("p");
+					ErrorMsg.classList.add("ErrorMsg");
+					const ErrorText = document.createTextNode("Error! Either the search term was misspelled, or there weren't any authority codes associated with this search!");
+					ErrorMsg.appendChild(ErrorText);
+					OutputContainer.appendChild(ErrorMsg);
+				}
+
+				// Hide the search input
+				DrugHead.style.display = "none";
+
+			}
+
+		};
+
+		// Create outputs
+
+		function OutputCSV() {
+
+			const AuthGroups = document.querySelectorAll(".AuthGroup");
+			let OutputArray = [];
+
+			AuthGroups.forEach((Node) => {
+
+				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
+				let Indication = Node.getAttribute("indication");
+				let TreatmentPhase = Node.getAttribute("treatmentphase");
+
+				// Construct an object for each item code in the node, push into the output array
+				ItemCodes.forEach((Item) => {
+					const DrugObj = {};
+
+					DrugObj.ITEM_CODE = Item.querySelector(".code").value;
+					DrugObj.DRUG_NAME = Item.querySelector(".name").innerText.split(" | ")[0];
+					DrugObj["FORM/STRENGTH"] = Item.querySelector(".name").innerText.split(" | ")[1];
+					DrugObj.AUTHORITY_METHOD = Item.querySelector(".authmethod").innerText;
+					DrugObj.AUTHORITY_CODE = Item.querySelector(".authcode").value;
+					DrugObj.INDICATION = Indication;
+					DrugObj.TREATMENT_PHASE = TreatmentPhase;
+					DrugObj.TEXT = Item.querySelector(".restriction").innerText;
+
+
+					OutputArray.push(DrugObj);
+				});
+
+			});
+
+			// Turn the array of objects into a csv string
+			let OutputCSV = Papa.unparse(OutputArray);
+
+			console.log(OutputCSV);
+
+			// Encode the string as a URI, open to make the file save.
+			let encodedUri = encodeURI("data:text/csv;charset=utf-8," + OutputCSV);
+			window.open(encodedUri);
+
+		};
+
+		function OutputSAS() {
+
+			const AuthGroups = document.querySelectorAll(".AuthGroup");
+			const CodeOutput = document.getElementById("OutputCode");
+			// Unhide the code output div.
+			CodeOutput.parentElement.style.display = "flex";
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "data AuthCodes;\n";
+			CodeOutput.value += "	infile datalines delimiter=',';\n";
+			//CodeOutput.value += "	input Item_Code $ Drug_Name $ Authority_Method $ Authority_Code $ Indication $ Treatment_Phase $ ;\n";
+			CodeOutput.value += "	input Drug_Name :$50. Item_Code :$6. Authority_Code :$5. ;\n";
+			CodeOutput.value += "	datalines;";
+
+			AuthGroups.forEach((Node) => {
+
+				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
+				let Indication = Node.getAttribute("indication");
+				let TreatmentPhase = Node.getAttribute("treatmentphase");
+
+				//CodeOutput.value += "\n\n/* " + Indication + " - " + TreatmentPhase + " */\n";
+
+				// Construct an object for each item code in the node, push into the output array
+				ItemCodes.forEach((Item) => {
+					let Line = Item.querySelector(".name").innerText.split(" | ")[0];
+					Line += "," + Item.querySelector(".code").value;
+					//Line += "," + Item.querySelector(".authmethod").innerText;
+					Line += "," + Item.querySelector(".authcode").value;
+					//Line += "," + Indication;
+					//Line += "," + TreatmentPhase.replace(",", "");
+
+					CodeOutput.value += "\n" + Line;
+				});
+
+			});
+
+			CodeOutput.value += "\n;\n\n";
+
+			// End the data node
+			CodeOutput.value += "run;\n";
+
+		};
+
+		function OutputR() {
+
+			const AuthGroups = document.querySelectorAll(".AuthGroup");
+			const CodeOutput = document.getElementById("OutputCode");
+			// Unhide the code output div.
+			CodeOutput.parentElement.style.display = "flex";
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "AuthCodes <- data.frame(";
+
+			let OutputList = [];
+
+			AuthGroups.forEach((Node) => {
+
+				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
+
+				// Construct an object for each item code in the node, push into the output array
+				ItemCodes.forEach((Item) => {
+					let DrugName = Item.querySelector(".name").innerText.split(" | ")[0];
+					let ItemCode = Item.querySelector(".code").value;
+					let AuthCode = Item.querySelector(".authcode").value;
+					OutputList.push([DrugName, ItemCode, AuthCode]);
+				});
+
+			});
+
+			CodeOutput.value += "Drug_Name=c(";
+
+			OutputList.forEach((Drug, i) => {
+				if (i != 0) {CodeOutput.value += ", "};
+				CodeOutput.value += "'" + Drug[0] + "'";
+			});
+
+			CodeOutput.value += "),\nItem_Code=c(";
+
+			OutputList.forEach((Drug, i) => {
+				if (i != 0) {CodeOutput.value += ", "};
+				CodeOutput.value += "'" + Drug[1] + "'";
+			});
+
+			CodeOutput.value += "),\nAuth_Code=c(";
+
+			OutputList.forEach((Drug, i) => {
+				if (i != 0) {CodeOutput.value += ", "};
+				CodeOutput.value += "'" + Drug[2] + "'";
+			});
+
+			CodeOutput.value += "))";
+
+		};
+
+	</script>
+
+</body>
+</html>
