@@ -29,10 +29,10 @@
 			<img class="ui mini spaced image" src="src/icon.png">
 			<span>PBS Tools</span>
 		</a>
-		<div class="active item">Item Codes</div>
+		<a class="active item" href="ItemCodes.html">Item Codes</a>
 		<a class="item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
 		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
-		<a class="item" href="DailyDefinedDose.html">Daily Defined Dose</a>
+		<a class="item" href="DefinedDailyDose.html">Daily Defined Dose</a>
 	</div>
 
 	<div class="ui center aligned container segment basic">
@@ -56,11 +56,6 @@
 	
 		
 	<div class="ui center aligned basic segment container">
-		<!-- <div class="ui left icon file input">
-
-			<input type="file" accept=".csv, text/csv" id="MapSelector1" />
-
-		</div> -->
 	
 		<div class="ui file action input">
 		  <input id="MapSelector" type="file" accept=".csv, text/csv">
@@ -70,7 +65,6 @@
 		  </label>
 		</div>
 
-		
 		<div class="ui horizontal divider">
 		SEARCH
 		</div>
@@ -82,8 +76,7 @@
 		ATC Code
 			<i class="add icon"></i>
 		</div>
-
-		
+	
 	</div>	
 
 	<div class="ui segment container basic horizontally fitted DrugContainer" id="DrugContainer"></div>
@@ -183,10 +176,6 @@
 	<!-- Templates -->
 
 	<template id="ItemCodeTemplate">
-		<!--<div class="item ItemCodeContainer">
-			<input disabled class="ItemCode" />
-			<button class="ItemDelete" title="Delete Item Code" onclick="this.parentElement.remove()">⌫</button>
-		</div>-->
 		<div class="ui label ItemCodeContainer">
 			<span class="ItemCode"></span>
 			<i class="close icon" onclick="this.parentElement.remove()"></i>
@@ -226,8 +215,7 @@
 
 			<div class="DrugHead">
 				<div class="InputContainer">
-					<!--<label for="SearchTerm">Search ATC Code: </label>
-					<input id="SearchTerm" onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement)" />-->
+
 					<div class="ui action input">
 					  <input id="SearchTerm" type="text" placeholder="Search ATC Code..." onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement.parentElement, 'ATC')">
 					  <button class="ui icon button green" onclick="GenerateItemCodes(this.parentElement.parentElement.parentElement.parentElement, 'ATC')">

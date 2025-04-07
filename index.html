@@ -2,92 +2,152 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PBS Tools</title>
-	<link rel="stylesheet" href="src/main.css" />
-	<link rel="icon" type="image/x-icon" href="src/favicon.ico">
-	<!-- You MUST include jQuery 3.4+ before Fomantic -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
-</head>
-
-<style>
-
-body {
- margin: 0;
-}
-
-.toolbar {
-
-    display:flex;
-	border-bottom: 2px solid black;
-	background-color: whitesmoke;
-	padding-left: 2em;
-}
-
-.toolbar a {
-	text-decoration: none;
-	color: black;
-	font-weight: bold;
-}
-
-.logo {
-	display: flex;
-    align-items: center;
-	column-gap: 0.5em;
-}
-
-.body {
-	padding: 2em 4em;
-}
-
-.links {
-    padding: 1em;
-    border-radius: 6px;
-    border: 1px solid black;
-	margin-bottom: 1em;
-}
-
-</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>PBS Tools</title>
+		<link rel="icon" type="image/x-icon" href="src/favicon.ico">
+		<!-- You MUST include jQuery 3.4+ before Fomantic -->
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+	</head>
 
 <body>
 
-<div class="ui top fixed menu">
-  <div class="item">
-    <img src="src/icon.png">PBS Tools
-  </div>
- 
+<div class="ui center aligned container segment padded basic">
+	<h1 class="ui icon header">
+	  <img class="ui image" src="src/icon.png">
+	  <div class="content">
+		PBS Tools
+		<div class="sub header">by Sam Wade</div>
+	  </div>
+	</h1>
 </div>
 
-	<div class="toolbar">
 
-		<a href=""><div class="logo">
-		<img src="src/icon.png" height="32px" width="32px"/>
-			<p>PBS Tools</p>
-		</div></a>
+<div class="ui aligned container segment basic">
+	
+	<h1 class="ui top attached header">Tools<div class="sub header">Efficently generate and output values to be used in PBS data.</div></h1>
+	<div class="ui segment attached">
+		<div class="ui cards centered">
+			<a class="ui green card" href="ItemCodes.html">
+			<div class="content">
+				<div class="header">Item Codes</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Gets all the PBS item codes associated with a given drug name or ATC code.</p>
+				</div>
+			</div>
+			<div class="extra content ">
 
+			</div>
+			</a>
+
+			<a class="ui green card" href="CurrentAuthorityCodes.html">
+			<div class="content">
+				<div class="header">Active Authority Codes</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Uses the public PBS API to identify the active authority codes for a given drug name or ATC code.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
+			<a class="ui red card" href="HistoricalAuthorityCodes.html">
+			<div class="content">
+				<div class="header">Historical Authority Codes</div>
+				<div class="meta">
+				<span class="category">PBS | Restricted Use</span>
+				</div>
+				<div class="description">
+				<p>Uses combinations mapped from PBS claims files to identify active and historical authority codes.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
+			<a class="ui green card" href="DefinedDailyDose.html">
+			<div class="content">
+				<div class="header">Defined Daily Dose</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Calculates and visualises the WHO Defined Daily Dose for the item codes associated with a given drug name or ATC code.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
+		</div>
 	</div>
 
-	<div class="body">
-		<div class="links">
-			<p><strong>Tools:</strong></p>
-			<p><a href="ItemCodes.html">Item Code Generator</a></p>
-			<p>• Gets all the PBS item codes associated with a given drug name or ATC code.</p>
-			<p><a href="CurrentAuthorityCodes.html">Current Authority Code Generator</a></p>
-			<p>• Identifies and groups the pbs authority codes for a given drug name or ATC code, along with their associated restriction text.</p>
-			<p><a href="HistoricalAuthorityCodes.html">Historical Authority Code Generator</a></p>
-			<p>• Identifies and groups the pbs authority codes for a given drug name or ATC code, along with their associated restriction text.</p>
-		</div>
+</div>
 
-		<div class="links">
-			<p><strong>Map Generators:</strong></p>
-			<p><a href="https://colab.research.google.com/drive/1U6XzlZjOSEHgdmyhYdmOIzt2n0NBUM1m?usp=sharing">Item map with Historical Flag</a></p>
-			<p>• Uses the PBS API to add a historical flag variable for each item code for the latest schedule.</p>
-			<p><a href="https://colab.research.google.com/drive/1v4h9sQqSePbwniX-mirmRTmUj7DR6_Nt?usp=sharing">Current Authority Code Map</a></p>
-			<p>• Uses the PBS API to map item ID's to their restriction ID's, authority codes, and restriction texts for the latest schedule.</p>
+<div class="ui aligned container segment basic" style="padding-bottom: 10vh;">
+	
+	<h1 class="ui top attached header">Map Generators<div class="sub header">Code to generate the mapping files used for the tools on this site.</div></h1>
+	<div class="ui segment attached">
+		<div class="ui cards centered">
+			<a class="ui green card" href="https://colab.research.google.com/drive/1U6XzlZjOSEHgdmyhYdmOIzt2n0NBUM1m?usp=sharing">
+			<div class="content">
+				<div class="header">Item Codes with Historical Flag</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Uses the PBS API to add a historical flag variable for each item code.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
+			<a class="ui green card" href="https://colab.research.google.com/drive/1v4h9sQqSePbwniX-mirmRTmUj7DR6_Nt?usp=sharing">
+			<div class="content">
+				<div class="header">Active Authority Code Map</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Uses the PBS API to map item codes to their restriction IDs, authority codes, and restriction texts for the latest schedule.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
+			<a class="ui green card" href="https://colab.research.google.com/drive/1xGFzHV2Mfdr0N0D3w5BWyL2vMs1VzNz2?usp=sharing">
+			<div class="content">
+				<div class="header">Defined Daily Dose Map</div>
+				<div class="meta">
+				<span class="category">PBS</span>
+				</div>
+				<div class="description">
+				<p>Uses the PBS API and data extracted from the WHO website to estimate the defined daily dose for each item code.</p>
+				</div>
+			</div>
+			<div class="extra content ">
+
+			</div>
+			</a>
+
 		</div>
 	</div>
+
+</div>
 
 </body>
 </html>

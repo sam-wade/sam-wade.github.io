@@ -10,6 +10,28 @@
 	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
 </head>
 
+<style>
+	.RestrictionIdsList > .label {
+		transition: 0.5s !important;
+		cursor: pointer;
+	}
+
+	.StreamlinedCodesList > .label {
+		transition: 0.5s !important;
+		cursor: pointer;
+	}
+
+	.RestrictionDate {
+		transition: 0.5s !important;
+		cursor: pointer;
+	}
+
+	.AuthorityDate {
+		transition: 0.5s !important;
+		cursor: pointer;
+	}
+</style>
+
 <body>
 
 	<div class="ui menu">
@@ -17,36 +39,39 @@
 			<img class="ui mini spaced image" src="src/icon.png">
 			<span>PBS Tools</span>
 		</a>
-		<div class="item">Item Codes</div>
+		<a class="item" href="ItemCodes.html">Item Codes</a>
 		<a class="active item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
 		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
-		<a class="item" href="DailyDefinedDose.html">Daily Defined Dose</a>
+		<a class="item" href="DefinedDailyDose.html">Daily Defined Dose</a>
 	</div>
 
 	<div class="ui center aligned container segment basic">
-		<h2 class="ui icon header red">
+		<h2 class="ui icon header">
 		  <i class="settings icon"></i>
 		  <div class="content">
 			PBS Current Authority Code Generator
-			<div class="sub header">Select a map file to begin. This is broken right now future sam.</div>
+			<div class="sub header">Select a map file to begin.</div>
 		  </div>
 		</h2>
 		<div class="ui labels">
 			<a class="ui label" href="https://colab.research.google.com/drive/1v4h9sQqSePbwniX-mirmRTmUj7DR6_Nt?usp=sharing">
-				<i class="cog icon"></i> Generate Authority Map File
+				<i class="cog icon"></i> Generate Current Authority Code Map
 			</a>
 		</div>
+
+		<div class="ui warning message">
+			<div class="header">
+			  Caution!
+			</div>
+			<p>This will only generate the <em>active</em> authority codes for the PBS, and will not show the historical ones. If you want to be comprehensive, you need to have both active and historical.</p>
+		</div>
+
 	</div>
 	
 	
 		
 	<div class="ui center aligned basic segment container">
-		<!-- <div class="ui left icon file input">
 
-			<input type="file" accept=".csv, text/csv" id="MapSelector1" />
-
-		</div> -->
-	
 		<div class="ui file action input">
 		  <input id="MapSelector" type="file" accept=".csv, text/csv">
 		  <label for="MapSelector" class="ui blue looping pulsating transition button " id="MapButton">
@@ -78,19 +103,162 @@
 		<h3 class="ui top attached header OutputTitle" id="OutputTitle">Save</h3>
 		<div class="ui attached segment">
 		
-			<div class="ui compact wrapping spaced labeled icon buttons OutputButtons" id="OutputButtons">
-				
-				<button class="ui button" type="button" onclick="OutputCSV();"><i class="save icon"></i>Download .csv file</button>
-				
-				<button class="ui button" type="button" onclick="OutputPlain();"><i class="cog icon"></i>Generate plain text output</button>
-				
-				<button class="ui button" type="button" onclick="OutputSASData();"><i class="cog icon"></i>Generate SAS dataframe output</button>
-				
-				<button class="ui button" type="button" onclick="OutputSASMacroVar();"><i class="cog icon"></i>Generate SAS macro variable output</button>
-				
-				<button class="ui button" type="button" onclick="OutputR();"><i class="cog icon"></i>Generate R dataframe output</button>
+			<!-- Save Types -->
 
+			<div class="ui styled fluid accordion">
+				<div class="active title">
+					<i class="dropdown icon"></i>
+					Save Codes
+				</div>
+				<div class="active content">
+					<div class="ui compact wrapping spaced labeled icon buttons OutputButtons" id="OutputButtons">
+				
+				
+						<button class="ui button" type="button" onclick="OutputCodes('CSV');"><i class="save icon"></i>Download .csv file</button>
+						
+						<button class="ui button" type="button" onclick="OutputCodes('Plain');"><i class="cog icon"></i>Generate plain text output</button>
+						
+						<button class="ui button" type="button" onclick="OutputCodes('SASDataFrame');"><i class="cog icon"></i>Generate SAS dataframe output</button>
+		
+						<button class="ui button" type="button" onclick="OutputCodes('SASMacro');" title="Item codes only!"><i class="cog icon"></i>Generate SAS macro variable output</button>
+						
+						<button class="ui button" type="button" onclick="OutputCodes('RDataFrame');"><i class="cog icon"></i>Generate R dataframe output</button>
+		
+					</div>
+
+					<!-- Generation Options -->
+					<div class="ui form" id="SaveGenerationOptions_Codes">
+						
+						<div class="field">
+							<label>Options:</label>
+							<div class="fields">
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="DRUG_NAME">
+										<label class="ui label blue">Drug Name</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="DRUG_ATC">
+										<label class="ui label blue">ATC</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="RESTRICTION_TEXT">
+										<label class="ui label blue">Restriction Text</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="RESTRICTION_ID">
+										<label class="ui label blue">Restriction ID</label>
+									</div>
+								</div>
+								
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" class="" saveoption="STREAMLINED_CODE">
+										<label class="ui label blue">Streamlined Authority Code</label>
+									</div>
+								</div>
+		
+								
+		
+							</div>
+						</div>
+						
+		
+					</div>
+
+				</div>
+				<div class="title">
+					<i class="dropdown icon"></i>
+					Item-Code combos
+				</div>
+				<div class="content">
+
+					<div class="ui compact wrapping spaced labeled icon buttons OutputButtons" id="OutputButtons">
+				
+				
+						<button class="ui button" type="button" onclick="OutputCombos('CSV');"><i class="save icon"></i>Download .csv file</button>
+						
+						<button class="ui button" type="button" onclick="OutputCombos('Plain');"><i class="cog icon"></i>Generate plain text output</button>
+						
+						<button class="ui button" type="button" onclick="OutputCombos('SASDataFrame');"><i class="cog icon"></i>Generate SAS dataframe output</button>
+
+						<button class="ui button" type="button" onclick="OutputCombos('RDataFrame');"><i class="cog icon"></i>Generate R dataframe output</button>
+		
+					</div>
+
+					<!-- Generation Options -->
+					<div class="ui form" id="SaveGenerationOptions_Combos">
+						
+						<div class="field">
+							<label>Options:</label>
+							<div class="fields">
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="DRUG_NAME">
+										<label class="ui label blue">Drug Name</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="DRUG_ATC">
+										<label class="ui label blue">ATC</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="FORM_STRENGTH">
+										<label class="ui label blue">Form / Strength</label>
+									</div>
+								</div>
+
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="RESTRICTION_TEXT">
+										<label class="ui label blue">Restriction Text</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="RESTRICTION_ID">
+										<label class="ui label blue">Restriction ID</label>
+									</div>
+								</div>
+
+								
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" class="" saveoption="STREAMLINED_CODE">
+										<label class="ui label blue">Streamlined Authority Code</label>
+									</div>
+								</div>
+
+
+		
+								
+		
+							</div>
+						</div>
+						
+		
+					</div>
+					
+				</div>
 			</div>
+			
 
 			<div class="ui form OutputCode">
 				<div class="field">
@@ -104,57 +272,80 @@
 				</div>
 			</div>
 
-		</div>
+	</div>
 
 	</div>
 
 	<!-- Templates -->
 
-	<template id="ItemCodeTemplate">
-		<div class="ItemCodeContainer">
-			<input class="ItemCode" />
-			<button class="ItemDelete" title="Delete Item Code" onclick="this.parentElement.remove()">⌫</button>
+	<template id="RestrictionIDIcon">
+		<div class="ui label" onclick="HighlightCodes(this, 'restriction', '.Code', this.parentElement.parentElement.parentElement);">
+			<i class="project diagram icon"></i>
+			<span class="Code"></span>
 		</div>
 	</template>
 
-	<template id="NewItemTemplate">
-		<button type="button" class="NewInputButton" title="New Item Code" onclick="GenerateNewInput(this);">+</button>
+	<template id="StreamlinedCodeIcon">
+		<div class="ui label" onclick="HighlightCodes(this, 'authority', '.Code', this.parentElement.parentElement.parentElement);">
+			<i class="code icon"></i>
+			<span class="Code"></span>
+		</div>
 	</template>
 
-	<template id="ExpandAllTemplate">
-		<button type="button" class="ExpandAllButton" title="Expand all authority codes" onclick="ToggleAllRestrictions(this.nextElementSibling);">Toggle all restriction texts</button>
+	<template id="AuthCodeHeader">
+		<div class="ui blue segment attached" style="margin-top:1rem !important;">
+			<h2 class="ui header drugname"><div class="sub header drugatc"></div></h2>
+			<h1 class="ui header"><div class="sub header">Restriction IDs</div></h1>
+			<div class="ui labels RestrictionIdsList">
+			
+			</div>
+			<h1 class="ui header"><div class="sub header">Streamlined Authority Codes</div></h1>
+			<div class="ui labels StreamlinedCodesList">
+				
+			</div>
+
+		</div>
 	</template>
 
 	<template id="AuthCodeContainer">
-		<div class="AuthCodeContainer minimised">
-
-			<div class="AuthCodeInfo">
-				<div class="AuthCodeHead">
-					<p class="name"></p>
-					<p class="authmethod"></p>
-				</div>
-
-				<div class="AuthCodeBody">
-					<label>Item Code: <input disabled class="code" type="text"></input></label>
-					<label>Authority Code: <input disabled class="authcode" type="text"></input></label>
-				</div>
-
-				<div class="Delete">
-					<button type="button" title="Delete Authority Code" onclick="DeleteAuthCode(this.parentElement.parentElement.parentElement);">Delete Code</button>
+		<div class="ui card AuthCodeContainer">
+			<div class="content">
+				<!-- <i class="ui right floated close icon" style="cursor: pointer;" onclick="this.parentElement.parentElement.remove();"></i> -->
+				<button class="ui right floated icon button red mini compact" type="button" onclick="Delete(this, 'Item')"><i class="close icon"></i></button>
+				<div class="header ItemCode"></div>
+				<div class="meta ItemForm"></div>
+			</div>
+			<div class="extra content">
+					<div class="ui centered container">
+					<div class="ui small label RestrictionDate" title="" onclick="HighlightCodes(this, 'restriction', '.RestrictionCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+						<i class="project diagram icon"></i>
+						<span class="RestrictionCode"></span>
+					</div>
+					
+					<div class="ui small label AuthorityDate" title="" onclick="HighlightCodes(this, 'authority', '.AuthorityCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+						<i class="code icon"></i>
+						<span class="AuthorityCode"></span>
+					</div>
 				</div>
 
 			</div>
-
-			<div class="RestrictionButton" title="Toggle Restriction Text" onclick="ToggleRestrictionText(this);">
-				<p>⇨</p>
-			</div>
-
-			<div class="RestrictionText">
-				<p>Restriction Text:</p>
-				<p class="restriction"></p>
-			</div>
-
 		</div>
+	</template>
+
+	<template id="RestrictionTextContainer">
+		
+		<div class="title">
+			<i class="dropdown icon"></i>
+			<button class="ui right floated icon button red" type="button" onclick="Delete(this, 'Group');"><i class="trash icon"></i></button>
+			<p class="AuthorityTitle"></p>
+		</div>
+		<div class="content">
+
+			<div class="ui five stackable cards centered AuthorityGroup">			
+				
+			</div>
+		</div>
+
 	</template>
 
 	<template id="DrugNameTemplate">
@@ -207,6 +398,15 @@
 		</div>
 	</template>
 
+	<script>
+		$('.ui.checkbox')
+			.checkbox()
+		;
+		$('.ui.accordion')
+			.accordion()
+		;
+	</script>
+
 	<script type="text/javascript" src="src/papaparse.min.js"></script>
 
 	<script>
@@ -229,6 +429,7 @@
 		function LoadMapCSV(FileInput) {
 			Papa.parse(FileInput[0], {
 				header: true,
+				dynamicTyping: true,
 				skipEmptyLines: true,
 				complete: function(results) {
 					console.log(results);
@@ -240,6 +441,7 @@
 		// Clone templates
 
 		function GenerateDrugNameDiv() {
+
 			const DivHolder = document.getElementById("DrugContainer");
 			const Template = document.getElementById("DrugNameTemplate");
 			const NewDiv = Template.content.cloneNode(true);
@@ -280,6 +482,14 @@
 			  };
 		};
 
+		// Turn on the acorr
+
+		function DoAccordion() {
+			$('.ui.accordion')
+			.accordion()
+			;
+		}
+
 		// Toggle the restriction text button
 
 		function ToggleRestrictionText(theButton) {
@@ -294,6 +504,22 @@
 
 		};
 
+		function Delete(Element, ContainerType) {
+			
+			if (ContainerType == "Item") {
+				let DrugATCGroup = Element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+				Element.parentElement.parentElement.remove();
+				GetUniqueCodes(DrugATCGroup);
+
+			} else if (ContainerType == "Group") {
+				let DrugATCGroup = Element.parentElement.parentElement.parentElement;
+				Element.parentElement.nextElementSibling.remove(); 
+				Element.parentElement.remove();
+				GetUniqueCodes(DrugATCGroup);
+			};
+
+			
+		}
 
 		// Delete the auth code container, and the whole container if empty
 
@@ -305,135 +531,171 @@
 			AuthCodeContainer.remove();
 
 			if (AuthGroup.children.length == 0) {
-			// remove the title, subtitle, and button
-				AuthGroup.previousElementSibling.remove();
-				AuthGroup.previousElementSibling.remove();
+			// remove the title and subtitle
+				AuthGroup.previousElementSibling.remove()
 				AuthGroup.previousElementSibling.remove();
 				AuthGroup.remove();
 			};
 
 			if (DrugATCGrouping.children.length == 0) {
-			// remove the title, and subtitle
+			// remove the title, subtitle, and expand button
 				DrugATCGrouping.previousElementSibling.remove()
+				DrugATCGrouping.previousElementSibling.remove();
 				DrugATCGrouping.previousElementSibling.remove();
 				DrugATCGrouping.remove();
 			};
 
 		};
 
-		// Expand all the restriction texts in an auth container
+		function ToggleCodes(ExpandButton) {
 
-		function ToggleAllRestrictions(AuthGroup) {
+			let AuthGroup = ExpandButton.nextElementSibling;
+			AuthGroup.classList.toggle("collapsed");
 
-			if (AuthGroup.getAttribute("Expanded") == "False") {
+			if (AuthGroup.classList.contains("collapsed")) {
 
-				AuthGroup.setAttribute("Expanded", "True");
-
-				AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
-
-					AuthCodeContainer.classList.remove('minimised');
-
-					let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
-
-					theButton.querySelector("p").innerText = "⇦";
-
-				});
+				ExpandButton.innerText = "View Item Codes";
 
 			} else {
 
-				AuthGroup.setAttribute("Expanded", "False");
-
-				AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
-
-					AuthCodeContainer.classList.add('minimised');
-
-					let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
-
-					theButton.querySelector("p").innerText = "⇨";
-
-				});
+				ExpandButton.innerText = "Hide Item Codes";
 
 			};
 
-
-
 		};
 
-		function ToggleAllRestrictionsOld(AuthGroup) {
+		function ToggleAllCodes(DrugATCGroup) {
 
-			AuthGroup.querySelectorAll(".AuthCodeContainer").forEach((AuthCodeContainer) => {
-
-				AuthCodeContainer.classList.toggle('minimised');
-
-				let theButton = AuthCodeContainer.querySelector(".RestrictionButton");
-
-				if (theButton.querySelector("p").innerText == "⇨") {
-					theButton.querySelector("p").innerText = "⇦";
-				} else {
-					theButton.querySelector("p").innerText = "⇨";
-				};
-
+			DrugATCGroup.querySelectorAll(".AuthGroup").forEach((group) => {
+				group.classList.toggle("collapsed");
 			});
 
+
 		};
 
-
-		function GenerateAuthNode(OutputContainer, IndicationItemDict, FoundDrugNameATC, IndicationPhase) {
-
-			let CurrentIndication	= IndicationPhase.split("|")[0];
-			let CurrentPhase = IndicationPhase.split("|")[1];
+		function GenerateAuthNode(OutputContainer, RestrictionItemDict, FoundDrugNameATC, RestrictionText) {
 
 			const AuthTemplate = document.getElementById("AuthCodeContainer");
+			const RestrictionTemplate = document.getElementById("RestrictionTextContainer");
 
-			const DrugNode = document.createElement("div");
-			DrugNode.classList.add("AuthGroup");
-			DrugNode.setAttribute("Indication", CurrentIndication);
-			DrugNode.setAttribute("TreatmentPhase", CurrentPhase);
-			DrugNode.setAttribute("Expanded", "False");
+			const DrugNode = RestrictionTemplate.content.cloneNode(true);
+
+			let ReadableRestriction;
 
 			// Create an input for each item code associated with the drug name
 			// val is a tuple of [drug name, strength/form]
-			IndicationItemDict[IndicationPhase].forEach((val) => {
+			RestrictionItemDict[RestrictionText].forEach((drug) => {
 				const AuthClone = AuthTemplate.content.cloneNode(true);
 
-				AuthClone.querySelector(".name").innerText = val.DRUG_NAME.toLowerCase() + " | "+ val["FORM/STRENGTH"];
-				AuthClone.querySelector(".code").value = val.ITEM_CODE;
+				console.log(drug);
 
-				AuthClone.querySelector(".authmethod").innerText += val.authority_method.toLowerCase().replace("_", " ");
-				AuthClone.querySelector(".authmethod").classList.add(val.authority_method.toLowerCase());
+				AuthClone.querySelector(".ItemForm").innerText = drug["FORM/STRENGTH"];
+				AuthClone.querySelector(".ItemCode").innerText = drug.ITEM_CODE;
 
-				AuthClone.querySelector(".authcode").value = val.treatment_of_code.split(".")[0];
-				let restriction = val.li_html_text.replaceAll("|", "\n");
-				AuthClone.querySelector(".restriction").innerText += restriction;
+				AuthClone.querySelector(".RestrictionCode").innerText = (drug.restriction_number).toFixed(0);
+				AuthClone.querySelector(".AuthorityCode").innerText = (drug.treatment_of_code).toFixed(0);
 
-				DrugNode.appendChild(AuthClone);
+				DrugNode.querySelector(".AuthorityGroup").appendChild(AuthClone);
+				ReadableRestriction = drug.li_html_text;
 			});
 
-		   // Append New input button to drug node
-			//const ButtonTemplate = document.getElementById("NewItemTemplate");
-			//const ButtonClone = ButtonTemplate.content.cloneNode(true);
-			//DrugNode.appendChild(ButtonClone);
+			let RestrictionTextFixed = ReadableRestriction.replaceAll("|", "<br>")
+			
+			RestrictionTextFixed = RestrictionTextFixed.replace("Clinical criteria:", "<br><br>Clinical criteria:");
+			RestrictionTextFixed = RestrictionTextFixed.replace("Treatment Phase:", "<br><br>Treatment Phase:");
+			RestrictionTextFixed = RestrictionTextFixed.replace("Population criteria:", "<br><br>Population criteria:");
+			RestrictionTextFixed = RestrictionTextFixed.replace("Treatment criteria:", "<br><br>Treatment criteria:");
+			RestrictionTextFixed = RestrictionTextFixed.replaceAll("*", "<br><br>‣");
+			RestrictionTextFixed = RestrictionTextFixed.replaceAll("\x22", "");
+			const node = document.createTextNode(RestrictionTextFixed);
+	
 
-			//Create the title of the node (i.e. the indication)
-			const Title = document.createElement("p");
-			Title.classList.add("DrugTitle");
-			const node = document.createTextNode(CurrentIndication.toLowerCase());
-			Title.appendChild(node);
-			OutputContainer.appendChild(Title);
-
-			//Create treatment phase for the current node
-			const SubTitle = document.createElement("p");
-			SubTitle.classList.add("DrugSubTitle");
-
-			const SubTitleNode = document.createTextNode("Treatment Phase: " + CurrentPhase);
-			SubTitle.appendChild(SubTitleNode);
-			OutputContainer.appendChild(SubTitle);
-
-			// Add the expand button
-			const ExpandClone = document.getElementById("ExpandAllTemplate").content.cloneNode(true);
-			OutputContainer.appendChild(ExpandClone);
+			DrugNode.querySelector(".AuthorityTitle").innerHTML = RestrictionTextFixed;
 
 		   OutputContainer.appendChild(DrugNode);
+
+		};
+
+		function HighlightCodes(Code, CodeType, TextLoc, DrugATCGroup) {
+
+			CurrentCode = Code.querySelector(TextLoc).innerText;
+
+			if (CodeType == "restriction") {
+
+				// Remove any existing color from the elements
+				DrugATCGroup.querySelectorAll(".RestrictionIdsList .label").forEach((label) => {
+					label.classList.remove("blue");
+					if (label.querySelector(".Code")) {
+					if (label.querySelector(".Code").innerText == CurrentCode) {
+							label.classList.add("blue");
+						};
+					};
+				})
+
+				DrugATCGroup.querySelectorAll(".RestrictionDate").forEach((label) => {
+					label.classList.remove("blue");
+					if (label.querySelector(".RestrictionCode")) {
+					if (label.querySelector(".RestrictionCode").innerText == CurrentCode) {
+						label.classList.add("blue");
+					};
+				};
+				});
+
+			} else if (CodeType == "authority") {
+
+				DrugATCGroup.querySelectorAll(".StreamlinedCodesList .label").forEach((label) => {
+					label.classList.remove("blue");
+					if (label.querySelector(".Code")) {
+						if (label.querySelector(".Code").innerText == CurrentCode) {
+							label.classList.add("blue");
+						};
+					};
+				});
+
+				DrugATCGroup.querySelectorAll(".AuthorityDate").forEach((label) => {
+					label.classList.remove("blue");
+					if (label.querySelector(".AuthorityCode")) {
+						if (label.querySelector(".AuthorityCode").innerText == CurrentCode) {
+							label.classList.add("blue");
+						};
+					};
+				});
+
+			}
+
+		}
+
+		function GetUniqueCodes(DrugATCGroup) {
+
+			DrugATCGroup.querySelector(".RestrictionIdsList").replaceChildren();
+			DrugATCGroup.querySelector(".StreamlinedCodesList").replaceChildren();
+
+			UnqRestrictionIds = new Set();
+			UnqAuthCodes = new Set();
+			// Gets the unique codes - sets can only contain unique items
+			DrugATCGroup.querySelectorAll(".AuthCodeContainer").forEach((container) => {
+				if (container.querySelector(".RestrictionCode")) {UnqRestrictionIds.add(container.querySelector(".RestrictionCode").innerText);};
+				if (container.querySelector(".AuthorityCode")) {UnqAuthCodes.add(container.querySelector(".AuthorityCode").innerText);};
+			});
+
+			// Turns them into an array, sorts them
+			SortRestrictionIds = Array.from(UnqRestrictionIds);
+			SortRestrictionIds.sort();
+
+			SortAuthCodes = Array.from(UnqAuthCodes);
+			SortAuthCodes.sort();
+
+			SortRestrictionIds.forEach((RstrID) => {
+				const RestrictionIcon = document.getElementById("RestrictionIDIcon").content.cloneNode(true);
+				RestrictionIcon.querySelector(".Code").innerText = RstrID;
+				DrugATCGroup.querySelector(".RestrictionIdsList").appendChild(RestrictionIcon);
+			});
+
+			SortAuthCodes.forEach((StreamlinedCode) => {
+				const StreamlinedCodeIcon = document.getElementById("StreamlinedCodeIcon").content.cloneNode(true);
+				StreamlinedCodeIcon.querySelector(".Code").innerText = StreamlinedCode;
+				DrugATCGroup.querySelector(".StreamlinedCodesList").appendChild(StreamlinedCodeIcon);
+			});
 
 		};
 
@@ -455,19 +717,7 @@
 				// Reads drugs that match the keyword into a dictionary.
 				for (const Drug of DrugMapJson) {
 
-					if (((SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) && Drug.restriction_indicator == "Y") {
-
-						Drug.Indication = Drug["li_html_text"].split(" | ")[1];
-
-						if (Drug.Indication == undefined) {
-							Drug.Indication = "Not Specified";
-						};
-
-						let treatmentphase = Drug.treatment_phase;
-
-						if (treatmentphase == "") {
-							Drug.treatment_phase = "Not Specified";
-						}
+					if (((SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) && (Drug.restriction_indicator == "Y")) {
 
 						let DrugNameATC = Drug.DRUG_NAME + "|" + Drug.ATC5_Code;
 
@@ -491,53 +741,64 @@
 
 				OutputContainer.appendChild(SearchTitle);
 
-
 				for (const FoundItem in FoundItemsDict) {
 
 					let DrugName = FoundItem.split("|")[0];
 					let DrugATC = FoundItem.split("|")[1];
 
-					let FoundIndicationsDict = {};
+					let FoundRestrictionsDict = {};
 
 					// Group the indications for the current drug into a dictionary
 
 					FoundItemsDict[FoundItem].forEach((Drug) => {
-						let IndicationPhase = Drug.Indication + "|" + Drug.treatment_phase;
 
-						if (IndicationPhase in FoundIndicationsDict) {
-						  FoundIndicationsDict[IndicationPhase].push(Drug);
+						let RestrictionText = Drug.li_html_text.replaceAll(" ", "");
+
+						if (RestrictionText in FoundRestrictionsDict) {
+						  FoundRestrictionsDict[RestrictionText].push(Drug);
 						} else {
-						  FoundIndicationsDict[IndicationPhase] = [Drug];
+						  FoundRestrictionsDict[RestrictionText] = [Drug];
 						};
 
 					});
 
-					const Title = document.createElement("p");
-					Title.classList.add("DrugTitle");
-					const node = document.createTextNode(DrugName  + " // " + Object.keys(FoundIndicationsDict).length);
-					Title.appendChild(node);
-					OutputContainer.appendChild(Title);
-
-					const SubTitle = document.createElement("p");
-					SubTitle.classList.add("DrugSubTitle");
-					const node2 = document.createTextNode(DrugATC);
-					SubTitle.appendChild(node2);
-					OutputContainer.appendChild(SubTitle);
-
-
 					const DrugATCGroup = document.createElement("div");
-					DrugATCGroup.classList.add("DrugATCGrouping");
+
 					DrugATCGroup.setAttribute("DrugName", DrugName);
 					DrugATCGroup.setAttribute("DrugATC", DrugATC);
+					DrugATCGroup.classList.add("DrugNode");
 
+					const DrugATCRestrictions = document.createElement("div");
+					DrugATCRestrictions.classList.add("DrugATCGrouping", "ui", "styled", "fluid", "accordion");
 
-					for (const Indication in FoundIndicationsDict) {
-						GenerateAuthNode(DrugATCGroup, FoundIndicationsDict, FoundItem, Indication);
+					const GroupHead = document.getElementById("AuthCodeHeader").content.cloneNode(true);
+					console.log(GroupHead);
+					GroupHead.querySelector(".drugname").textContent = DrugName + " // " + Object.keys(FoundRestrictionsDict).length;
+					let ATCSubtitle = document.createElement("div");
+					ATCSubtitle.classList.add("sub", "header");
+					ATCSubtitle.innerText = DrugATC;
+					
+					//GroupHead.querySelector(".drugatc").innerText = DrugATC;
+					GroupHead.querySelector(".drugname").appendChild(ATCSubtitle);
+					
+
+					//const ExpandAllClone = document.getElementById("HideAllCodesTemplate").content.cloneNode(true);
+					//OutputContainer.appendChild(ExpandAllClone);
+
+					for (const Restriction in FoundRestrictionsDict) {
+						GenerateAuthNode(DrugATCRestrictions, FoundRestrictionsDict, FoundItem, Restriction);
 					}
 
+					// Get the unique Auth Codes and Restriction Ids
+					
+					
+
+					DrugATCGroup.appendChild(GroupHead);
+					DrugATCGroup.appendChild(DrugATCRestrictions);
+
+					GetUniqueCodes(DrugATCGroup);
+
 					OutputContainer.appendChild(DrugATCGroup);
-
-
 
 				};
 
@@ -553,87 +814,353 @@
 
 				// Hide the search input
 				DrugHead.style.display = "none";
+				DoAccordion();
 
 			}
 
 		};
 
 		// Create outputs
+		// Codes 
+		function OutputCodes(OutputType) {
 
-		function OutputCSV() {
+			// Get Generation Options
+			let GenerationOptions = document.getElementById("SaveGenerationOptions_Codes").querySelectorAll("input");
 
-			const AuthGroups = document.querySelectorAll(".AuthGroup");
+			OptionsDict = {};
+
+			GenerationOptions.forEach((Checkbox) => {
+				OptionsDict[Checkbox.getAttribute("saveoption")] = Checkbox.checked;
+			});
+
+			console.log(OptionsDict);
+
+			const DrugNodes = document.querySelectorAll(".DrugNode");
 			let OutputArray = [];
 
-			AuthGroups.forEach((Node) => {
+			console.log(DrugNodes);
 
-				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
-				let Indication = Node.getAttribute("indication");
-				let TreatmentPhase = Node.getAttribute("treatmentphase");
+			DrugNodes.forEach((Node) => {
+
+				const RestrictionTexts = Node.querySelectorAll(".title");
+
+				let DrugName = Node.getAttribute("drugname");
+				let DrugATC = Node.getAttribute("drugatc");
 
 				// Construct an object for each item code in the node, push into the output array
-				ItemCodes.forEach((Item) => {
-					const DrugObj = {};
+				RestrictionTexts.forEach((Item) => {
+					
+					const Codes = Item.nextElementSibling;
 
-					DrugObj.ITEM_CODE = Item.querySelector(".code").value;
-					DrugObj.DRUG_NAME = Item.querySelector(".name").innerText.split(" | ")[0];
-					DrugObj["FORM/STRENGTH"] = Item.querySelector(".name").innerText.split(" | ")[1];
-					DrugObj.AUTHORITY_METHOD = Item.querySelector(".authmethod").innerText;
-					DrugObj.AUTHORITY_CODE = Item.querySelector(".authcode").value;
-					DrugObj.INDICATION = Indication;
-					DrugObj.TREATMENT_PHASE = TreatmentPhase;
-					DrugObj.TEXT = Item.querySelector(".restriction").innerText;
+					Codes.querySelectorAll(".AuthCodeContainer").forEach((AuthCode) => {
 
+						const DrugObj = {};
 
-					OutputArray.push(DrugObj);
+						if (OptionsDict["DRUG_NAME"]) {	DrugObj["DRUG_NAME"] = DrugName;	};
+						if (OptionsDict["DRUG_ATC"]) {	DrugObj["DRUG_ATC"] = DrugATC;	};
+						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
+						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
+						if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						
+						OutputArray.push(DrugObj);
+
+					})
+
+					
 				});
 
 			});
 
-			// Turn the array of objects into a csv string
+			console.log(OutputArray);
+
+			// Only keep unique combinations
+			let filteredList = [...new Set(OutputArray.map(JSON.stringify))].map(JSON.parse);
+
+
+			if (OutputType == "CSV") {
+				OutputCSV_Codes(filteredList);
+			} else if (OutputType == "SASDataFrame") {
+				OutputSASData_Codes(filteredList, OptionsDict);
+			} else if (OutputType == "SASMacro") {
+				OutputSASMacroVar_Codes(filteredList, OptionsDict);
+			} else if (OutputType == "Plain") {
+				OutputPlain_Codes(filteredList);
+			} else if (OutputType == "RDataFrame") {
+				OutputR_Codes(filteredList);
+			};
+
+		}
+
+		function OutputCSV_Codes(OutputArray) {
 			let OutputCSV = Papa.unparse(OutputArray);
 
-			console.log(OutputCSV);
+			//console.log(OutputCSV);
 
 			// Encode the string as a URI, open to make the file save.
 			let encodedUri = encodeURI("data:text/csv;charset=utf-8," + OutputCSV);
 			window.open(encodedUri);
+			};
+
+		function OutputSASData_Codes(OutputArray, OptionsDict) {
+
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "data RestrictionCodes;\n";
+			CodeOutput.value += "	infile datalines delimiter='|';\n";
+
+			// Define the columns
+			CodeOutput.value += "	input";
+
+			if (OptionsDict["DRUG_NAME"]) {	CodeOutput.value += " DRUG_NAME :$100.";	};
+			if (OptionsDict["DRUG_ATC"]) {	CodeOutput.value += " ATC_CODE :$7.";	};
+			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :$5.";	};
+			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :$5.";	};
+
+			CodeOutput.value += ";\n	datalines;";
+
+			OutputArray.forEach((ItemObj) => {
+
+				let Line = "\n";
+
+				for (let Property in ItemObj) {
+					if (Property != "RESTRICTION_TEXT") {
+						val = ItemObj[Property];
+						if (val == "" || val == " ") { val = "."};
+						Line += val + "|";
+					};
+					
+				};
+
+				CodeOutput.value += Line.slice(0, -1);
+
+			});
+
+			CodeOutput.value += "\n;\n\n";
+
+			// End the data node
+			CodeOutput.value += "run;\n";
+
+		}
+
+		function OutputSASMacroVar_Codes(OutputArray, OptionsDict) {
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a macro variable
+			CodeOutput.value = "";
+
+			if (OptionsDict["RESTRICTION_ID"]) {
+				CodeOutput.value += "%let RestrictionIDs = ";
+
+				OutputArray.forEach((ItemObj) => {
+					CodeOutput.value += "'" + ItemObj["RESTRICTION_ID"] + "', ";
+				});
+
+				CodeOutput.value = CodeOutput.value.slice(0, -2) + ";\n";
+			};
+
+			if (OptionsDict["STREAMLINED_CODE"]) {
+				CodeOutput.value += "%let StreamlinedCodes = ";
+
+				OutputArray.forEach((ItemObj) => {
+					CodeOutput.value += "'" + ItemObj["STREAMLINED_CODE"] + "', ";
+				});
+
+				CodeOutput.value = CodeOutput.value.slice(0, -2) + ";\n";
+			};
+			
+
+			
+		};
+
+		function OutputPlain_Codes(OutputArray) {
+			const CodeOutput = document.getElementById("OutputCode");
+			CodeOutput.value = "";
+			OutputArray.forEach((ItemObj) => {
+
+				let Line = "";
+
+				// If multiple options are selected, add a line break for each item. Else, only give the item codes in a single line
+
+				if (Object.keys(ItemObj).length > 1) {
+
+					for (let Property in ItemObj) {
+						val = ItemObj[Property];
+						if (val == "") { val = "."};
+						Line += val + ", ";
+					};
+
+					CodeOutput.value += Line.slice(0, -2) + "\n";
+
+				} else {
+					CodeOutput.value += Object.values(ItemObj)[0] + ", ";
+				};
+
+			});
+
+			if (CodeOutput.value.substr(-2, 2) == ", ") {
+				CodeOutput.value = CodeOutput.value.slice(0, -2);
+			}
+
 
 		};
 
-		function OutputSAS() {
-
-			const AuthGroups = document.querySelectorAll(".AuthGroup");
+		function OutputR_Codes(OutputArray) {
 			const CodeOutput = document.getElementById("OutputCode");
-			// Unhide the code output div.
-			CodeOutput.parentElement.style.display = "flex";
 
 			// Reset the output container, set it to the start of a data statement
-			CodeOutput.value = "data AuthCodes;\n";
-			CodeOutput.value += "	infile datalines delimiter=',';\n";
-			//CodeOutput.value += "	input Item_Code $ Drug_Name $ Authority_Method $ Authority_Code $ Indication $ Treatment_Phase $ ;\n";
-			CodeOutput.value += "	input Drug_Name :$50. Item_Code :$6. Authority_Code :$5. ;\n";
-			CodeOutput.value += "	datalines;";
+			CodeOutput.value = "RestrictionCodes <- data.frame(";
 
-			AuthGroups.forEach((Node) => {
+			OptionsList = [];
 
-				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
-				let Indication = Node.getAttribute("indication");
-				let TreatmentPhase = Node.getAttribute("treatmentphase");
+			for (let Property in OutputArray[0]) {
+				OptionsList.push(Property);
+			};
+			console.log(OptionsList);
 
-				//CodeOutput.value += "\n\n/* " + Indication + " - " + TreatmentPhase + " */\n";
+			OptionsList.forEach((Option) => {
+
+				CodeOutput.value += "\n" + Option + "=c(";
+
+				CurrLineLength = 0;
+
+				OutputArray.forEach((ItemObj) => {
+					// Fixes the line length character limit in R, by creating a new line if the character length of the current line is going to be more than 100 characters.
+					CurrLineLength += ItemObj[Option].length;
+
+					if (CurrLineLength > 100) {
+						CodeOutput.value += "\n";
+						CurrLineLength = 0;
+					}
+
+					CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					
+				});
+
+				CodeOutput.value = CodeOutput.value.slice(0,-2) + "),\n";
+
+			});
+
+			CodeOutput.value = CodeOutput.value.slice(0,-2) + "\n)\n"
+
+
+		};
+
+		// Code-Item Combos
+
+		function OutputCombos(OutputType) {
+
+			// Get Generation Options
+			let GenerationOptions = document.getElementById("SaveGenerationOptions_Combos").querySelectorAll("input");
+
+			OptionsDict = {};
+
+			GenerationOptions.forEach((Checkbox) => {
+				OptionsDict[Checkbox.getAttribute("saveoption")] = Checkbox.checked;
+			});
+
+			console.log(OptionsDict);
+
+			const DrugNodes = document.querySelectorAll(".DrugNode");
+			let OutputArray = [];
+
+			console.log(DrugNodes);
+
+			DrugNodes.forEach((Node) => {
+
+				const RestrictionTexts = Node.querySelectorAll(".title");
+
+				let DrugName = Node.getAttribute("drugname");
+				let DrugATC = Node.getAttribute("drugatc");
 
 				// Construct an object for each item code in the node, push into the output array
-				ItemCodes.forEach((Item) => {
-					let Line = Item.querySelector(".name").innerText.split(" | ")[0];
-					Line += "," + Item.querySelector(".code").value;
-					//Line += "," + Item.querySelector(".authmethod").innerText;
-					Line += "," + Item.querySelector(".authcode").value;
-					//Line += "," + Indication;
-					//Line += "," + TreatmentPhase.replace(",", "");
+				RestrictionTexts.forEach((Item) => {
+					
+					const Codes = Item.nextElementSibling;
 
-					CodeOutput.value += "\n" + Line;
+					Codes.querySelectorAll(".AuthCodeContainer").forEach((AuthCode) => {
+
+						const DrugObj = {};
+
+						DrugObj["ITEM_CODE"] = AuthCode.querySelector(".ItemCode").innerText;
+
+						if (OptionsDict["DRUG_NAME"]) {	DrugObj["DRUG_NAME"] = DrugName;	};
+						if (OptionsDict["DRUG_ATC"]) {	DrugObj["DRUG_ATC"] = DrugATC;	};
+						if (OptionsDict["FORM_STRENGTH"]) {	DrugObj["FORM_STRENGTH"] =  AuthCode.querySelector(".ItemForm").innerText;	};
+						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
+						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
+						if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						
+						OutputArray.push(DrugObj);
+
+					})
+
+					
 				});
+
+			});
+
+			console.log(OutputArray);
+
+			// Only keep unique combinations
+			let filteredList = [...new Set(OutputArray.map(JSON.stringify))].map(JSON.parse);
+
+
+			if (OutputType == "CSV") {
+				OutputCSV_Combos(filteredList);
+			} else if (OutputType == "SASDataFrame") {
+				OutputSASData_Combos(filteredList, OptionsDict);
+			} else if (OutputType == "Plain") {
+				OutputPlain_Combos(filteredList);
+			} else if (OutputType == "RDataFrame") {
+				OutputR_Combos(filteredList);
+			};
+
+		}
+
+		function OutputCSV_Combos(OutputArray) {
+			let OutputCSV = Papa.unparse(OutputArray);
+
+			//console.log(OutputCSV);
+
+			// Encode the string as a URI, open to make the file save.
+			let encodedUri = encodeURI("data:text/csv;charset=utf-8," + OutputCSV);
+			window.open(encodedUri);
+			};
+
+		function OutputSASData_Combos(OutputArray, OptionsDict) {
+
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "data RestrictionCodes;\n";
+			CodeOutput.value += "	infile datalines delimiter='|';\n";
+
+			// Define the columns
+			CodeOutput.value += "	input ITEM_CODE :$6.";
+
+			if (OptionsDict["DRUG_NAME"]) {	CodeOutput.value += " DRUG_NAME :$100.";	};
+			if (OptionsDict["DRUG_ATC"]) {	CodeOutput.value += " ATC_CODE :$7.";	};
+			if (OptionsDict["FORM_STRENGTH"]) {	CodeOutput.value += " FORM_STRENGTH :$100.";	};
+			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :$5.";	};
+			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :$5.";	};
+
+			CodeOutput.value += ";\n	datalines;";
+
+			OutputArray.forEach((ItemObj) => {
+
+				let Line = "\n";
+
+				for (let Property in ItemObj) {
+					if (Property != "RESTRICTION_TEXT") {
+						val = ItemObj[Property];
+						if (val == "" || val == " ") { val = "."};
+						Line += val + "|";
+					};
+					
+				};
+
+				CodeOutput.value += Line.slice(0, -1);
 
 			});
 
@@ -644,56 +1171,79 @@
 
 		};
 
-		function OutputR() {
-
-			const AuthGroups = document.querySelectorAll(".AuthGroup");
+		function OutputPlain_Combos(OutputArray) {
 			const CodeOutput = document.getElementById("OutputCode");
-			// Unhide the code output div.
-			CodeOutput.parentElement.style.display = "flex";
+			CodeOutput.value = "";
+			OutputArray.forEach((ItemObj) => {
 
-			// Reset the output container, set it to the start of a data statement
-			CodeOutput.value = "AuthCodes <- data.frame(";
+				let Line = "";
 
-			let OutputList = [];
+				// If multiple options are selected, add a line break for each item. Else, only give the item codes in a single line
 
-			AuthGroups.forEach((Node) => {
+				if (Object.keys(ItemObj).length > 1) {
 
-				const ItemCodes = Node.querySelectorAll(".AuthCodeContainer");
+					for (let Property in ItemObj) {
+						val = ItemObj[Property];
+						if (val == "") { val = "."};
+						Line += val + ", ";
+					};
 
-				// Construct an object for each item code in the node, push into the output array
-				ItemCodes.forEach((Item) => {
-					let DrugName = Item.querySelector(".name").innerText.split(" | ")[0];
-					let ItemCode = Item.querySelector(".code").value;
-					let AuthCode = Item.querySelector(".authcode").value;
-					OutputList.push([DrugName, ItemCode, AuthCode]);
-				});
+					CodeOutput.value += Line.slice(0, -2) + "\n";
+
+				} else {
+					CodeOutput.value += Object.values(ItemObj)[0] + ", ";
+				};
 
 			});
 
-			CodeOutput.value += "Drug_Name=c(";
+			if (CodeOutput.value.substr(-2, 2) == ", ") {
+				CodeOutput.value = CodeOutput.value.slice(0, -2);
+			}
 
-			OutputList.forEach((Drug, i) => {
-				if (i != 0) {CodeOutput.value += ", "};
-				CodeOutput.value += "'" + Drug[0] + "'";
-			});
-
-			CodeOutput.value += "),\nItem_Code=c(";
-
-			OutputList.forEach((Drug, i) => {
-				if (i != 0) {CodeOutput.value += ", "};
-				CodeOutput.value += "'" + Drug[1] + "'";
-			});
-
-			CodeOutput.value += "),\nAuth_Code=c(";
-
-			OutputList.forEach((Drug, i) => {
-				if (i != 0) {CodeOutput.value += ", "};
-				CodeOutput.value += "'" + Drug[2] + "'";
-			});
-
-			CodeOutput.value += "))";
 
 		};
+
+		function OutputR_Combos(OutputArray) {
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "RestrictionCodes <- data.frame(";
+
+			OptionsList = [];
+
+			for (let Property in OutputArray[0]) {
+				OptionsList.push(Property);
+			};
+			console.log(OptionsList);
+
+			OptionsList.forEach((Option) => {
+
+				CodeOutput.value += "\n" + Option + "=c(";
+
+				CurrLineLength = 0;
+
+				OutputArray.forEach((ItemObj) => {
+					// Fixes the line length character limit in R, by creating a new line if the character length of the current line is going to be more than 100 characters.
+					CurrLineLength += ItemObj[Option].length;
+
+					if (CurrLineLength > 100) {
+						CodeOutput.value += "\n";
+						CurrLineLength = 0;
+					}
+
+					CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					
+				});
+
+				CodeOutput.value = CodeOutput.value.slice(0,-2) + "),\n";
+
+			});
+
+			CodeOutput.value = CodeOutput.value.slice(0,-2) + "\n)\n"
+
+
+		};
+
 
 	</script>
 

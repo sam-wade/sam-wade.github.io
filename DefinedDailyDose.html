@@ -83,7 +83,7 @@
 		<a class="item" href="ItemCodes.html">Item Codes</a>
 		<a class="item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
 		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
-		<a class="active item" href="DailyDefinedDose.html">Daily Defined Dose</a>
+		<a class="active item" href="DefinedDailyDose.html">Daily Defined Dose</a>
 	</div>
 
 	<div class="ui center aligned container segment basic">
@@ -104,7 +104,7 @@
 			<div class="header">
 			  Caution!
 			</div>
-			<p>Defined Daily Doses are <em><u>estimated</u></em> from PBS and extracted WHO data. This process is not exact, and the dosage form of many of the historical items had to be inferred from the dosage form (e.g. Tablet = Oral).</p>
+			<p>Defined Daily Doses are <em><u>estimated</u></em> from PBS and extracted WHO data. This process is not always exact, due to inconsistencies in how the PBS Form/Strength is formatted, data gaps for historical item codes, and inconsistencies between PBS ATC codes and WHO ATC codes.</p>
 			<p>Please manually <u>verify</u> all your DDD values before you use them.</p>
 		</div>
 	</div>
@@ -112,11 +112,6 @@
 	
 		
 	<div class="ui center aligned basic segment container">
-		<!-- <div class="ui left icon file input">
-
-			<input type="file" accept=".csv, text/csv" id="MapSelector1" />
-
-		</div> -->
 	
 		<div class="ui file action input">
 		  <input id="MapSelector" type="file" accept=".csv, text/csv">
@@ -987,7 +982,7 @@
 
 		};
 		
-		// Uses answer from https://stackoverflow.com/questions/8935632/check-if-character-is-number/21070520#21070520
+		// Uses answer from https://stackoverflow.com/questions/8935632/check-if-character-is-number/21070520#21070520 <3
 		function isNumeric(s) {
 			return !isNaN(s - parseFloat(s));
 		}
