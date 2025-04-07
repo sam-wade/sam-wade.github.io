@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Defined Daily Dose | PBS Tools</title>
+	<!--<link rel="stylesheet" href="src/main.css" />-->
+	<link rel="icon" type="image/x-icon" href="src/favicon.ico">
+	<!-- You MUST include jQuery 3.4+ before Fomantic -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+</head>
+
+<style>
+	.DrugTitle {
+		text-transform: capitalize !important;
+	}
+
+	.UOMSelect {
+		padding-left: 0.2rem !important;
+    	padding-right: 0.2rem !important;
+		text-align: center;
+		border-top-left-radius: 0 !important;
+		border-bottom-left-radius: 0 !important;
+		height: 100% !important;
+		background: #e8e8e8 !important;
+		appearance: none; -moz-appearance:none; -webkit-appearance: none;
+		background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAnUlEQVR42r2KywmEUAxFA+JCBCOIiIIfdARd6FtYgCW8Eiw5paSETOY54yC69pxFkpsLj7DYBW9zXKyOeTUy03SpTDiTflYYeRSVhlNlwJFcztBvL/nYUXtUWuxoT/tNz8ZWXIlKpauUWJG7ubGwU5icc1E5M9mxFwb+pCbhRFT+zdTAmbiOKJKvFNdwJcSAAlEpRLjHR4888hGe5Q1r5EKfhDTIzgAAAABJRU5ErkJggg==") !important;
+		background-position: center !important;
+		background-size: 30% !important;
+    	background-repeat: no-repeat !important;
+		cursor: pointer;
+	}
+
+
+	select:has(option:checked:not([value])),
+	select:has(option:checked:not([value=""])) {
+		
+		background-image: none !important;
+
+	}
+
+	select:has(option:checked:not([value])) option,
+	select:has(option:checked:not([value=""])) option {
+		background-image: none !important;
+	}
+
+	.ADMRSelect {
+		background: #e8e8e8 !important;
+		padding-top: 0.5rem !important;
+		padding-bottom: 0.5rem !important;
+		cursor: pointer;
+	}
+
+	@media screen and (min-width: 992px) {
+		@media screen and (max-width: 1200px) {
+			.PBSDose {
+				padding-left: 0.3rem !important;
+				padding-right: 0 !important;
+			}
+			.WHODose {
+				padding-left: 0.2rem !important;
+				padding-right: 0 !important;
+			}
+			.UOMSelect { 
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
+		}
+	}
+	
+
+</style>
+
+<body>
+	<!-- Header -->
+	<div class="ui menu">
+		<a class="ui item header" href="index.html">
+			<img class="ui mini spaced image" src="src/icon.png">
+			<span>PBS Tools</span>
+		</a>
+		<a class="item" href="ItemCodes.html">Item Codes</a>
+		<a class="item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
+		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
+		<a class="active item" href="DailyDefinedDose.html">Daily Defined Dose</a>
+	</div>
+
+	<div class="ui center aligned container segment basic">
+		<h2 class="ui icon header">
+		  <i class="calendar icon"></i>
+		  <div class="content">
+			PBS Item Defined Daily Dose Generator
+			<div class="sub header">Select a map file to begin.</div>
+		  </div>
+		</h2>
+		<div class="ui labels">
+			<a class="ui label" href="https://colab.research.google.com/drive/1xGFzHV2Mfdr0N0D3w5BWyL2vMs1VzNz2?usp=sharing">
+				<i class="cog icon"></i> Generate PBS Item Map with Estimated Defined Daily Doses
+			</a>
+		</div>
+
+		<div class="ui warning message">
+			<div class="header">
+			  Caution!
+			</div>
+			<p>Defined Daily Doses are <em><u>estimated</u></em> from PBS and extracted WHO data. This process is not exact, and the dosage form of many of the historical items had to be inferred from the dosage form (e.g. Tablet = Oral).</p>
+			<p>Please manually <u>verify</u> all your DDD values before you use them.</p>
+		</div>
+	</div>
+	
+	
+		
+	<div class="ui center aligned basic segment container">
+		<!-- <div class="ui left icon file input">
+
+			<input type="file" accept=".csv, text/csv" id="MapSelector1" />
+
+		</div> -->
+	
+		<div class="ui file action input">
+		  <input id="MapSelector" type="file" accept=".csv, text/csv">
+		  <label for="MapSelector" class="ui blue looping pulsating transition button " id="MapButton">
+			 <i class="file icon"></i>
+				Select Map File
+		  </label>
+		</div>
+
+		
+		<div class="ui horizontal divider">
+		SEARCH
+		</div>
+		<div class="ui purple labeled icon button disabled" onclick="GenerateDrugNameDiv();" id="NameSearchButton">
+		Drug Name
+			<i class="add icon"></i>
+		</div>
+		<div class="ui green labeled icon button disabled" onclick="GenerateATCCodeDiv();" id="ATCSearchButton">
+		ATC Code
+			<i class="add icon"></i>
+		</div>
+
+		
+	</div>	
+
+	<div class="ui segment container basic horizontally fitted DrugContainer" id="DrugContainer"></div>
+
+	<div class="ui container basic segment horizontally fitted" id="OutputSection" style="display:none; margin-bottom: 1vh;">
+
+		<h3 class="ui top attached header OutputTitle" id="OutputTitle">Save</h3>
+		<div class="ui attached segment">
+		
+			<!-- Save Types -->
+			
+			<div class="ui compact wrapping spaced labeled icon buttons OutputButtons" id="OutputButtons">
+				
+				
+				<button class="ui button" type="button" onclick="Output('CSV');"><i class="save icon"></i>Download .csv file</button>
+				
+				<button class="ui button" type="button" onclick="Output('Plain');"><i class="cog icon"></i>Generate plain text output</button>
+				
+				<button class="ui button" type="button" onclick="Output('SASDataFrame');"><i class="cog icon"></i>Generate SAS dataframe output</button>
+				
+				<button class="ui button" type="button" onclick="Output('RDataFrame');"><i class="cog icon"></i>Generate R dataframe output</button>
+
+			</div>
+
+			<!-- Generation Options -->
+			<div class="ui styled fluid accordion" style="margin-bottom:1rem;">
+				<div class="title">
+					
+					<i class="dropdown icon"></i>
+				  Generation Options
+				</div>
+				<div class="content">
+					<div class="ui form" id="SaveGenerationOptions">
+						
+						<div class="field">
+							<label>PBS Item Options:</label>
+							<div class="fields">
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="DRUG_NAME">
+										<label class="ui label blue">Drug Name</label>
+									</div>
+								</div>
+								
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" class="" saveoption="FORM_STRENGTH">
+										<label class="ui label blue">Form / Strength</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="ATC5_Code">
+										<label class="ui label blue">ATC Code</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="ITEM_STRENGTH">
+										<label class="ui label blue">Strength</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">
+										<input type="checkbox" checked="checked" saveoption="ITEM_UOM">
+										<label class="ui label blue">UOM</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">							
+										<input type="checkbox" checked="checked" saveoption="ROA">
+										<label class="ui label blue">ROA</label>
+									</div>
+								</div>
+		
+							</div>
+						</div>
+						<div class="field">
+							<label>WHO ATC Options:</label>
+							<div class="fields">
+								<div class="field">
+									<div class="ui invisible checkbox">		
+										<input type="checkbox" checked="checked" saveoption="WHO_STRENGTH">
+										<label class="ui label blue">Strength</label>
+									</div>
+								</div>
+		
+								<div class="field">
+									<div class="ui invisible checkbox">		
+										<input type="checkbox" checked="checked" saveoption="WHO_UOM">
+										<label class="ui label blue">UOM</label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="ui invisible checkbox">	
+										<input type="checkbox" saveoption="WHO_NOTES">
+										<label class="ui label blue">Notes</label>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="field">
+							<label>Other Options:</label>
+							<div class="fields">
+								<div class="field">
+									<div class="ui invisible checkbox">	
+										<input type="checkbox" checked="checked" saveoption="DDD">
+										<label class="ui label blue">DDD</label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="ui invisible checkbox">
+										
+										<input type="checkbox" saveoption="HISTORICAL_ITEM">
+										<label class="ui label blue" >Historical Item Flag</label>
+									</div>
+								</div>
+			
+							</div>
+						</div>
+		
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="ui form OutputCode">
+				<div class="field">
+					<label>Output Code:</label>
+					<div class="ui corner labeled input">
+					<div class="ui corner label">
+						<i class="code icon"></i>
+					</div>
+					<textarea id="OutputCode"></textarea>
+				</div>
+				</div>
+			</div>
+
+	</div>
+
+	</div>
+
+	<!-- Templates -->
+
+	<!-- Icons -->
+	<template id="HistoricalFlagIcon">
+		<div class="ui label icon brown HistoricalFlag" title="Historical Item! Double check the ROA and associated WHO Dose!">
+			<i class="flag icon" ></i>
+		</div>
+	</template>
+
+	<template id="CalcFlagIcon">
+		<div class="ui label icon blue CalcFlag" title="Extra calculations were done to estimate the PBS Dose! Please triple check the value! ">
+			<i class="calculator icon" ></i>
+		</div>
+	</template>
+
+	<template id="MultiNumFlagIcon">
+		<div class="ui label icon yellow MultiNumFlag" title="Multiple Numbers in Form/Strength! Double check the PBS Dose!">
+			<i class="hashtag icon" ></i>	
+		</div>
+	</template>
+
+	<template id="DuplicateCodeFlagIcon">
+		<div class="ui label icon orange DuplicateCodeFlag" title="This item code has duplicates! Double check the notes and remove accordingly!">
+			<i class="clone icon" ></i>	
+		</div>
+	</template>
+
+	<template id="LinksIcons">
+		<div class="ui labels Search">
+			<a class="ui label WHO_ATC_Search" title="WHO ATC DDD" href="https://atcddd.fhi.no/atc_ddd_index/?code=">
+				<i class="search icon" ></i>Search for ATC Code	on WHO DDD Site
+			</a>
+			<a class="ui label  WHO_Name_Search" title="WHO Name DDD" href="https://atcddd.fhi.no/atc_ddd_index/?name=">
+				<i class="search icon" ></i>Search for Drug Name on WHO DDD Site	
+			</a>
+			<a style="display:none;" class="ui label  WHO_Combo" title="WHO Combination Product DDDs" href="https://atcddd.fhi.no/ddd/list_of_ddds_combined_products/">
+				<i class="search icon" ></i>View DDDs for combination products	
+			</a>
+			<a class="ui label  PBS_Item_Search" title="PBS Item Codes" href="https://www.pbs.gov.au/medicine/item/">
+				<i class="search icon" ></i>Search for Item Codes on PBS Site	
+			</a>
+			
+		</div>
+	</template>
+
+	<template id="DDDCardTemplate">
+		<div class="ui card">
+			<div class="content">
+				<button class="ui right floated icon button red mini compact" type="button" onclick="this.parentElement.parentElement.remove();"><i class="close icon"></i></button>
+				<div class="header StrengthForm"></div>
+				<div class="meta ItemCode"></div>
+			
+				<div class="ui centered labels Warnings">
+
+				</div>
+			</div>
+			<div class="content">
+
+				<form class="ui form">
+
+					<div class="two fields">
+						<!-- PBS Item Code Dose -->
+						<div class="field">
+							<label>PBS</label>
+							<div class="ui right labeled input">
+								<input class="PBSDose" placeholder="PBS Dose..." type="text" value="" oninput="CalculateDDD(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+								<div class="ui field" >
+									<select class="PBSUOM UOMSelect" onchange="CalculateDDD(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+										<option value=""></option>
+										<option value="g">g</option>
+										<option value="mg">mg</option>
+										<option value="mcg">mcg</option>
+									  </select>
+									
+								</div>
+							  </div>
+						</div>
+						<!-- WHO ATC Dose -->
+						<div class="field">
+							<label>WHO</label>
+							<div class="ui right labeled input">
+								<input class="WHODose" placeholder="WHO Dose..." type="text" value="" oninput="CalculateDDD(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+								<div class="ui field" >
+									<select class="WHOUOM UOMSelect" onchange="CalculateDDD(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
+										<option value=""></option>
+										<option value="g">g</option>
+										<option value="mg">mg</option>
+										<option value="mcg">mcg</option>
+									  </select>
+									
+								</div>
+							  </div>
+						</div>
+					</div>
+					<!-- Route of Administration -->
+					<div class="field">
+						<label>ROA</label>
+						<div class="ui field" >
+							<select class="ADMR ADMRSelect">
+								<option value=""></option>
+								<option value="Oral">Oral</option>
+								<option value="Parenteral">Parenteral</option>
+								<option value="Sublingual/Buccal/Oromucosal">Sublingual/Buccal/Oromucosal</option>
+								<option value="Nasal">Nasal</option>
+								<option value="Transdermal">Transdermal</option>
+								<option value="Inhal.powder">Inhal.powder</option>
+								<option value="Inhal.aerosol">Inhal.aerosol</option>
+								<option value="Inhal.solution">Inhal.solution</option>
+								<option value="Implant">Implant</option>
+								<option value="Rectal">Rectal</option>
+								<option value="Vaginal">Vaginal</option>
+							  </select>
+							
+						</div>
+						
+					</div>
+					<!-- WHO ATC Notes (hidden by default) -->
+					<div class="ui warning message">
+						<p class="Note"><strong>Note:</strong> </p>
+					</div>
+
+				</form>
+
+			</div>
+			<div class="extra content">
+				<div class="ui right labeled left icon input fluid">
+				<i class="calculator icon"></i>
+				<input class="CalcDDD" type="text" placeholder="Calculated DDD..." value="">
+				<a class="ui label" onclick="CalculateDDD(this.parentElement.parentElement.parentElement);">
+					DDD
+				</a>
+				</div>
+			</div>
+			
+		</div>
+	</template>
+
+	<template id="DrugNameTemplate">
+		<div class="ui purple segment">
+
+			<div class="DeleteNode">
+				<button class="ui right floated icon button red" type="button" onclick="this.parentElement.parentElement.remove();"><i class="trash icon"></i></button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+					<div class="ui action input">
+					  <input id="SearchTerm" type="text" placeholder="Search Drug Name..." onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement.parentElement, 'DrugName')">
+					  <button class="ui icon button purple" onclick="GenerateItemCodes(this.parentElement.parentElement.parentElement.parentElement, 'DrugName')">
+						<i class="search icon"></i>
+					  </button>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<template id="ATCTemplate">
+		<div class="ui green segment">
+			<div class="DeleteNode">
+				<button class="ui right floated icon button red" type="button" onclick="this.parentElement.parentElement.remove();"><i class="trash icon"></i></button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+					<!--<label for="SearchTerm">Search ATC Code: </label>
+					<input id="SearchTerm" onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement)" />-->
+					<div class="ui action input">
+					  <input id="SearchTerm" type="text" placeholder="Search ATC Code..." onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement.parentElement, 'ATC')">
+					  <button class="ui icon button green" onclick="GenerateItemCodes(this.parentElement.parentElement.parentElement.parentElement, 'ATC')">
+						<i class="search icon"></i>
+					  </button>
+					</div>
+				</div>
+
+			</div>
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<!-- Initialise the save options checkboxes -->
+	<script>
+		$('.ui.checkbox')
+			.checkbox()
+		;
+		$('.ui.accordion')
+			.accordion()
+		;
+	</script>
+
+	<script type="text/javascript" src="src/papaparse.min.js"></script>
+
+	<script>
+
+		let DrugMapJson;
+
+		// Load Map file
+
+		const MapSelector = document.getElementById("MapSelector");
+		MapSelector.addEventListener('change', (event) => {
+			const files = event.target.files;
+			console.log(files);
+			LoadMapCSV(files);
+
+			// Makes elements visible, removes the pulsing effect on the map button.
+			document.getElementById("NameSearchButton").classList.remove("disabled");
+			document.getElementById("ATCSearchButton").classList.remove("disabled");
+			document.getElementById("MapButton").classList.remove("pulsating");
+			document.getElementById("OutputSection").style.display = "revert";
+		});
+
+		function LoadMapCSV(FileInput) {
+			Papa.parse(FileInput[0], {
+				header: true,
+				skipEmptyLines: true,
+				complete: function(results) {
+					console.log(results);
+					DrugMapJson = results.data;
+				}
+			});
+		};
+
+		// Clone templates
+
+		function GenerateDrugNameDiv() {
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("DrugNameTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		function GenerateATCCodeDiv() {
+
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("ATCTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		function GenerateNewInput(NewInputButton) {
+
+			const DrugNode = NewInputButton.parentElement;
+			const InputTemplate = document.getElementById("ItemCodeTemplate");
+			const InputClone = InputTemplate.content.cloneNode(true);
+
+			DrugNode.insertBefore(InputClone, NewInputButton);
+
+		};
+
+		// Let people hit enter in the search box
+
+		function enterKeyPressed(event, DrugDiv, ContainerType) {
+			if (event.keyCode == 13) {
+				 if (ContainerType == "DrugName") {
+					GenerateItemCodes(DrugDiv, "DrugName");
+				 } else if (ContainerType == "ATC") {
+					GenerateItemCodes(DrugDiv, "ATC");
+				};
+			  };
+		};
+
+		// Calculate the Daily Defined Dose
+
+		function CalculateDDD(card) {
+			let PBS_UOM = card.querySelector(".PBSUOM").value;
+			let PBS_Dose = card.querySelector(".PBSDose").value;
+
+			let WHO_UOM = card.querySelector(".WHOUOM").value;
+			let WHO_Dose = card.querySelector(".WHODose").value;
+
+			let CalcDDD;
+
+			if (PBS_UOM == WHO_UOM && PBS_UOM != "" && WHO_UOM != "") {
+				CalcDDD = WHO_Dose / PBS_Dose;
+			} else {
+				// Dose conversions :(
+				if (PBS_UOM == "mg" && WHO_UOM == "g") {
+					CalcDDD = (WHO_Dose * 1000) / PBS_Dose;
+				} 
+
+				else if (PBS_UOM == "mg" && WHO_UOM == "mcg") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000);
+				}
+				
+				else if (PBS_UOM == "g" && WHO_UOM == "mg") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000);
+				}
+
+				else if (PBS_UOM == "g" && WHO_UOM == "mcg") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000 * 1000);
+				}
+
+				else if (PBS_UOM == "mcg" && WHO_UOM == "mg") {
+					CalcDDD = (WHO_Dose * 1000) / PBS_Dose;
+				}
+
+				else if (PBS_UOM == "mcg" && WHO_UOM == "g") {
+					CalcDDD = (WHO_Dose * 1000 * 1000) / PBS_Dose;
+				}
+
+			}
+
+			card.querySelector(".CalcDDD").value = CalcDDD;
+		}
+
+		// Create the container with all the drugs
+
+		function GenerateDrugNode(OutputContainer, ItemDict, FoundDrugATC) {
+			// FoundDrugATC is a string with the drug name joint to the ATC Code, separated by a | (e.g. risperidone|N05AX08)
+			let CurrentDrugName	= FoundDrugATC.split("|")[0];
+			let CurrentATC = FoundDrugATC.split("|")[1];
+
+			const DDDCardTemplate = document.getElementById("DDDCardTemplate");
+
+			const DrugNode = document.createElement("div");
+			DrugNode.classList.add("ui", "four", "cards", "doubling", "centered", "DrugNode");
+			DrugNode.setAttribute("DrugName", CurrentDrugName);
+			DrugNode.setAttribute("ATC", CurrentATC);
+
+			// Create a card for each item code associated with the drug name and ATC code
+
+			CurrentItemCodes = new Set();
+			DuplicateCodes = [];
+
+			ItemDict[FoundDrugATC].forEach((Drug) => {
+
+				// Appends the current item code to a set, to be used to generate the PBS search and identify duplicate item codes.
+	
+				if (CurrentItemCodes.has(Drug["ITEM_CODE"])) {
+					DuplicateCodes.push(Drug["ITEM_CODE"]);
+				} else {
+					CurrentItemCodes.add(Drug["ITEM_CODE"])
+				};
+
+				// Creates a clone of the DDD Card Template
+				const DDDClone = DDDCardTemplate.content.cloneNode(true);
+
+				DDDClone.querySelector(".card").setAttribute("ItemCode", Drug["ITEM_CODE"]);
+
+				// Appends the PBS information to the card. In theory, a majority of the items should have most of these values.
+				DDDClone.querySelector(".StrengthForm").innerText = Drug["FORM/STRENGTH"];
+				DDDClone.querySelector(".ItemCode").innerText = Drug["ITEM_CODE"];
+				DDDClone.querySelector(".PBSDose").value = Drug["ITEM_STRENGTH"];
+				DDDClone.querySelector(".PBSUOM").value = Drug["ITEM_UOM"];
+
+				DDDClone.querySelector(".ADMR").value = Drug["ROA"];
+
+				// Handles the flags - colours the cards and adds the appropriate icon.
+
+				if (Drug["MULTI_NUM_FLAG"] == "1") {
+					DDDClone.querySelector(".card").classList.add("yellow");
+					DDDClone.querySelector(".card").style = "background: #fff4d2;";
+
+					const MultiNumTemplate = document.getElementById("MultiNumFlagIcon").content.cloneNode(true);
+					DDDClone.querySelector(".Warnings").appendChild(MultiNumTemplate);
+
+				};
+
+				if (Drug["HISTORICAL_FLAG"] == "1") {
+					DDDClone.querySelector(".card").classList.add("yellow");
+					DDDClone.querySelector(".card").style = "background: #fff4d2;";
+
+					const HistoricalTemplate = document.getElementById("HistoricalFlagIcon").content.cloneNode(true);
+					DDDClone.querySelector(".Warnings").appendChild(HistoricalTemplate);
+
+				};
+
+				if (Drug["CALC_FLAG"] == "1") {
+					DDDClone.querySelector(".card").classList.add("yellow");
+					DDDClone.querySelector(".card").style = "background: #fff4d2;";
+
+					const CalcTemplate = document.getElementById("CalcFlagIcon").content.cloneNode(true);
+					DDDClone.querySelector(".Warnings").appendChild(CalcTemplate);
+
+				};
+
+				// Checks if a DDD was calculated for the item code. DDDs are only calculated when the PBS item code has a matching ATC code and ADM_R to the WHO value. 
+
+				if (Drug["CALC_DDD"]) {		
+					DDDClone.querySelector(".WHODose").value = Drug["WHO_STRENGTH"];
+					DDDClone.querySelector(".WHOUOM").value = Drug["WHO_UOM"];
+					DDDClone.querySelector(".CalcDDD").value = Drug["CALC_DDD"];
+				} else {
+					DDDClone.querySelector(".card").classList.remove("yellow");
+					DDDClone.querySelector(".card").classList.add("red");
+					DDDClone.querySelector(".card").style = "background: #ffc6c6;";
+				};	
+				
+				// Adds any notes associated with the WHO ATC code. This is what will cause most of the duplicate item codes in the generation, since a single WHO ATC can have multiple DDD values with different notes.
+
+				if (Drug["WHO_NOTES"]) {
+					DDDClone.querySelector(".Note").innerText += Drug["WHO_NOTES"];
+					DDDClone.querySelector(".Note").parentElement.classList.add("visible");
+				}
+
+				// Adds the DDD Card to the DrugNode
+				DrugNode.appendChild(DDDClone);
+
+			});
+
+			// Add a flag for multiple duplicate item codes
+			DrugNode.querySelectorAll('.card').forEach((card) => {
+				if (DuplicateCodes.includes(card.getAttribute('ItemCode'))) {
+					const DuplicateCodeTemplate = document.getElementById("DuplicateCodeFlagIcon").content.cloneNode(true);
+					card.querySelector(".Warnings").appendChild(DuplicateCodeTemplate);
+					card.style = "background: #ffc7a2;";
+					card.classList.remove("yellow");
+					card.classList.add("orange");
+				};
+			});
+
+			
+
+			//Create the title of the node (i.e. the drug name)
+			const Title = document.createElement("h3");
+			Title.classList.add("ui", "header", "DrugTitle");
+			const node = document.createTextNode(CurrentDrugName.toLowerCase());
+			Title.appendChild(node);
+			OutputContainer.appendChild(Title);
+
+			//Create the ATC Code for the drug node
+			const SubTitle = document.createElement("div");
+			SubTitle.classList.add("sub", "header", "DrugSubTitle");
+			const SubTitleNode = document.createTextNode(CurrentATC);
+			SubTitle.appendChild(SubTitleNode);
+			Title.appendChild(SubTitle);
+
+			// Create the links to the WHO site and PBS site
+			const LinksTemplate = document.getElementById("LinksIcons").content.cloneNode(true);
+			LinksTemplate.querySelector(".WHO_ATC_Search").href += CurrentATC;
+			LinksTemplate.querySelector(".WHO_Name_Search").href += CurrentDrugName;
+			
+			// PBS Site displays item codes on https://www.pbs.gov.au/medicine/item/, followed a string of codes separated by '-'. Fortunately it doesn't care about the trailing '-'
+			const PBSSearchLink = LinksTemplate.querySelector(".PBS_Item_Search")
+			CurrentItemCodes.forEach((Code) => {
+				if (Code.substring(0,1) == "0") {
+					Code = Code.slice(1);
+				}
+				PBSSearchLink.href += Code + "-";
+			});
+
+			// Add link for combination product DDD list, if the drug is likely a product.
+			if (CurrentDrugName.includes(" + ")) {
+				LinksTemplate.querySelector(".WHO_Combo").style.display = "";
+			};
+
+			OutputContainer.appendChild(LinksTemplate);
+
+		   OutputContainer.appendChild(DrugNode);
+
+		};
+
+		// Search the map for the search term, generate the item codes
+
+		function GenerateItemCodes(DrugDiv, SearchType) {
+
+			Search = DrugDiv.querySelector("#SearchTerm").value.toUpperCase();
+
+			let OutputContainer = DrugDiv.querySelector(".OutputContainer");
+			const DrugHead = DrugDiv.querySelector(".DrugHead");
+
+			let FoundItemsDict = {};
+
+			if (Search) {
+
+				// Create the additional header for the ATC code box, that lists the search term.
+				if (SearchType == "ATC") {
+					const Title = document.createElement("h2");
+					Title.classList.add("ui", "dividing", "header", "DrugTitle");
+					const node = document.createTextNode("ATC: " + Search);
+					Title.appendChild(node);
+					OutputContainer.appendChild(Title);
+				};
+
+				// Reads drugs that match the keyword into a dictionary.
+				for (const Drug of DrugMapJson) {
+
+					// Checks if the drug name / ATC code matches the search input. If it does, adds the Drug object to a dictionary, on the key of the name joined with ATC Code it's associated with.
+					// The joint name/atc grouping accounts for PBS weirdness, where drugs like lithium will have multiple ATC codes, or drugs like testosterone will have multiple drug names under the same ATC.
+					// The ATC code will only search the length of the inputted search, allows searches for 'j01', and etc.
+
+					if ( (SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) {
+
+						let DrugATC = Drug.DRUG_NAME + "|" + Drug.ATC5_Code;
+
+						if (DrugATC in FoundItemsDict) {
+
+						  FoundItemsDict[DrugATC].push(Drug);
+						} else {
+						  FoundItemsDict[DrugATC] = [Drug];
+						};
+
+					};
+				};
+
+				console.log(FoundItemsDict);
+
+				// Go through each of the grouped drug name/atc's, generate an object for each with their item codes
+				for (let FoundDrugATC in FoundItemsDict) {
+
+					GenerateDrugNode(OutputContainer, FoundItemsDict, FoundDrugATC);
+
+				}
+
+				//Check if there wasn't a result, gives an error message if there wasn't.
+
+				if (Object.keys(FoundItemsDict).length == 0) {
+
+					const ErrorDiv = document.createElement("div");
+					ErrorDiv.classList.add("ui", "text", "container");
+					ErrorDiv.style.padding = "1rem 0";
+					OutputContainer.appendChild(ErrorDiv);
+
+					const ErrorMsg = document.createElement("h4");
+					ErrorMsg.classList.add("ui", "header", "red");
+					const ErrorText = document.createTextNode("Error! Either the search term was misspelled, or there weren't any item codes associated with this search!");
+					ErrorMsg.appendChild(ErrorText);
+					ErrorDiv.appendChild(ErrorMsg);
+				}
+
+				// Hide the search input
+				DrugHead.style.display = "none";
+
+			};
+
+		};
+
+		// Create outputs
+
+		function Output(OutputType) {
+
+			// Get Generation Options
+			let GenerationOptions = document.getElementById("SaveGenerationOptions").querySelectorAll("input");
+			
+			OptionsDict = {};
+			
+			GenerationOptions.forEach((Checkbox) => {
+				OptionsDict[Checkbox.getAttribute("saveoption")] = Checkbox.checked;
+			});
+
+			const DrugNodes = document.querySelectorAll(".DrugNode");
+			let OutputArray = [];
+
+			DrugNodes.forEach((Node) => {
+
+				const ItemCodes = Node.querySelectorAll(".card");
+				let DrugName = Node.getAttribute("drugname");
+				let DrugATC = Node.getAttribute("atc");
+
+				// Construct an object for each item code in the node, push into the output array
+				ItemCodes.forEach((Item) => {
+					const DrugObj = {};
+
+					DrugObj["ITEM_CODE"] = Item.querySelector(".ItemCode").innerText;
+
+					if (OptionsDict["DRUG_NAME"]) {	DrugObj["DRUG_NAME"] = DrugName;	};
+					if (OptionsDict["FORM_STRENGTH"]) {	DrugObj["FORM_STRENGTH"] = Item.querySelector(".StrengthForm").innerText;	};
+					if (OptionsDict["ATC5_Code"]) {	DrugObj["ATC5_Code"] = DrugATC;	};
+					if (OptionsDict["HISTORICAL_ITEM"]) {	
+						if (Item.querySelector(".HistoricalFlag")) {
+							DrugObj["HISTORICAL_ITEM"] = '1';
+						} else {
+							DrugObj["HISTORICAL_ITEM"] = '0';
+						}		
+					};
+					if (OptionsDict["ITEM_STRENGTH"]) {	DrugObj["ITEM_STRENGTH"] = Item.querySelector(".PBSDose").value;	};
+					if (OptionsDict["ITEM_UOM"]) {	DrugObj["ITEM_UOM"] = Item.querySelector(".PBSUOM").value;	};
+					if (OptionsDict["WHO_STRENGTH"]) {	DrugObj["WHO_STRENGTH"] = Item.querySelector(".WHODose").value;	};
+					if (OptionsDict["WHO_UOM"]) {	DrugObj["WHO_UOM"] = Item.querySelector(".WHOUOM").value;	};
+					if (OptionsDict["ROA"]) {	DrugObj["ROA"] = Item.querySelector(".ADMR").value;	};
+					if (OptionsDict["DDD"]) {	DrugObj["DDD"] =  Item.querySelector(".CalcDDD").value;	};
+					// Removes "Note: " from beginning of note 
+					if (OptionsDict["WHO_NOTES"]) {	DrugObj["WHO_NOTES"] = Item.querySelector(".Note").innerText.slice(5);};
+					
+
+					OutputArray.push(DrugObj);
+				});
+
+			});
+
+			if (OutputType == "CSV") {
+				OutputCSV(OutputArray);
+			} else if (OutputType == "SASDataFrame") {
+				OutputSASData(OutputArray, OptionsDict);
+			} else if (OutputType == "Plain") {
+				OutputPlain(OutputArray);
+			} else if (OutputType == "RDataFrame") {
+				OutputR(OutputArray);
+			};
+
+			
+
+		}
+
+		function OutputCSV(OutputArray) {
+			let OutputCSV = Papa.unparse(OutputArray);
+
+			//console.log(OutputCSV);
+
+			// Encode the string as a URI, open to make the file save.
+			let encodedUri = encodeURI("data:text/csv;charset=utf-8," + OutputCSV);
+			window.open(encodedUri);
+		};
+
+		function OutputSASData(OutputArray, OptionsDict) {
+
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "data ItemDDDs;\n";
+			CodeOutput.value += "	infile datalines delimiter='|';\n";
+
+			// Define the columns
+			CodeOutput.value += "	input ITEM_CODE :$6.";
+
+			// if (OptionsDict["DRUG_NAME"]) {		};
+			// if (OptionsDict["FORM/STRENGTH"]) {		};
+			// if (OptionsDict["ATC5_Code"]) {		};
+			// if (OptionsDict["HISTORICAL_ITEM"]) {	};
+			// if (OptionsDict["ITEM_STRENGTH"]) {		};
+			// if (OptionsDict["ITEM_UOM"]) {		};
+			// if (OptionsDict["WHO_STRENGTH"]) {		};
+			// if (OptionsDict["WHO_UOM"]) {		};
+			// if (OptionsDict["ROA"]) {		};
+			// if (OptionsDict["DDD"]) {		};
+			// if (OptionsDict["WHO_NOTES"]) {	};
+
+			if (OptionsDict["DRUG_NAME"]) {	CodeOutput.value += " DRUG_NAME :$100.";	};
+			if (OptionsDict["FORM_STRENGTH"]) {	CodeOutput.value += " FORM_STRENGTH :$100.";	};
+			if (OptionsDict["ATC5_Code"]) {	CodeOutput.value += " ATC_CODE :$7.";	};
+			if (OptionsDict["HISTORICAL_ITEM"]) { CodeOutput.value += " HISTORICAL_ITEM :$1.";	};
+			if (OptionsDict["ITEM_STRENGTH"]) {	CodeOutput.value += " ITEM_STRENGTH :12.";	};
+			if (OptionsDict["ITEM_UOM"]) {	CodeOutput.value += " ITEM_UOM :$3.";	};
+			if (OptionsDict["WHO_STRENGTH"]) {	CodeOutput.value += " WHO_STRENGTH :12.";	};
+			if (OptionsDict["WHO_UOM"]) {	CodeOutput.value += " WHO_UOM :$3.";	};
+			if (OptionsDict["ROA"]) {	CodeOutput.value += " ROA :$50.";	};
+			if (OptionsDict["DDD"]) {	CodeOutput.value += " DDD :12.";	};
+			if (OptionsDict["WHO_NOTES"]) { CodeOutput.value += " WHO_NOTES :$100.";	};
+
+			CodeOutput.value += ";\n	datalines;";
+
+			OutputArray.forEach((ItemObj) => {
+
+				let Line = "\n";
+
+				for (let Property in ItemObj) {
+					val = ItemObj[Property];
+					if (val == "" || val == " ") { val = "."};
+					Line += val + "|";
+				};
+
+				CodeOutput.value += Line.slice(0, -1);
+
+			});
+
+			CodeOutput.value += "\n;\n\n";
+
+			// End the data node
+			CodeOutput.value += "run;\n";
+
+		}
+
+		function OutputPlain(OutputArray) {
+			const CodeOutput = document.getElementById("OutputCode");
+			CodeOutput.value = "";
+			OutputArray.forEach((ItemObj) => {
+
+				let Line = "";
+
+				for (let Property in ItemObj) {
+					val = ItemObj[Property];
+					if (val == "") { val = "."};
+					if (Property == "HISTORICAL_ITEM") { 
+						if (ItemObj[Property] == '1') {
+							val = "Historical";
+						} else {
+							val = "Active";
+						};
+					};
+					Line += val + ", ";
+				};
+
+				CodeOutput.value += Line.slice(0, -2) + "\n";
+
+			});
+
+		};
+		
+		// Uses answer from https://stackoverflow.com/questions/8935632/check-if-character-is-number/21070520#21070520
+		function isNumeric(s) {
+			return !isNaN(s - parseFloat(s));
+		}
+
+		function OutputR(OutputArray) {
+			const CodeOutput = document.getElementById("OutputCode");
+
+			// Reset the output container, set it to the start of a data statement
+			CodeOutput.value = "ItemCodes <- data.frame(";
+
+			OptionsList = [];
+
+			for (let Property in OutputArray[0]) {
+				OptionsList.push(Property);
+			};
+			console.log(OptionsList);
+
+			OptionsList.forEach((Option) => {
+
+				CodeOutput.value += "\n" + Option + "=c(";
+
+				CurrLineLength = 0;
+
+				OutputArray.forEach((ItemObj) => {
+					// Fixes the line length character limit in R, by creating a new line if the character length of the current line is going to be more than 100 characters.
+					CurrLineLength += ItemObj[Option].length;
+
+					if (CurrLineLength > 100) {
+						CodeOutput.value += "\n";
+						CurrLineLength = 0;
+					}
+
+					// Allows numbers to be stored as numbers and not strings
+					if (Option == "ITEM_STRENGTH" || Option == "WHO_STRENGTH" || Option == "DDD") {
+						if (isNumeric(ItemObj[Option])) {
+							CodeOutput.value += ItemObj[Option] + ", ";
+						} else {
+							CodeOutput.value += "NA, ";
+						};
+						
+					} else {
+						if (ItemObj[Option] == "" || ItemObj[Option] == " ") {
+							CodeOutput.value += "NA, ";
+						} else {
+							CodeOutput.value += "'" + ItemObj[Option] + "', ";
+						};
+						
+					};
+					
+				});
+
+				CodeOutput.value = CodeOutput.value.slice(0,-2) + "),\n";
+
+			});
+
+			CodeOutput.value = CodeOutput.value.slice(0,-2) + ")\n"
+
+			
+		};
+
+	</script>
+
+</body>
+</html>
