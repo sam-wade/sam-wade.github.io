@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Under Co-Payment Visualiser | PBS Tools</title>
+	<!--<link rel="stylesheet" href="src/main.css" />-->
+	<link rel="icon" type="image/x-icon" href="src/favicon.ico">
+	<!-- You MUST include jQuery 3.4+ before Fomantic -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+</head>
+
+<style>
+	.DrugTitle {
+		text-transform: capitalize !important;
+	}
+	.ItemCodeContainer {
+		width: 7rem;
+	}
+
+	.yeardisplay {
+		width: 100%;
+		height: 2em;
+		display: flex;
+		gap: 0.5em;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.year {
+		height: 100%;
+		width: calc((100% - 4.5em) / 8); /* Full row - size of the gaps, divided by the number of years */
+		display: flex;
+		flex-direction: column;
+	}
+
+	.months {
+		display: flex;
+		border: grey 1px solid;
+		height: 100%;
+		width: 100%;
+	}
+
+	.year .yeartitle {
+		font-size: x-small;
+		margin-bottom: 0 !important;
+	}
+
+	.month {
+		height: 100%;
+		width: 30%;
+		transition: 0.1s;
+		padding-bottom: 0.5em;
+	}
+
+	.month.under {
+		background-color: #db2828;
+	}
+
+	.month.middle {
+		background-color: #fbbd08;
+	}
+
+	.month:hover {
+		margin-top: -0.5em;
+		height: 125%;
+		width: 50%;
+		border: grey 1px solid;
+	}
+
+	.month.over {
+		background-color: #21ba45;
+	}
+
+	.month.disabled {
+		background-color: lightgrey;
+	}
+
+</style>
+
+<body>
+
+	<div class="ui menu">
+		<a class="ui item header" href="index.html">
+			<img class="ui mini spaced image" src="src/icon.png">
+			<span>PBS Tools</span>
+		</a>
+		<a class="item" href="ItemCodes.html">Item Codes</a>
+		<a class="item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
+		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
+		<a class="item" href="DefinedDailyDose.html">Daily Defined Dose</a>
+		<a class="active item" href="UnderCopayment.html">Under Co-Payment Visualiser</a>
+	</div>
+
+	<div class="ui center aligned container segment basic">
+		<h2 class="ui icon header">
+		  <i class="hand holding usd icon"></i>
+		  <div class="content">
+			PBS Under Co-Payment Visualiser
+			<div class="sub header">Visualises if a drug is above or below the general co-payment amount for each month between Jan 2005 - July 2012.</div>
+			<div class="sub header" style="padding-top:0.3em;">Search for a drug name or ATC code to begin.</div>
+		  </div>
+		</h2>
+
+		<div class="ui warning message">
+			<div class="header">
+			  Caution!
+			</div>
+			<p>1. Prices are displayed as the Dispensed Price for Maximum Quantity (DPMQ) - i.e. the maximum price for a given item code. The actual price paid may differ, but this should be broadly accurate.</p>
+			<p>2. Prices for dates prior to April 2007 may be inaccurate, as these had to be extracted from a worse quality data source :(.</p>
+		</div>
+
+	</div>
+	
+	
+		
+	<div class="ui center aligned basic segment container">
+
+		<div class="ui horizontal divider">
+		SEARCH
+		</div>
+		<div class="ui purple labeled icon button disabled" onclick="GenerateDrugNameDiv();" id="NameSearchButton">
+		Drug Name
+			<i class="add icon"></i>
+		</div>
+		<div class="ui green labeled icon button disabled" onclick="GenerateATCCodeDiv();" id="ATCSearchButton">
+		ATC Code
+			<i class="add icon"></i>
+		</div>
+	
+	</div>	
+
+	<div class="ui segment container basic horizontally fitted DrugContainer" id="DrugContainer">
+	</div>
+
+	<!-- Templates -->
+
+	<template id="ItemCodeTemplate">
+
+		<div class="ui card">
+			<div class="content">
+				<div class="header ItemCode"></div>
+				<div class="meta ItemForm"></div>
+			</div>
+			<div class="extra content">
+				<div class="yeardisplay">
+
+
+				</div>
+			</div>
+		</div>
+
+	</template>
+
+	<template id="YearTemplate">
+		<div class="year">
+			<p class="yeartitle"></p>
+			<div class="months">
+
+			</div>
+		</div>
+	</template>
+
+	<template id="DrugNameTemplate">
+		<div class="ui purple segment">
+
+			<div class="DeleteNode">
+				<button class="ui right floated icon button red" type="button" onclick="this.parentElement.parentElement.remove();"><i class="trash icon"></i></button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+					<div class="ui action input">
+					  <input id="SearchTerm" type="text" placeholder="Search Drug Name..." onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement.parentElement, 'DrugName')">
+					  <button class="ui icon button purple" onclick="GenerateItemCodes(this.parentElement.parentElement.parentElement.parentElement, 'DrugName')">
+						<i class="search icon"></i>
+					  </button>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<template id="ATCTemplate">
+		<div class="ui green segment">
+			<div class="DeleteNode">
+				<button class="ui right floated icon button red" type="button" onclick="this.parentElement.parentElement.remove();"><i class="trash icon"></i></button>
+			</div>
+
+			<div class="DrugHead">
+				<div class="InputContainer">
+
+					<div class="ui action input">
+					  <input id="SearchTerm" type="text" placeholder="Search ATC Code..." onkeypress="enterKeyPressed(event, this.parentElement.parentElement.parentElement.parentElement, 'ATC')">
+					  <button class="ui icon button green" onclick="GenerateItemCodes(this.parentElement.parentElement.parentElement.parentElement, 'ATC')">
+						<i class="search icon"></i>
+					  </button>
+					</div>
+				</div>
+
+			</div>
+			<div class="OutputContainer">
+
+			</div>
+		</div>
+	</template>
+
+	<script>
+		$('.ui.checkbox')
+			.checkbox()
+		;
+		$('.ui.accordion')
+			.accordion()
+		;
+	</script>
+
+	<script type="text/javascript" src="src/papaparse.min.js"></script>
+
+	<script>
+
+		let DrugMapJson;
+		const CopaymentPrices = {
+			2005: 28.60, 
+			2006: 29.50, 
+			2007: 30.70, 
+			2008: 31.30, 
+			2009: 32.90,
+			2010: 33.30,
+			2011: 34.20,
+			2012: 35.40
+		}
+
+		// Load map file 
+		window.onload = function() {
+			LoadMapCSV();	
+		};
+
+		function LoadMapCSV() {
+			Papa.parse("/src/PBS_UnderCopayment_Prices_full.csv", {
+				header: true,
+				download: true,
+				skipEmptyLines: true,
+				complete: function(results) {
+					console.log(results);
+
+					DrugMapJson = results.data;
+
+					document.getElementById("NameSearchButton").classList.remove("disabled");
+					document.getElementById("ATCSearchButton").classList.remove("disabled");
+				}
+			});
+		};
+
+		// Clone templates
+
+		function GenerateDrugNameDiv() {
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("DrugNameTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		function GenerateATCCodeDiv() {
+
+			const DivHolder = document.getElementById("DrugContainer");
+			const Template = document.getElementById("ATCTemplate");
+			const NewDiv = Template.content.cloneNode(true);
+
+			DivHolder.appendChild(NewDiv);
+
+		}
+
+		// Let people hit enter in the search box
+
+		function enterKeyPressed(event, DrugDiv, ContainerType) {
+			if (event.keyCode == 13) {
+				 if (ContainerType == "DrugName") {
+					GenerateItemCodes(DrugDiv, "DrugName");
+				 } else if (ContainerType == "ATC") {
+					GenerateItemCodes(DrugDiv, "ATC");
+				};
+			  };
+		};
+
+		// Create the container with all the drugs
+
+		function GenerateDrugNode(OutputContainer, ItemDict, FoundDrugATC) {
+
+			let CurrentDrugName	= FoundDrugATC.split("|")[0];
+			let CurrentATC = FoundDrugATC.split("|")[1];
+
+			const InputTemplate = document.getElementById("ItemCodeTemplate");
+			const YearTemplate = document.getElementById("YearTemplate");
+
+			const DrugNode = document.createElement("div");
+			DrugNode.classList.add("ui", "three", "stackable", "centered", "cards", "DrugNode");
+			DrugNode.setAttribute("DrugName", CurrentDrugName);
+			DrugNode.setAttribute("ATC", CurrentATC);
+
+			// Create a card for each item code associated with the drug name
+
+			ItemDict[FoundDrugATC].forEach((Drug) => {
+				const InputClone = InputTemplate.content.cloneNode(true);
+				InputClone.querySelector(".ItemCode").innerText = Drug["ITEM_CODE"];
+				InputClone.querySelector(".ItemForm").innerText = Drug["FORM/STRENGTH"];
+
+				// Create a display for each year of data
+				let Status = "";
+				for (const [year, copayment] of Object.entries(CopaymentPrices)) {
+					const YearClone = YearTemplate.content.cloneNode(true);
+					YearClone.querySelector(".yeartitle").innerText = year;
+
+					for (let i = 1; i < 13; i++) {
+						let month = i.toString().padStart(2, "0");
+						let MonthPrice = Drug[year + "-" + month];
+
+						let MonthDiv = document.createElement("div");
+						MonthDiv.classList.add("month");
+
+						if (MonthPrice == "") {
+							MonthDiv.classList.add("disabled");
+							MonthDiv.setAttribute("title", year + "-" + month + ": No Data!" );
+						} else if (MonthPrice == undefined) {
+							// If MonthPrice is undefined, it means that we're looking at the months beyond July 2012.
+							// If the previous month has a colour, then we want this month to be green (beause it will always be included, copayment or not)
+							// Else we want it to be grey (because the item code isn't used anymore)
+
+							JulyMonthPrice = Drug["2012-07"];
+
+							if (JulyMonthPrice == "") {
+								MonthDiv.classList.add("disabled");
+								MonthDiv.setAttribute("title", year + "-" + month + ": Past Co-payment threshold; but item probably inactive." );
+							} else {
+								MonthDiv.classList.add("over");
+								MonthDiv.setAttribute("title", year + "-" + month + ": Past Co-payment threshold - Always included (unless the item is inactive)" );
+							}
+
+						} else {
+							MonthDiv.setAttribute("title", year + "-" + month + ": $" + MonthPrice);
+
+							if (MonthPrice > copayment) {
+								MonthDiv.classList.add("over");
+								if (Status == "" || Status == "green") {
+									Status = "green";
+								} else {
+									Status = "yellow";
+								};
+							} else {
+								MonthDiv.classList.add("under")
+								if (Status == "" || Status == "red") {
+									Status = "red";
+								} else {
+									Status = "yellow";
+								};
+							};
+						};
+
+						
+						
+						YearClone.querySelector(".months").appendChild(MonthDiv);
+					};
+
+					InputClone.querySelector(".yeardisplay").appendChild(YearClone);
+				};
+
+				InputClone.querySelector(".card").classList.add(Status);
+				DrugNode.appendChild(InputClone);
+			});
+
+			//Create the title of the node (i.e. the drug name)
+			const Title = document.createElement("h3");
+			Title.classList.add("ui", "header", "DrugTitle");
+			const node = document.createTextNode(CurrentDrugName.toLowerCase());
+			Title.appendChild(node);
+			OutputContainer.appendChild(Title);
+
+			//Create the ATC Code for the drug node
+			const SubTitle = document.createElement("div");
+			SubTitle.classList.add("sub", "header", "DrugSubTitle");
+
+			const SubTitleNode = document.createTextNode(CurrentATC);
+			SubTitle.appendChild(SubTitleNode);
+			Title.appendChild(SubTitle);
+
+		   OutputContainer.appendChild(DrugNode);
+
+		};
+
+		// Search the map for the search term, generate the item codes
+
+		function GenerateItemCodes(DrugDiv, SearchType) {
+
+			Search = DrugDiv.querySelector("#SearchTerm").value.toUpperCase();
+
+			let OutputContainer = DrugDiv.querySelector(".OutputContainer");
+			const DrugHead = DrugDiv.querySelector(".DrugHead");
+
+			let FoundItemsDict = {};
+
+			if (Search) {
+
+				// Create the additional header for the ATC code box, that lists the search term.
+				if (SearchType == "ATC") {
+					const Title = document.createElement("h2");
+					Title.classList.add("ui", "dividing", "header", "DrugTitle");
+					const node = document.createTextNode("ATC: " + Search);
+					Title.appendChild(node);
+					OutputContainer.appendChild(Title);
+				};
+
+				// Reads drugs that match the keyword into a dictionary.
+				for (const Drug of DrugMapJson) {
+
+					// Checks if the drug name / ATC code matches the search input
+
+					if ( (SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) {
+
+						let DrugATC = Drug.DRUG_NAME + "|" + Drug.ATC5_Code;
+
+						if (DrugATC in FoundItemsDict) {
+
+						  FoundItemsDict[DrugATC].push(Drug);
+						} else {
+						  FoundItemsDict[DrugATC] = [Drug];
+						};
+
+					};
+				};
+
+				console.log(FoundItemsDict);
+
+				// Go through each of the grouped drug name/atc's, generate an object for each with their item codes
+				for (let FoundDrugATC in FoundItemsDict) {
+
+					GenerateDrugNode(OutputContainer, FoundItemsDict, FoundDrugATC);
+
+				}
+
+				//Check if there wasn't a result
+
+				if (Object.keys(FoundItemsDict).length == 0) {
+
+					const ErrorDiv = document.createElement("div");
+					ErrorDiv.classList.add("ui", "text", "container");
+					ErrorDiv.style.padding = "1rem 0";
+					OutputContainer.appendChild(ErrorDiv);
+
+					const ErrorMsg = document.createElement("h4");
+					ErrorMsg.classList.add("ui", "header", "red");
+					const ErrorText = document.createTextNode("Error! Either the search term was misspelled, or there weren't any item codes associated with this search!");
+					ErrorMsg.appendChild(ErrorText);
+					ErrorDiv.appendChild(ErrorMsg);
+				}
+
+				// Hide the search input
+				DrugHead.style.display = "none";
+
+			};
+
+		};
+
+	</script>
+
+</body>
+</html>
