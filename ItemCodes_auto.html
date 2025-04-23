@@ -24,7 +24,7 @@
 
 <body>
 
-	<div class="ui menu">
+	<div class="ui centered fluid wrapping menu">
 		<a class="ui item header" href="index.html">
 			<img class="ui mini spaced image" src="src/icon.png">
 			<span>PBS Tools</span>
@@ -44,6 +44,7 @@
 			<div class="sub header">Select a map file to begin.</div>
 		  </div>
 		</h2>
+
 		<div class="ui labels">
 			<a class="ui label" href="https://www.pbs.gov.au/statistics/dos-and-dop/files/pbs-item-drug-map.csv">
 				<i class="save icon"></i> Download PBS Item Map
@@ -54,16 +55,25 @@
 		</div>
 	</div>
 	
-	
-		
 	<div class="ui center aligned basic segment container">
-	
+
 		<div class="ui file action input">
 		  <input id="MapSelector" type="file" accept=".csv, text/csv">
 		  <label for="MapSelector" class="ui blue looping pulsating transition button " id="MapButton">
 			 <i class="file icon"></i>
 				Select Map File
 		  </label>
+		</div>
+
+		<div class="ui icon success compact message" id="AutoLoadMessage" style="display:none;" >
+			<i class="close icon" onclick="this.parentElement.remove()"></i>
+			<div class="content">
+				<i class="magic icon"></i>
+			   <div class="header" id="auto-filename">
+				   was automatically loaded!
+			   </div>
+			   <p>If this file date is not within ~1-2 months from the current date, please load an up-to-date version from the links above!</p>
+			</div>
 		</div>
 
 		<div class="ui horizontal divider">
@@ -242,11 +252,10 @@
 	</script>
 
 	<script type="text/javascript" src="src/papaparse.min.js"></script>
-
+ 
 	<script>
 
 		let DrugMapJson;
-		//https://www.pbs.gov.au/statistics/dos-and-dop/files/pbs-item-drug-map.csv
 
 		// Load Map file
 
@@ -285,14 +294,21 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("https://www.pbs.gov.au/statistics/dos-and-dop/files/pbs-item-drug-map.csv", {
+			Papa.parse("/src/maps/HistoricalFlagItemMap_2025-04-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
 				complete: function(results) {
 					console.log(results);
 
+					if (results.meta.fields.includes("Historical_Flag")) {
+						document.getElementById("HistoricalItemOption").classList.remove("disabled");
+					};
+
 					DrugMapJson = results.data;
+					
+					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
+					document.getElementById("auto-filename").innerText = "HistoricalFlagItemMap_2025-04-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");

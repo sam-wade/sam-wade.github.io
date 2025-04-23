@@ -60,8 +60,12 @@
 		background-color: #db2828;
 	}
 
-	.month.middle {
+	.month.middle.over {
 		background-color: #fbbd08;
+	}
+
+	.month.middle.under {
+		background-color: #f2711c;
 	}
 
 	.month:hover {
@@ -79,11 +83,26 @@
 		background-color: lightgrey;
 	}
 
+	.green-header {
+		border-left:#21ba45 solid 0.2em !important;
+		padding-left: 0.2em !important;
+	}
+
+	.yellow-header {
+		border-left:#fbbd08 solid 0.2em !important;
+		padding-left: 0.2em !important;
+	}
+
+	.red-header {
+		border-left: #db2828 solid 0.2em !important;
+		padding-left: 0.2em !important;
+	}
+
 </style>
 
 <body>
 
-	<div class="ui menu">
+	<div class="ui centered fluid wrapping menu">
 		<a class="ui item header" href="index.html">
 			<img class="ui mini spaced image" src="src/icon.png">
 			<span>PBS Tools</span>
@@ -95,23 +114,49 @@
 		<a class="active item" href="UnderCopayment.html">Under Co-Payment Visualiser</a>
 	</div>
 
-	<div class="ui center aligned container segment basic">
-		<h2 class="ui icon header">
-		  <i class="hand holding usd icon"></i>
-		  <div class="content">
-			PBS Under Co-Payment Visualiser
-			<div class="sub header">Visualises if a drug is above or below the general co-payment amount for each month between Jan 2005 - July 2012.</div>
-			<div class="sub header" style="padding-top:0.3em;">Search for a drug name or ATC code to begin.</div>
-		  </div>
-		</h2>
-
-		<div class="ui warning message">
-			<div class="header">
-			  Caution!
-			</div>
-			<p>1. Prices are displayed as the Dispensed Price for Maximum Quantity (DPMQ) - i.e. the maximum price for a given item code. The actual price paid may differ, but this should be broadly accurate.</p>
-			<p>2. Prices for dates prior to April 2007 may be inaccurate, as these had to be extracted from a worse quality data source :(.</p>
+	<div class="ui container segment basic">
+		<div class="ui center aligned segment basic">
+			<h2 class="ui icon header">
+				<i class="hand holding usd icon"></i>
+				<div class="content">
+				  PBS Under Co-Payment Visualiser
+				  <div class="sub header">Search for a drug name or ATC code to begin.</div>
+				</div>
+			  </h2>
 		</div>
+		
+		<div class="ui segment basic">
+
+			<div class="ui yellow styled fluid accordion">
+				<div class="title">
+					<i class="dropdown icon"></i>
+					Usage Notes
+				</div>
+				<div class="content">
+					<ol class="ui suffixed list">
+						<li>This tool identifies if a drug is above or below the general co-payment threshold from January 2005 to July 2012. The purpose of this is to identify if a drug can be studied in this historical data, which doesn't include under co-payment dispensings.</li>
+						<li><strong>Use:</strong>
+							<ol>
+								<li>Prices from 2005 to 2012 are represented on a monthly basis, and colour coded depending on their distance from the general co-payment amount for that year.</li>
+								<li>Green represents a price safely <em>over</em> the copayment threshold; Red represents a price safely <em>under</em> the copayment threshold.</li>
+								<li>Yellow represents a price that's within $2 <em>over</em> the copayment threshold, and Orange represents a price within $2 <em>under</em> the threshold. This is distinguished because prices close to the threshold can go over or under depending on the individual pharmacy, or brand price premiums which aren't accounted for.</li>
+								<li>Hover over a month to view the item's price for that period.</li>
+								<li>Each item code has a colour underneath that summarises the overall status. Green = all green months. Yellow = Mix of green, red and/or yellow months. Red = all red months.</li>
+								<li>Each ATC-Drug name pairing has a colour to the left of it, that summarises the overall status of each item code included in the group.</li>
+							  </ol>
+						</li>
+						<li>Prices are displayed as the Dispensed Price for Maximum Quantity (DPMQ) - i.e. the maximum price for a given item. The actual price paid may differ, but this should be broadly accurate.</li>
+						<li>Only item codes that had a price (i.e. were active) during the period between 2005-2012 are listed. </li>
+						<li>Prices past July 2012 are always included in the data. These dates are included as either green (if there was a price available in June 2012) or grey (if there wasn't a price in June 2012, the item is assumed to be discontinued.</li>
+						<li>Prices for dates prior to April 2007 may be inaccurate, as these had to be extracted from a worse quality data source :(</li>
+						
+					  </ol>
+
+				</div>
+			</div>
+		</div>
+		
+
 
 	</div>
 	
@@ -214,9 +259,6 @@
 	</template>
 
 	<script>
-		$('.ui.checkbox')
-			.checkbox()
-		;
 		$('.ui.accordion')
 			.accordion()
 		;
@@ -244,7 +286,7 @@
 		};
 
 		function LoadMapCSV() {
-			Papa.parse("/src/PBS_UnderCopayment_Prices_full.csv", {
+			Papa.parse("/src/Maps/PBS_UnderCopayment_Prices_full.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -307,6 +349,7 @@
 			DrugNode.setAttribute("DrugName", CurrentDrugName);
 			DrugNode.setAttribute("ATC", CurrentATC);
 
+			let DrugNodeStatus = "";
 			// Create a card for each item code associated with the drug name
 
 			ItemDict[FoundDrugATC].forEach((Drug) => {
@@ -315,7 +358,7 @@
 				InputClone.querySelector(".ItemForm").innerText = Drug["FORM/STRENGTH"];
 
 				// Create a display for each year of data
-				let Status = "";
+				let ItemStatus = "";
 				for (const [year, copayment] of Object.entries(CopaymentPrices)) {
 					const YearClone = YearTemplate.content.cloneNode(true);
 					YearClone.querySelector(".yeartitle").innerText = year;
@@ -350,19 +393,24 @@
 
 							if (MonthPrice > copayment) {
 								MonthDiv.classList.add("over");
-								if (Status == "" || Status == "green") {
-									Status = "green";
+								if (ItemStatus == "" || ItemStatus == "green") {
+									ItemStatus = "green";
 								} else {
-									Status = "yellow";
+									ItemStatus = "yellow";
 								};
 							} else {
 								MonthDiv.classList.add("under")
-								if (Status == "" || Status == "red") {
-									Status = "red";
+								if (ItemStatus == "" || ItemStatus == "red") {
+									ItemStatus = "red";
 								} else {
-									Status = "yellow";
+									ItemStatus = "yellow";
 								};
 							};
+
+							if (MonthPrice < copayment + 2 && MonthPrice > copayment - 2 ) {
+								MonthDiv.classList.add("middle");
+								ItemStatus = "yellow";
+							} 
 						};
 
 						
@@ -371,15 +419,25 @@
 					};
 
 					InputClone.querySelector(".yeardisplay").appendChild(YearClone);
+
 				};
 
-				InputClone.querySelector(".card").classList.add(Status);
+				InputClone.querySelector(".card").classList.add(ItemStatus);
 				DrugNode.appendChild(InputClone);
+
+				// Whatever the status of the item is when after the months have been processed, set that to the drug node status. 
+				// All the item code status's need to be the same for it to be anything except yellow.
+				if (DrugNodeStatus == "") {
+					DrugNodeStatus = ItemStatus;
+				} else if (DrugNodeStatus != ItemStatus) {
+					DrugNodeStatus = "yellow";
+				}
+
 			});
 
 			//Create the title of the node (i.e. the drug name)
 			const Title = document.createElement("h3");
-			Title.classList.add("ui", "header", "DrugTitle");
+			Title.classList.add("ui", "header", "DrugTitle", DrugNodeStatus + "-header");
 			const node = document.createTextNode(CurrentDrugName.toLowerCase());
 			Title.appendChild(node);
 			OutputContainer.appendChild(Title);
