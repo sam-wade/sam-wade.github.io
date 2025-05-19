@@ -915,8 +915,8 @@
 
 			if (OptionsDict["DRUG_NAME"]) {	CodeOutput.value += " DRUG_NAME :$100.";	};
 			if (OptionsDict["DRUG_ATC"]) {	CodeOutput.value += " ATC_CODE :$7.";	};
-			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :$5.";	};
-			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :$5.";	};
+			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :5.";	};
+			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :5.";	};
 
 			CodeOutput.value += ";\n	datalines;";
 
@@ -954,7 +954,7 @@
 				CodeOutput.value += "%let RestrictionIDs = ";
 
 				OutputArray.forEach((ItemObj) => {
-					CodeOutput.value += "'" + ItemObj["RESTRICTION_ID"] + "', ";
+					CodeOutput.value += ItemObj["RESTRICTION_ID"] + ", ";
 				});
 
 				CodeOutput.value = CodeOutput.value.slice(0, -2) + ";\n";
@@ -964,7 +964,7 @@
 				CodeOutput.value += "%let StreamlinedCodes = ";
 
 				OutputArray.forEach((ItemObj) => {
-					CodeOutput.value += "'" + ItemObj["STREAMLINED_CODE"] + "', ";
+					CodeOutput.value += ItemObj["STREAMLINED_CODE"] + ", ";
 				});
 
 				CodeOutput.value = CodeOutput.value.slice(0, -2) + ";\n";
@@ -1033,8 +1033,12 @@
 						CodeOutput.value += "\n";
 						CurrLineLength = 0;
 					}
-
-					CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					if (Option == "RESTRICTION_ID" || Option == "STREAMLINED_CODE") {
+						CodeOutput.value += ItemObj[Option] + ", ";
+					} else {
+						CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					}
+					
 					
 				});
 
@@ -1143,8 +1147,8 @@
 			if (OptionsDict["DRUG_NAME"]) {	CodeOutput.value += " DRUG_NAME :$100.";	};
 			if (OptionsDict["DRUG_ATC"]) {	CodeOutput.value += " ATC_CODE :$7.";	};
 			if (OptionsDict["FORM_STRENGTH"]) {	CodeOutput.value += " FORM_STRENGTH :$100.";	};
-			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :$5.";	};
-			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :$5.";	};
+			if (OptionsDict["RESTRICTION_ID"]) {	CodeOutput.value += " RESTRICTION_ID :5.";	};
+			if (OptionsDict["STREAMLINED_CODE"]) {	CodeOutput.value += " STREAMLINED_CODE :5.";	};
 
 			CodeOutput.value += ";\n	datalines;";
 
@@ -1232,7 +1236,11 @@
 						CurrLineLength = 0;
 					}
 
-					CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					if (Option == "RESTRICTION_ID" || Option == "STREAMLINED_CODE") {
+						CodeOutput.value += ItemObj[Option] + ", ";
+					} else {
+						CodeOutput.value += "'" + ItemObj[Option] + "', ";
+					}
 					
 				});
 
