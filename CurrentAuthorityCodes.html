@@ -593,8 +593,8 @@
 				AuthClone.querySelector(".ItemForm").innerText = drug["FORM/STRENGTH"];
 				AuthClone.querySelector(".ItemCode").innerText = drug.ITEM_CODE;
 
-				AuthClone.querySelector(".RestrictionCode").innerText = (drug.restriction_number).toFixed(0);
-				AuthClone.querySelector(".AuthorityCode").innerText = (drug.treatment_of_code).toFixed(0);
+				AuthClone.querySelector(".RestrictionCode").innerText = (Number(drug.restriction_number)).toFixed(0);
+				AuthClone.querySelector(".AuthorityCode").innerText = (Number(drug.treatment_of_code)).toFixed(0);
 
 				DrugNode.querySelector(".AuthorityGroup").appendChild(AuthClone);
 				ReadableRestriction = drug.li_html_text;

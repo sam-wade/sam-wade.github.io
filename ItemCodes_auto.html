@@ -29,8 +29,8 @@
 			<img class="ui mini spaced image" src="src/icon.png">
 			<span>PBS Tools</span>
 		</a>
-		<a class="active item" href="ItemCodes.html">Item Codes</a>
-		<a class="item" href="CurrentAuthorityCodes.html">Current Authority Codes</a>
+		<a class="active item" href="ItemCodes_auto.html">Item Codes</a>
+		<a class="item" href="CurrentAuthorityCodes_auto.html">Current Authority Codes</a>
 		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
 		<a class="item" href="DefinedDailyDose.html">Daily Defined Dose</a>
 		<a class="item" href="UnderCopayment.html">Under Co-Payment Visualiser</a>
@@ -294,7 +294,7 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("/src/Maps/HistoricalFlagItemMap_2025-04-01.csv", {
+			Papa.parse("/src/Maps/HistoricalFlagItemMap_2025-06-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -308,7 +308,7 @@
 					DrugMapJson = results.data;
 					
 					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
-					document.getElementById("auto-filename").innerText = "HistoricalFlagItemMap_2025-04-01.csv " + document.getElementById("auto-filename").innerText;
+					document.getElementById("auto-filename").innerText = "HistoricalFlagItemMap_2025-06-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");
