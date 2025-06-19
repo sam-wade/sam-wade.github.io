@@ -103,8 +103,10 @@
 				
 				
 				<button class="ui button" type="button" onclick="Output('CSV');"><i class="save icon"></i>Download .csv file</button>
+
+				<button class="ui button" type="button" onclick="Output('Table');"><i class="cog icon"></i>Download .docx table</button>
 				
-				<button class="ui button" type="button" onclick="Output('Plain');"><i class="cog icon"></i>Generate plain text output</button>
+				<button class="ui button" type="button" onclick="Output('Plain');"><i class="cog icon"></i>Generate plain text output</button>	
 				
 				<button class="ui button" type="button" onclick="Output('SASDataFrame');"><i class="cog icon"></i>Generate SAS dataframe output</button>
 
@@ -174,6 +176,7 @@
 						<i class="code icon"></i>
 					</div>
 					<textarea id="OutputCode"></textarea>
+					
 				</div>
 				</div>
 			</div>
@@ -252,11 +255,12 @@
 	</script>
 
 	<script type="text/javascript" src="src/papaparse.min.js"></script>
- 
+
+	<script src="src/docx.js"></script>
+    <script src="src/FileSaver.js"></script>
 	<script>
-
+	
 		let DrugMapJson;
-
 		// Load Map file
 
 		const MapSelector = document.getElementById("MapSelector");
@@ -533,6 +537,8 @@
 				OutputPlain(OutputArray);
 			} else if (OutputType == "RDataFrame") {
 				OutputR(OutputArray);
+			} else if (OutputType == "Table") {
+				OutputTable(OutputArray);
 			};
 
 
@@ -707,6 +713,157 @@
 			CodeOutput.value = CodeOutput.value.slice(0,-2) + "\n)\n"
 
 			
+		};
+
+		function OutputTable(OutputArray) {
+			
+			// Table needs to be in the order of: Drug Name, ATC Code, Item Code
+			// Item Codes need to be grouped based on unique DrugName - ATC Pairs
+
+			let DrugATCDict = {};
+
+			OutputArray.forEach((ItemObj) => {
+
+				let DrugATC = ItemObj.DRUG_NAME + "|" + ItemObj.ATC5_Code;
+
+				let Items = [DrugATCDict[DrugATC], ItemObj.ITEM_CODE];
+				if (DrugATCDict[DrugATC]) {
+					DrugATCDict[DrugATC] = Items.join(", ");
+				} else {
+					DrugATCDict[DrugATC] = ItemObj.ITEM_CODE;
+				};
+
+			});
+
+			const dictionaryToArrayOfObjects = (dictionary) => {
+				return Object.keys(dictionary).map(key => ({
+					ATC: key.split("|")[1],
+					DRUG_NAME: key.split("|")[0],
+					ITEM_CODE: dictionary[key]
+				}));
+			};
+
+			let DrugATCArray = dictionaryToArrayOfObjects(DrugATCDict);
+			DrugATCArray.sort((a,b) => {
+				if (a.ATC < b.ATC) return -1;
+				if (a.ATC > b.ATC) return 1;
+				return 0;
+			});
+			//console.log(DrugATCArray);
+
+			const generateRows = (Output) =>
+				Output.map(({ ATC, DRUG_NAME, ITEM_CODE }) =>
+					new docx.TableRow({
+						children: [
+							new docx.TableCell({
+								children: [new docx.Paragraph({
+									children: [
+										new docx.TextRun({
+											text: ATC,
+											font: "Arial",
+										}),
+									],
+									
+								})],
+							}),
+							new docx.TableCell({
+								children: [new docx.Paragraph({
+									children: [
+										new docx.TextRun({
+											text: DRUG_NAME,
+											font: "Arial",
+										}),
+									],
+									
+								})],
+							}),
+							new docx.TableCell({
+								children: [new docx.Paragraph({
+									children: [
+										new docx.TextRun({
+											text: ITEM_CODE,
+											font: "Arial",
+										}),
+									],
+									
+								})],
+							}),
+						],
+					})
+				);
+
+			const doc = new docx.Document({
+				sections: [
+					{
+						children: [
+							new docx.Table({
+								alignment: docx.AlignmentType.CENTER,
+								width: {
+									size: 9070,
+									type: docx.WidthType.DXA,
+								},
+								rows: [
+									new docx.TableRow({
+										children: [
+											new docx.TableCell({
+												children: [
+													new docx.Paragraph({
+														children: [
+															new docx.TextRun({
+																text: "ATC5 Code",
+																font: "Arial",
+																bold: true,
+																size: 24,
+															}),
+														],
+													}),
+												],
+											}),
+											new docx.TableCell({
+												children: [
+													new docx.Paragraph({
+														children: [
+															new docx.TextRun({
+																text: "Drug Name",
+																font: "Arial",
+																bold: true,
+																size: 24,
+															}),
+														],
+													}),
+												],
+											}),
+											new docx.TableCell({
+												children: [
+													new docx.Paragraph({
+														children: [
+															new docx.TextRun({
+																text: "Item Codes",
+																font: "Arial",
+																bold: true,
+																size: 24,
+															}),
+														],
+													}),
+												],
+											}),
+										],
+									}),
+									...generateRows(DrugATCArray),
+								],
+							}),
+						],
+					},
+				],
+			});
+
+			docx.Packer.toBlob(doc).then((blob) => {
+				console.log(blob);
+				saveAs(blob, "OutputTable.docx");
+				console.log("Table created successfully");
+			});
+			
+
 		};
 
 	</script>
