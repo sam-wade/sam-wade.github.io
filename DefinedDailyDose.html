@@ -85,11 +85,12 @@
 		<a class="item" href="HistoricalAuthorityCodes.html">Historical Authority Codes</a>
 		<a class="active item" href="DefinedDailyDose.html">Daily Defined Dose</a>
 		<a class="item" href="UnderCopayment.html">Under Co-Payment Visualiser</a>
+		<a class="item" href="ItemAvailability.html">Item Availability Visualiser</a>
 	</div>
 
 	<div class="ui center aligned container segment basic">
 		<h2 class="ui icon header">
-		  <i class="calendar icon"></i>
+		  <i class="pills icon"></i>
 		  <div class="content">
 			PBS Item Defined Daily Dose Generator
 			<div class="sub header">Select a map file to begin.</div>
@@ -109,11 +110,9 @@
 			<p>Please manually <u>verify</u> all your DDD values before you use them.</p>
 		</div>
 	</div>
-	
-	
 		
 	<div class="ui center aligned basic segment container">
-	
+
 		<div class="ui file action input">
 		  <input id="MapSelector" type="file" accept=".csv, text/csv">
 		  <label for="MapSelector" class="ui blue looping pulsating transition button " id="MapButton">
@@ -122,7 +121,17 @@
 		  </label>
 		</div>
 
-		
+		<div class="ui icon success compact message" id="AutoLoadMessage" style="display:none;" >
+			<i class="close icon" onclick="this.parentElement.remove()"></i>
+			<div class="content">
+				<i class="magic icon"></i>
+			   <div class="header" id="auto-filename">
+				   was automatically loaded!
+			   </div>
+			   <p>If this file date is not within ~1-2 months from the current date, please load an up-to-date version from the links above!</p>
+			</div>
+		</div>
+
 		<div class="ui horizontal divider">
 		SEARCH
 		</div>
@@ -134,8 +143,7 @@
 		ATC Code
 			<i class="add icon"></i>
 		</div>
-
-		
+	
 	</div>	
 
 	<div class="ui segment container basic horizontally fitted DrugContainer" id="DrugContainer"></div>
@@ -509,6 +517,43 @@
 				complete: function(results) {
 					console.log(results);
 					DrugMapJson = results.data;
+				}
+			});
+		};
+
+		// Load map file 
+		window.onload = function() {
+			LoadMapCSV_auto();	
+		};
+
+		function LoadMapCSV(FileInput) {
+			Papa.parse(FileInput[0], {
+				header: true,
+				skipEmptyLines: true,
+				complete: function(results) {
+					console.log(results);
+					DrugMapJson = results.data;
+				}
+			});
+		};
+
+		function LoadMapCSV_auto() {
+			Papa.parse("/src/Maps/PBSItemDDDMap_2025-12-10.csv", {
+				header: true,
+				download: true,
+				skipEmptyLines: true,
+				complete: function(results) {
+					console.log(results);
+
+					DrugMapJson = results.data;
+					
+					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
+					document.getElementById("auto-filename").innerText = "PBSItemDDDMap_2025-12-10.csv " + document.getElementById("auto-filename").innerText;
+
+					document.getElementById("NameSearchButton").classList.remove("disabled");
+					document.getElementById("ATCSearchButton").classList.remove("disabled");
+					document.getElementById("MapButton").classList.remove("pulsating");
+					document.getElementById("OutputSection").style.display = "revert";
 				}
 			});
 		};
