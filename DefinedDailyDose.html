@@ -364,6 +364,9 @@
 										<option value="g">g</option>
 										<option value="mg">mg</option>
 										<option value="mcg">mcg</option>
+										<option value="U">U</option>
+										<option value="TU">TU</option>
+										<option value="MU">MU</option>
 									  </select>
 									
 								</div>
@@ -380,6 +383,9 @@
 										<option value="g">g</option>
 										<option value="mg">mg</option>
 										<option value="mcg">mcg</option>
+										<option value="U">U</option>
+										<option value="TU">TU</option>
+										<option value="MU">MU</option>
 									  </select>
 									
 								</div>
@@ -538,7 +544,7 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("/src/Maps/PBSItemDDDMap_2025-12-10.csv", {
+			Papa.parse("/src/Maps/PBSItemDDDMap_2026-01-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -548,7 +554,7 @@
 					DrugMapJson = results.data;
 					
 					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
-					document.getElementById("auto-filename").innerText = "PBSItemDDDMap_2025-12-10.csv " + document.getElementById("auto-filename").innerText;
+					document.getElementById("auto-filename").innerText = "PBSItemDDDMap_2026-01-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");
@@ -639,6 +645,24 @@
 				else if (PBS_UOM == "mcg" && WHO_UOM == "g") {
 					CalcDDD = (WHO_Dose * 1000 * 1000) / PBS_Dose;
 				}
+
+				else if (PBS_UOM == "U" && WHO_UOM == "TU") {
+					CalcDDD = (WHO_Dose * 1000) / PBS_Dose;
+				}
+
+				else if (PBS_UOM == "TU" && WHO_UOM == "U") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000);
+				}
+
+				else if (PBS_UOM == "U" && WHO_UOM == "MU") {
+					CalcDDD = (WHO_Dose * 1000000) / PBS_Dose;
+				}
+
+				else if (PBS_UOM == "MU" && WHO_UOM == "U") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000000);
+				}
+
+
 
 			}
 
