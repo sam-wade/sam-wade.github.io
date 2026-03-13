@@ -902,11 +902,16 @@
 						if (OptionsDict["DRUG_ATC"]) {	DrugObj["DRUG_ATC"] = DrugATC;	};
 						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
 						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
-						if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						// Janky fix for now, since some codes can have a restriction code, but not a streamlined
+						try {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						} catch (error) {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
+						};
 						
 						OutputArray.push(DrugObj);
 
-					})
+					});
 
 					
 				});
