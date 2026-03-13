@@ -1140,7 +1140,12 @@
 						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
 						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
 						if (OptionsDict["LAST_APPROVED"]) {	DrugObj["LAST_APPROVED"] = AuthCode.querySelector(".RestrictionDate").title.replace("Last Approved: ", "");	};
-						if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						// Janky fix for now, since some codes can have a restriction code, but not a streamlined
+						try {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						} catch (error) {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
+						};
 						if (OptionsDict["LAST_CLAIMED"]) {	DrugObj["LAST_CLAIMED"] = AuthCode.querySelector(".AuthorityDate").title.replace("Last Claimed: ", "");	};
 
 						OutputArray.push(DrugObj);
