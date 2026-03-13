@@ -89,7 +89,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01071J,BETHANECHOL,Injection 5 mg in 1 mL ampoule,N07AB02,mg,5,1,0,1,P,Parenteral,,,,
 01074M,PROCAINAMIDE,Capsule 375 mg,C01BA02,mg,375,0,0,1,O,Oral,3.0,g,,8.0
 01075N,NAPHAZOLINE + ANTAZOLINE,"Eye drops 5 mg-250 micrograms per mL, 10 mL",S01GA51,mg,0.2,1,1,1,,,,,,
-01076P,HEPARIN,"Injection 35,000 units (as sodium) in 35 mL",B01AB01,mL,35,1,0,1,P,Parenteral,,,,
+01076P,HEPARIN,"Injection 35,000 units (as sodium) in 35 mL",B01AB01,U,35000.0,1,0,1,P,Parenteral,10.0,TU,,0.2857142857142857
 01077Q,NAPHAZOLINE + ANTAZOLINE,"Eye drops 5 mg-500 micrograms per mL, 15 mL",S01GA51,mg,0.15,1,1,1,,,,,,
 01079T,CYCLOPHOSPHAMIDE,Powder for injection 500 mg (anhydrous) (with any determined brand of sodium chloride injection as the required solvent),L01AA01,mg,500,0,0,1,P,Parenteral,,,,
 01080W,CYCLOPHOSPHAMIDE,Powder for injection 1 g (anhydrous) (with any determined brand of sodium chloride injection as the required solvent),L01AA01,g,1,0,0,1,P,Parenteral,,,,
@@ -171,10 +171,10 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01172Q,CHLORAMPHENICOL,"Ear drops (aqueous) 5 mg per mL, 5 mL",S02AA01,mg,25.0,1,1,1,,,,,,
 01173R,RILPIVIRINE,Tablet 25 mg (as hydrochloride),J05AG05,mg,25,0,0,1,O,Oral,25.0,mg,,1.0
 01174T,CHLORAMPHENICOL,Capsule 250 mg,J01BA01,mg,250,0,0,1,O,Oral,3.0,g,,12.0
-01177Y,CHLORAMPHENICOL with POLYMYXIN B SULFATE,"Eye ointment 10 mg-5,000 units per g, 4 g",S01AA30,mg,10,1,0,1,,,,,,
-01179C,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
+01177Y,CHLORAMPHENICOL with POLYMYXIN B SULFATE,"Eye ointment 10 mg-5,000 units per g, 4 g",S01AA30,U,20000.0,1,1,1,,,,,,
+01179C,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
 01180D,AMINO ACID SYNTHETIC FORMULA,Oral powder 400 g (Neocate Junior Vanilla),V06DB,g,400,0,0,0,O,Oral,,,,
-01181E,CHLORAMPHENICOL with POLYMYXIN B SULFATE,"Eye drops 5 mg-5,000 units per mL, 10 mL",S01AA30,mg,50.0,1,1,1,,,,,,
+01181E,CHLORAMPHENICOL with POLYMYXIN B SULFATE,"Eye drops 5 mg-5,000 units per mL, 10 mL",S01AA30,U,50000.0,1,1,1,,,,,,
 01182F,FOSINOPRIL,Tablet containing fosinopril sodium 10 mg,C09AA09,mg,10,0,0,0,O,Oral,15.0,mg,,1.5
 01183G,FOSINOPRIL,Tablet containing fosinopril sodium 20 mg,C09AA09,mg,20,0,0,0,O,Oral,15.0,mg,,0.75
 01184H,CHLOROQUINE,Tablet 250 mg,M01CA,mg,250,0,0,1,O,Oral,,,,
@@ -289,7 +289,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01315F,DILTIAZEM,Capsule 120 mg (sustained release),C08DB01,mg,120,0,0,1,O,Oral,0.24,g,,2.0
 01316G,RAMIPRIL,Tablet 10 mg,C09AA05,mg,10,0,0,0,O,Oral,2.5,mg,,0.25
 01317H,NAPHAZOLINE,"Eye drops 1 mg per mL, 15 mL",S01GA01,mg,15.0,1,1,1,,,,,,
-01318J,NYSTATIN,"Gel 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
+01318J,NYSTATIN,"Gel 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
 01319K,DIFLUNISAL,Tablet 250 mg,M01AX,mg,250,0,0,1,O,Oral,,,,
 01320L,DIFLUNISAL,Tablet 500 mg,M01AX,mg,500,0,0,1,O,Oral,,,,
 01321M,DIGOXIN,Injection 500 micrograms in 2 mL ampoule,C01AA05,mcg,500,1,0,1,P,Parenteral,0.25,mg,,0.5
@@ -388,11 +388,11 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01421T,ETRETINATE,Capsule 10 mg,D05BB01,mg,10,0,0,1,O,Oral,35.0,mg,,3.5
 01422W,ETRETINATE,Capsule 25 mg,D05BB01,mg,25,0,0,1,O,Oral,35.0,mg,,1.4
 01423X,TOCILIZUMAB,Concentrate for injection 200 mg in 10 mL,L04AC07,mg,200,1,0,0,P,Parenteral,20.0,mg,,0.1
-01425B,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 50 units-50 units per mL, 10 mL",A10AD01,mL,10,1,0,1,P,Parenteral,,,,
-01426C,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 30 units-70 units per mL, 10 mL",A10AD01,mL,10,1,0,0,P,Parenteral,,,,
-01429F,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 1.5 mL, 5",A10AD01,mL,7.5,1,1,1,P,Parenteral,,,,
-01430G,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 2.5 mL, 5",A10AA03,mL,12.5,1,1,1,P,Parenteral,,,,
-01431H,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 15 units-85 units per mL, 10 mL vial",A10AA03,mL,10,1,0,1,P,Parenteral,,,,
+01425B,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 50 units-50 units per mL, 10 mL",A10AD01,U,500.0,1,1,1,P,Parenteral,40.0,U,,0.08
+01426C,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 30 units-70 units per mL, 10 mL",A10AD01,U,300.0,1,1,0,P,Parenteral,40.0,U,,0.13333333333333333
+01429F,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 1.5 mL, 5",A10AD01,U,225.0,1,1,1,P,Parenteral,40.0,U,,0.17777777777777778
+01430G,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 2.5 mL, 5",A10AA03,U,375.0,1,1,1,P,Parenteral,,,,
+01431H,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 15 units-85 units per mL, 10 mL vial",A10AA03,U,150.0,1,1,1,P,Parenteral,,,,
 01433K,FLUDROCORTISONE,Tablet containing fludrocortisone acetate 100 micrograms,H02AA02,mcg,100,0,0,0,O,Oral,0.1,mg,,1.0
 01434L,FLUOXETINE,Capsule 20 mg (as hydrochloride),N06AB03,mg,20,0,0,0,O,Oral,20.0,mg,,1.0
 01435M,FLUOXYMESTERONE,Tablet 5 mg,L02AX,mg,5,0,0,1,O,Oral,,,,
@@ -420,15 +420,15 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01458R,LEVONORGESTREL + ETHINYLESTRADIOL,"Pack containing 11 tablets 50 micrograms-50 micrograms, 10 tablets 125 micrograms-50 micrograms and 7 inert tablets",G03AB03,mcg,50,1,0,1,O,Oral,,,,
 01459T,GLYCERYL TRINITRATE,"Tablets 600 micrograms, 100",C01DA02,mcg,60000.0,1,1,1,O,Oral,5.0,mg,,0.08333333333333333
 01460W,GRISEOFULVIN,Tablet 125 mg,D01BA01,mg,125,0,0,0,O,Oral,0.5,g,,4.0
-01461X,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 15 units-85 units per mL, 2.5 mL, 5",A10AA03,mL,12.5,1,1,1,P,Parenteral,,,,
-01462Y,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 50 units-50 units per mL, 2.5 mL, 5",A10AA03,mL,12.5,1,1,1,P,Parenteral,,,,
+01461X,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 15 units-85 units per mL, 2.5 mL, 5",A10AA03,U,187.5,1,1,1,P,Parenteral,,,,
+01462Y,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 50 units-50 units per mL, 2.5 mL, 5",A10AA03,U,625.0,1,1,1,P,Parenteral,,,,
 01463B,HEPARIN,"Injection (preservative-free) 5,000 I.U. (as sodium) in 5 mL",B01AB01,mL,5,1,0,1,P,Parenteral,,,,
 01464C,TOCILIZUMAB,Concentrate for injection 400 mg in 20 mL,L04AC07,mg,400,1,0,0,P,Parenteral,20.0,mg,,0.05
 01465D,TINIDAZOLE,Tablet 500 mg,J01XD02,mg,500,0,0,1,O,Oral,,,,
-01466E,HEPARIN,"Injection 5,000 units (as sodium) in 0.2 mL",B01AB01,mL,0.2,1,0,0,P,Parenteral,,,,
-01467F,HEPARIN,"Injection 5,000 units in 1 mL ampoule",B01AB01,mL,1,1,0,1,P,Parenteral,,,,
-01468G,HEPARIN,"Injection 25,000 units in 5 mL ampoule",B01AB01,mL,5,1,0,1,P,Parenteral,,,,
-01469H,HEPARIN,"Injection 20,000 units in 20 mL ampoule",B01AB01,mL,20,1,0,1,P,Parenteral,,,,
+01466E,HEPARIN,"Injection 5,000 units (as sodium) in 0.2 mL",B01AB01,U,5000.0,1,0,0,P,Parenteral,10.0,TU,,2.0
+01467F,HEPARIN,"Injection 5,000 units in 1 mL ampoule",B01AB01,U,5000.0,1,0,1,P,Parenteral,10.0,TU,,2.0
+01468G,HEPARIN,"Injection 25,000 units in 5 mL ampoule",B01AB01,U,25000.0,1,0,1,P,Parenteral,10.0,TU,,0.4
+01469H,HEPARIN,"Injection 20,000 units in 20 mL ampoule",B01AB01,U,20000.0,1,0,1,P,Parenteral,10.0,TU,,0.5
 01470J,GLYCERYL TRINITRATE,"Buccal/sublingual pressurised spray 400 micrograms per dose, 200 doses",C01DA02,mcg,80000.0,1,1,1,SL,Sublingual/Buccal/Oromucosal,2.5,mg,,0.03125
 01471K,FLUCONAZOLE,Capsule 50 mg,J02AC01,mg,50,0,0,0,O,Oral,0.2,g,,4.0
 01472L,FLUCONAZOLE,Capsule 100 mg,J02AC01,mg,100,0,0,0,O,Oral,0.2,g,,2.0
@@ -436,7 +436,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01474N,FLUCONAZOLE,Solution for I.V. infusion 200 mg in 100 mL,J02AC01,mg,200,1,0,1,P,Parenteral,0.2,g,,1.0
 01475P,FLUCONAZOLE,Capsule 200 mg,J02AC01,mg,200,0,0,0,O,Oral,0.2,g,,1.0
 01476Q,TOCILIZUMAB,Concentrate for injection 80 mg in 4 mL,L04AC07,mg,80,1,0,0,P,Parenteral,20.0,mg,,0.25
-01477R,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 1 ampoule powder for injection 5,000 units and 1 ampoule solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
+01477R,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 1 ampoule powder for injection 5,000 units and 1 ampoule solvent 1 mL",G03GA01,U,5000.0,1,0,1,P,Parenteral,250.0,U,,0.05
 01478T,PRAZOSIN,Tablet 5 mg (as hydrochloride),C02CA01,mg,5,0,0,0,O,Oral,5.0,mg,,1.0
 01479W,PRAZOSIN,Tablet 1 mg (as hydrochloride),C02CA01,mg,1,0,0,0,O,Oral,5.0,mg,,5.0
 01480X,PRAZOSIN,Tablet 2 mg (as hydrochloride),C02CA01,mg,2,0,0,0,O,Oral,5.0,mg,,2.5
@@ -486,12 +486,12 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01527J,FLOXACILLIN,Capsule 500 mg (as sodium monohydrate),J01CF05,mg,500,0,0,0,O,Oral,2.0,g,,4.0
 01528K,FLOXACILLIN,"Powder for oral suspension 125 mg (as magnesium) per 5 mL, 100 mL",J01CF05,mg,2500.0,1,1,1,O,Oral,2.0,g,,0.8
 01529L,FLOXACILLIN,"Powder for oral suspension 250 mg (as magnesium) per 5 mL, 100 mL",J01CF05,mg,5000.0,1,1,1,O,Oral,2.0,g,,0.4
-01531N,INSULIN NEUTRAL HUMAN,"Injection (human) 100 units per mL, 10 mL",A10AB01,mL,10,1,0,0,P,Parenteral,,,,
-01532P,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 1.5 mL, 5",A10AB01,mL,7.5,1,1,1,P,Parenteral,,,,
-01533Q,INSULIN ISOPHANE HUMAN,"Injection (human) 100 units per mL, 10 mL",A10AC01,mL,10,1,0,0,P,Parenteral,,,,
-01534R,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 1.5 mL, 5",A10AC01,mL,7.5,1,1,1,P,Parenteral,,,,
-01535T,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 2.5 mL, 5",A10AA02,mL,12.5,1,1,1,P,Parenteral,,,,
-01537X,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 2.5 mL, 5",A10AA01,mL,12.5,1,1,1,P,Parenteral,,,,
+01531N,INSULIN NEUTRAL HUMAN,"Injection (human) 100 units per mL, 10 mL",A10AB01,U,1000.0,1,1,0,P,Parenteral,40.0,U,,0.04
+01532P,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 1.5 mL, 5",A10AB01,U,750.0,1,1,1,P,Parenteral,40.0,U,,0.05333333333333334
+01533Q,INSULIN ISOPHANE HUMAN,"Injection (human) 100 units per mL, 10 mL",A10AC01,U,1000.0,1,1,0,P,Parenteral,40.0,U,,0.04
+01534R,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 1.5 mL, 5",A10AC01,U,750.0,1,1,1,P,Parenteral,40.0,U,,0.05333333333333334
+01535T,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 2.5 mL, 5",A10AA02,U,1250.0,1,1,1,P,Parenteral,,,,
+01537X,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 2.5 mL, 5",A10AA01,U,1250.0,1,1,1,P,Parenteral,,,,
 01540C,IPRATROPIUM,"Pressurised inhalation 20 micrograms (anhydrous) per dose, 200 doses",R03BB01,mcg,4000.0,1,1,1,Inhal.aerosol,Inhal.aerosol,0.12,mg,,0.03
 01541D,IPRATROPIUM,"Nebuliser solution containing ipratropium bromide 250 micrograms (anhydrous) per mL, 20 mL",R03BB01,mcg,5000.0,1,1,1,Inhal.solution,Inhal.solution,0.3,mg,,0.06
 01542E,IPRATROPIUM,"Nebuliser solution containing ipratropium bromide 250 micrograms (as monohydrate) in 1 mL single dose units, 30",R03BB01,mcg,7500.0,1,1,0,Inhal.solution,Inhal.solution,0.3,mg,,0.04
@@ -522,32 +522,32 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01573T,KETOCONAZOLE,Tablet 200 mg,J02AB02,mg,200,0,0,1,O,Oral,0.2,g,,1.0
 01574W,KETOCONAZOLE,"Shampoo 20 mg per g, 60 mL",D01AC08,mg,20,1,0,1,,,,,,
 01575X,FOLINIC ACID,Injection containing calcium folinate equivalent to 50 mg folinic acid in 5 mL,V03AF03,mg,50,1,0,1,P,Parenteral,60.0,mg,Expressed as folinic acid,1.2
-01579D,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-01580E,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-01581F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,500 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-01582G,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 2,000 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-01583H,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-01584J,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
+01579D,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,U,500.0,1,0,1,P,Parenteral,250.0,U,,0.5
+01580E,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,U,1000.0,1,0,1,P,Parenteral,250.0,U,,0.25
+01581F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,500 units and 3 ampoules solvent 1 mL",G03GA01,U,1500.0,1,0,1,P,Parenteral,250.0,U,,0.16666666666666666
+01582G,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 2,000 units and 3 ampoules solvent 1 mL",G03GA01,U,2000.0,1,0,1,P,Parenteral,250.0,U,,0.125
+01583H,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,U,500.0,1,0,1,P,Parenteral,250.0,U,,0.5
+01584J,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,U,1000.0,1,0,1,P,Parenteral,250.0,U,,0.25
 01585K,CHLORTALIDONE,Tablet 25 mg,C03BA04,mg,25,0,0,0,O,Oral,25.0,mg,,1.0
 01586L,KETOPROFEN,Capsule 50 mg,M01AE03,mg,50,0,0,1,O,Oral,0.15,g,,3.0
 01587M,KETOPROFEN,Capsule 100 mg,M01AE03,mg,100,0,0,1,O,Oral,0.15,g,,1.5
 01588N,KETOPROFEN,Suppository 100 mg,M01AE03,mg,100,0,0,1,R,Rectal,0.15,g,,1.5
 01589P,KETOPROFEN,Capsule 100 mg (sustained release),M01AE03,mg,100,0,0,1,O,Oral,0.15,g,,1.5
 01590Q,KETOPROFEN,Capsule 200 mg (sustained release),M01AE03,mg,200,0,0,1,O,Oral,0.15,g,,0.75
-01591R,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 20 units-80 units per mL, 10 mL vial",A10AD01,mL,10,1,0,1,P,Parenteral,,,,
-01592T,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 20 units-80 units per mL, 1.5 mL, 5",A10AD01,mL,7.5,1,1,1,P,Parenteral,,,,
+01591R,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injection (human) 20 units-80 units per mL, 10 mL vial",A10AD01,U,200.0,1,1,1,P,Parenteral,40.0,U,,0.2
+01592T,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 20 units-80 units per mL, 1.5 mL, 5",A10AD01,U,150.0,1,1,1,P,Parenteral,40.0,U,,0.26666666666666666
 01593W,BECLOMETHASONE,"Aqueous nasal spray 50 micrograms per dose, 400 doses set containing 2 pump packs each providing 200 doses",R01AD01,mcg,50,1,0,1,N,Nasal,0.4,mg,,8.0
 01594X,ONDANSETRON,Tablet 4 mg (as hydrochloride dihydrate),A04AA01,mg,4,0,0,0,O,Oral,16.0,mg,,4.0
 01595Y,ONDANSETRON,Tablet 8 mg (as hydrochloride dihydrate),A04AA01,mg,8,0,0,0,O,Oral,16.0,mg,,2.0
 01596B,ONDANSETRON,I.V. injection 4 mg (as hydrochloride dihydrate) in 2 mL,A04AA01,mg,4,1,0,1,P,Parenteral,16.0,mg,,4.0
 01597C,ONDANSETRON,I.V. injection 8 mg (as hydrochloride dihydrate) in 4 mL,A04AA01,mg,8,1,0,1,P,Parenteral,16.0,mg,,2.0
 01598D,MERCAPTOPURINE,Tablet containing mercaptopurine monohydrate 50 mg,L01BB02,mg,50,0,0,0,O,Oral,,,,
-01599E,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
-01600F,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
-01601G,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,mL,1,1,0,1,P,Parenteral,,,,
-01602H,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,mL,1,1,0,1,P,Parenteral,,,,
-01603J,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising activity and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
-01604K,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising activity and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
+01599E,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,U,75.0,1,0,1,P,Parenteral,75.0,U,,1.0
+01600F,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,U,150.0,1,0,1,P,Parenteral,75.0,U,,0.5
+01601G,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,U,75.0,1,0,1,P,Parenteral,75.0,U,,1.0
+01602H,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,U,150.0,1,0,1,P,Parenteral,75.0,U,,0.5
+01603J,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising activity and 10 ampoules solvent 1 mL,G03GA02,U,75.0,1,0,1,P,Parenteral,75.0,U,,1.0
+01604K,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising activity and 10 ampoules solvent 1 mL,G03GA02,U,150.0,1,0,1,P,Parenteral,75.0,U,,0.5
 01606M,METHADONE,Injection containing methadone hydrochloride 10 mg in 1 mL,N02AC,mg,10,1,0,1,P,Parenteral,,,,
 01607N,MORPHINE,Injection containing morphine tartrate 120 mg in 1.5 mL,N02AA01,mg,120,1,0,1,P,Parenteral,30.0,mg,,0.25
 01608P,METHADONE,Tablet 5 mg,N02AC02,mg,5,0,0,1,O,Oral,,,,
@@ -624,7 +624,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01695F,NIFEDIPINE,Tablet 20 mg,C08CA05,mg,20,0,0,1,O,Oral,30.0,mg,,1.5
 01696G,NYSTATIN,"Tablet 500,000 units",A07AA02,,,,,0,O,Oral,,,,
 01697H,NYSTATIN,"Pessaries 100,000 units, 15",G01AA01,,,,,1,,,,,,
-01698J,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
+01698J,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
 01699K,NYSTATIN,"Capsule 500,000 units",A07AA02,,,,,0,O,Oral,,,,
 01700L,OESTRONE,"Pessaries 100 micrograms, 12",G03CA07,mcg,1200.0,1,1,1,,,,,,
 01701M,OESTRONE,"Pessaries 1 mg, 12",G03CA07,mg,12.0,1,1,1,,,,,,
@@ -635,19 +635,19 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01706T,CARBAMAZEPINE,Tablet 200 mg,N03AF01,mg,200,0,0,0,O,Oral,1.0,g,,5.0
 01708X,CARBAMAZEPINE,Tablet 100 mg,N03AF01,mg,100,0,0,1,O,Oral,1.0,g,,10.0
 01709Y,PHENETHICILLIN,Capsule equivalent to 250 mg phenethicillin,J01CE05,mg,250,0,0,1,O,Oral,1.0,g,,4.0
-01710B,"INSULIN, ACID","Injection (bovine) 100 units per mL, 10 mL vial",A10AA01,mL,10,1,0,1,P,Parenteral,,,,
-01711C,INSULIN ISOPHANE BOVINE,"Injection (bovine) 100 units per mL, 10 mL",A10AC02,mL,10,1,0,1,P,Parenteral,,,,
-01713E,INSULIN NEUTRAL BOVINE,"Injection (bovine) 100 units per mL, 10 mL",A10AB02,mL,10,1,0,1,P,Parenteral,,,,
-01715G,INSULIN PROTAMINE ZINC,"Injection (bovine) 100 units per mL, 10 mL vial",A10AA04,mL,10,1,0,1,P,Parenteral,,,,
-01716H,INSULIN ZINC SUSPENSION (LENTE),"Injection (bovine) 100 units per mL, 10 mL vial",A10AC02,mL,10,1,0,1,P,Parenteral,,,,
-01718K,INSULIN ZINC SUSPENSION (LENTE),"Injection (human) 100 units per mL, 10 mL vial",A10AC01,mL,10,1,0,1,P,Parenteral,,,,
-01721N,INSULIN ZINC SUSPENSION (CRYSTALLINE) (ULTRALENTE),"Injection (bovine) 100 units per mL, 10 mL vial",A10AE02,mL,10,1,0,1,P,Parenteral,,,,
-01722P,INSULIN ZINC SUSPENSION (CRYSTALLINE) (ULTRALENTE),"Injection (human) 100 units per mL, 10 mL vial",A10AE01,mL,10,1,0,1,P,Parenteral,,,,
+01710B,"INSULIN, ACID","Injection (bovine) 100 units per mL, 10 mL vial",A10AA01,U,1000.0,1,1,1,P,Parenteral,,,,
+01711C,INSULIN ISOPHANE BOVINE,"Injection (bovine) 100 units per mL, 10 mL",A10AC02,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+01713E,INSULIN NEUTRAL BOVINE,"Injection (bovine) 100 units per mL, 10 mL",A10AB02,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+01715G,INSULIN PROTAMINE ZINC,"Injection (bovine) 100 units per mL, 10 mL vial",A10AA04,U,1000.0,1,1,1,P,Parenteral,,,,
+01716H,INSULIN ZINC SUSPENSION (LENTE),"Injection (bovine) 100 units per mL, 10 mL vial",A10AC02,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+01718K,INSULIN ZINC SUSPENSION (LENTE),"Injection (human) 100 units per mL, 10 mL vial",A10AC01,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+01721N,INSULIN ZINC SUSPENSION (CRYSTALLINE) (ULTRALENTE),"Injection (bovine) 100 units per mL, 10 mL vial",A10AE02,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+01722P,INSULIN ZINC SUSPENSION (CRYSTALLINE) (ULTRALENTE),"Injection (human) 100 units per mL, 10 mL vial",A10AE01,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
 01724R,CARBAMAZEPINE,Tablet 200 mg,N03AF01,mg,200,0,0,0,O,Oral,1.0,g,,5.0
-01727X,OXYTOCIN,Injection 2 units in 2 mL ampoule,H01BB02,mL,2,1,0,1,P,Parenteral,,,,
+01727X,OXYTOCIN,Injection 2 units in 2 mL ampoule,H01BB02,U,2.0,1,0,1,P,Parenteral,15.0,U,,7.5
 01728Y,OLSALAZINE,Capsule containing olsalazine sodium 250 mg,A07EC03,mg,250,0,0,0,O,Oral,1.0,g,,4.0
-01729B,OXYTOCIN,Injection 5 units in 1 mL ampoule,H01BB02,mL,1,1,0,1,P,Parenteral,,,,
-01730C,OXYTOCIN,Injection 10 units in 1 mL ampoule,H01BB02,mL,1,1,0,1,P,Parenteral,,,,
+01729B,OXYTOCIN,Injection 5 units in 1 mL ampoule,H01BB02,U,5.0,1,0,1,P,Parenteral,15.0,U,,3.0
+01730C,OXYTOCIN,Injection 10 units in 1 mL ampoule,H01BB02,U,10.0,1,0,1,P,Parenteral,15.0,U,,1.5
 01733F,CONJUGATED ESTROGENS,Tablet 300 micrograms,G03CA57,mcg,300,0,0,1,O,Oral,0.625,mg,,2.0833333333333335
 01734G,CONJUGATED ESTROGENS,Tablet 625 micrograms,G03CA57,mcg,625,0,0,1,O,Oral,0.625,mg,,1.0
 01735H,PANCREATIN ENZYME,"Tablet providing not less than 6,500 BP units of lipase activity",A09AA02,,,,,1,O,Oral,,,,
@@ -677,9 +677,9 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01758M,CEFOTAXIME,Powder for injection 1 g (as sodium),J01DD01,g,1,0,0,1,P,Parenteral,4.0,g,,4.0
 01759N,CEFOTAXIME,Powder for injection 2 g (as sodium),J01DD01,g,2,0,0,1,P,Parenteral,4.0,g,,2.0
 01760P,ROXITHROMYCIN,Tablet 150 mg,J01FA06,mg,150,0,0,0,O,Oral,0.3,g,,2.0
-01761Q,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AC01,mL,15.0,1,1,0,P,Parenteral,,,,
-01762R,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AB01,mL,15.0,1,1,0,P,Parenteral,,,,
-01763T,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD01,mL,15.0,1,1,0,P,Parenteral,,,,
+01761Q,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AC01,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+01762R,INSULIN NEUTRAL HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AB01,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+01763T,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD01,U,450.0,1,1,0,P,Parenteral,40.0,U,,0.08888888888888889
 01764W,ESTRADIOL (&) ESTRADIOL + NORETHISTERONE ACETATE,"Pack containing 12 tablets oestradiol 2 mg, 10 tablets oestradiol 2 mg with norethisterone acetate 1 mg and 6 tablets oestradiol 1 mg",G03FB05,mg,2,1,0,1,O,Oral,,,,
 01765X,ESTRADIOL (&) ESTRADIOL + NORETHISTERONE ACETATE,"Pack containing 12 tablets oestradiol 4 mg, 10 tablets oestradiol 4 mg with norethisterone acetate 1 mg and 6 tablets oestradiol 1 mg",G03FB05,mg,4,1,0,1,O,Oral,,,,
 01766Y,BENZATHINE PENICILLIN,Injection 1.8 g in 4 mL disposable syringe,J01CE08,g,1.8,1,0,1,P,Parenteral,3.6,g,Expressed as benzylpenicillin,2.0
@@ -801,8 +801,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01906H,NIFEDIPINE,Tablet 30 mg (controlled release),C08CA05,mg,30,0,0,0,O,Oral,30.0,mg,,1.0
 01907J,NIFEDIPINE,Tablet 60 mg (controlled release),C08CA05,mg,60,0,0,0,O,Oral,30.0,mg,,0.5
 01909L,AMINO ACID FORMULA with VITAMINS and MINERALS without PHENYLALANINE,"Sachets containing oral powder 34 g, 30 (PKU express 20)",V06DX,g,34,1,0,0,O,Oral,,,,
-01910M,POLYMYXIN B SULFATE with BACITRACIN and NEOMYCIN SULFATE,"Eye ointment 5,000 units-400 units-5 mg per g, 4 g",S01AA30,mg,5,1,0,1,,,,,,
-01911N,POLYMYXIN B SULFATE with NEOMYCIN SULFATE and GRAMICIDIN,"Eye drops 5,000 units-2.5 mg-25 micrograms per mL, 10 mL",S01AA30,mg,1.0,1,1,1,,,,,,
+01910M,POLYMYXIN B SULFATE with BACITRACIN and NEOMYCIN SULFATE,"Eye ointment 5,000 units-400 units-5 mg per g, 4 g",S01AA30,U,20000.0,1,1,1,,,,,,
+01911N,POLYMYXIN B SULFATE with NEOMYCIN SULFATE and GRAMICIDIN,"Eye drops 5,000 units-2.5 mg-25 micrograms per mL, 10 mL",S01AA30,U,50000.0,1,1,1,,,,,,
 01912P,OFLOXACIN,"Eye drops 3 mg per mL, 5 mL",S01AX11,mg,15.0,1,1,1,,,,,,
 01913Q,MOMETASONE,"Cream containing mometasone furoate 1 mg per g, 15 g",D07AC13,mg,1,1,0,0,,,,,,
 01914R,"AMINO ACID FORMULA with VITAMINS and MINERALS without VALINE, LEUCINE and ISOLEUCINE","Sachets containing oral powder 34 g, 30 (MSUD express 20)",V06DX,g,34,1,0,1,O,Oral,,,,
@@ -810,7 +810,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 01916W,PREDNISOLONE,Tablet 25 mg,H02AB06,mg,25,0,0,0,O,Oral,10.0,mg,,0.4
 01917X,PREDNISOLONE,Tablet 5 mg,H02AB06,mg,5,0,0,0,O,Oral,10.0,mg,,2.0
 01920C,PREDNISOLONE SODIUM PHOSPHATE,"Enema, retention, 20 mg (as sodium phosphate) in 100 mL",A07EA01,mg,20,1,0,0,R,Rectal,,,,
-01921D,INSULIN GLULISINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB06,mL,15.0,1,1,0,P,Parenteral,,,,
+01921D,INSULIN GLULISINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB06,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 01922E,PREDNISOLONE SODIUM PHOSPHATE,"Eye or ear drops 5 mg per mL, 5 mL",S03BA02,mg,25.0,1,1,1,,,,,,
 01923F,"AMINO ACID FORMULA with VITAMINS and MINERALS without METHIONINE, THREONINE and VALINE and LOW IN ISOLEUCINE","Oral liquid 130 mL, 30 (MMA/PA cooler 15)",V06DX,mL,130,1,0,1,O,Oral,,,,
 01925H,TIMOLOL,"Eye drops (gellan gum solution) 2.5 mg (as maleate) per mL, 2.5 mL",S01ED01,mg,6.25,1,1,1,,,,,,
@@ -919,8 +919,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 02056F,SUCRALFATE,Tablet 1 g (hydrous),A02BX02,g,1,0,0,1,O,Oral,4.0,g,,4.0
 02058H,CARBOMER + TRIGLYCERIDE LIPIDS,"Eye gel 2 mg-10 mg per g, single dose units 0.6 g, 30",S01XA20,mg,60.0,1,1,1,,,,,,
 02059J,MEMANTINE,"Oral drops containing memantine hydrochloride 10 mg per g, 50 g",N06DX01,mg,10,1,0,1,O,Oral,20.0,mg,,2.0
-02061L,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 15 units-85 units per mL, 3 mL, 5",A10AA03,mL,15.0,1,1,1,P,Parenteral,,,,
-02062M,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD01,mL,15.0,1,1,1,P,Parenteral,,,,
+02061L,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 15 units-85 units per mL, 3 mL, 5",A10AA03,U,225.0,1,1,1,P,Parenteral,,,,
+02062M,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD01,U,750.0,1,1,1,P,Parenteral,40.0,U,,0.05333333333333334
 02063N,SULFACETAMIDE,"Eye drops containing sulfacetamide sodium 100 mg per mL, 15 mL",S01AB04,mg,1500.0,1,1,1,,,,,,
 02064P,SULFACETAMIDE,"Eye drops 200 mg per mL, 15 mL",S01AB04,mg,3000.0,1,1,1,,,,,,
 02065Q,BUDESONIDE,"Nebuliser suspension 500 micrograms in 2 mL single dose units, 30",R03BA02,mcg,15000.0,1,1,0,Inhal.solution,Inhal.solution,1.5,mg,,0.1
@@ -1085,7 +1085,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 02264E,SODIUM CHLORIDE,"I.V. infusion 154 mmol per L, 1 L",B05BB01,L,1,1,0,1,P,Parenteral,,,,
 02265F,INFLUENZA VACCINE,"Injection containing inactivated, split virion influenza vaccine, 0.25 mL of which contains antigens representative of the following types: A/California/7/2009 (H{SUB}1{/SUB}N{SUB}1{/SUB})-like strain 7.5 micrograms haemagglutinin; A/Perth/16/2009 (H{SUB}",J07BB02,mL,0.25,1,0,1,P,Parenteral,,,,
 02266G,SODIUM CHLORIDE + POTASSIUM CHLORIDE + CALCIUM CHLORIDE DIHYDRATE,"I.V. infusion containing approximately 148 mmol sodium (as chloride), 4 mmol potassium (as chloride), 2 mmol calcium (as chloride) and 156 mmol chloride per L, 1 L",B05BB01,L,1,1,0,1,P,Parenteral,,,,
-02267H,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,mL,2.3,1,0,0,P,Parenteral,,,,
+02267H,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 02268J,RIVAROXABAN,Tablet 20 mg,B01AF01,mg,20,0,0,0,O,Oral,20.0,mg,,1.0
 02269K,VANCOMYCIN,"Powder for injection 1 g (1,000,000 I.U.) (as hydrochloride)",J01XA01,g,1,1,0,0,P,Parenteral,2.0,g,,2.0
 02270L,VANCOMYCIN,"Powder for injection 1 g (1,000,000 I.U.) (as hydrochloride)",J01XA01,g,1,1,0,0,P,Parenteral,2.0,g,,2.0
@@ -1110,7 +1110,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 02293Q,VALPROATE,"Oral liquid containing sodium valproate 200 mg per 5 mL, 300 mL",N03AG01,mg,12000.0,1,1,0,O,Oral,1.5,g,,0.125
 02294R,VALPROATE,"Tablet, crushable, containing sodium valproate 100 mg",N03AG01,mg,100,0,0,0,O,Oral,1.5,g,,15.0
 02295T,VALPROATE,"Oral solution containing sodium valproate 200 mg per 5 mL, 300 mL",N03AG01,mg,12000.0,1,1,0,O,Oral,1.5,g,,0.125
-02296W,NEOMYCIN + BACITRACIN ZINC,"Ear ointment 3.5 mg neomycin (as undecenoate) with bacitracin zinc 400 units per g, 10 g",S02AA30,mg,3.5,1,0,1,,,,,,
+02296W,NEOMYCIN + BACITRACIN ZINC,"Ear ointment 3.5 mg neomycin (as undecenoate) with bacitracin zinc 400 units per g, 10 g",S02AA30,U,4000.0,1,1,1,,,,,,
 02298Y,METRONIDAZOLE,I.V. infusion 500 mg in 100 mL,J01XD01,mg,500,1,0,1,P,Parenteral,1.5,g,,3.0
 02300C,CLOXACILLIN,Capsule equivalent to 250 mg cloxacillin,J01CF02,mg,250,0,0,1,O,Oral,2.0,g,,8.0
 02304G,DEXTRAN 40 with SODIUM CHLORIDE,"I.V. infusion 100 mg per mL-139 mmol (anhydrous) per 500 mL, 500 mL",B05AA05,mg,100.0,1,1,1,P,Parenteral,,,,
@@ -1199,8 +1199,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 02395C,METHOTREXATE,Injection 50 mg in 2 mL vial,L01BA01,mg,50,1,0,0,P,Parenteral,,,,
 02396D,METHOTREXATE,Injection 5 mg in 2 mL vial,L01BA01,mg,5,1,0,0,P,Parenteral,,,,
 02398F,METHSUXIMIDE,Capsule 300 mg,N03AD03,mg,300,0,0,1,O,Oral,0.9,g,,3.0
-02400H,OXYTOCIN + ERGOMETRINE,Injection 500 micrograms-5 units in 1 mL ampoule,G02AC,mcg,500,1,0,1,P,Parenteral,,,,
-02401J,LYPRESSIN,"Spray, nasal, 50 units per mL, 5 mL",H01BA03,mL,5,1,0,1,N,Nasal,,,,
+02400H,OXYTOCIN + ERGOMETRINE,Injection 500 micrograms-5 units in 1 mL ampoule,G02AC,U,5.0,1,0,1,P,Parenteral,,,,
+02401J,LYPRESSIN,"Spray, nasal, 50 units per mL, 5 mL",H01BA03,U,250.0,1,1,1,N,Nasal,20.0,U,,0.08
 02402K,THIORIDAZINE,"Oral solution 30 mg per mL, 30 mL",N05AC02,mg,900.0,1,1,1,O,Oral,0.3,g,,0.3333333333333333
 02405N,ECOTHIOPATE IODIDE,Eye drops 600 micrograms per mL (3 mg and 5 mL vial solvent),S01EB03,mcg,1000.0,1,1,1,,,,,,
 02410W,ROTIGOTINE,Transdermal patch 13.5 mg,N04BC09,mg,13.5,0,0,0,TD,Transdermal,6.0,mg,patch,0.4444444444444444
@@ -1721,10 +1721,10 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 02967E,COLESTYRAMINE,"Sachets containing 4.7 g oral powder (equivalent to 4 g colestyramine), 50",C10AC01,g,235.0,1,1,0,O,Oral,14.0,g,,0.059574468085106386
 02969G,TRIMIPRAMINE,Capsule equivalent to 50 mg trimipramine,N06AA06,mg,50,0,0,1,O,Oral,0.15,g,,3.0
 02970H,TRIMIPRAMINE,Tablet equivalent to 25 mg trimipramine,N06AA06,mg,25,0,0,1,O,Oral,0.15,g,,6.0
-02971J,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear drops containing triamcinolone acetonide 0.9 mg with neomycin 2.25 mg (as sulfate), gramicidin 225 micrograms and nystatin 90,000 units per mL, 7.5 mL",S02CA04,mg,0.9,1,0,0,,,,,,
+02971J,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear drops containing triamcinolone acetonide 0.9 mg with neomycin 2.25 mg (as sulfate), gramicidin 225 micrograms and nystatin 90,000 units per mL, 7.5 mL",S02CA04,U,675000.0,1,1,0,,,,,,
 02972K,DESIPRAMINE HYDROCHLORIDE,Tablet 25 mg,N06AA01,mg,25,0,0,1,O,Oral,0.1,g,,4.0
-02973L,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear cream 1 mg-2.5 mg (neomycin)-250 micrograms-100,000 units per g, 5 g",S02CA04,mg,1,1,0,1,,,,,,
-02974M,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear ointment containing triamcinolone acetonide 1 mg with neomycin 2.5 mg (as sulfate), gramicidin 250 micrograms and nystatin 100,000 units per g, 5 g",S02CA04,mg,1,1,0,0,,,,,,
+02973L,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear cream 1 mg-2.5 mg (neomycin)-250 micrograms-100,000 units per g, 5 g",S02CA04,U,500000.0,1,1,1,,,,,,
+02974M,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ear ointment containing triamcinolone acetonide 1 mg with neomycin 2.5 mg (as sulfate), gramicidin 250 micrograms and nystatin 100,000 units per g, 5 g",S02CA04,U,500000.0,1,1,0,,,,,,
 02975N,MILK POWDER LACTOSE FREE FORMULA PREDIGESTED,Oral powder 900 g (Aptamil Gold+ De-Lact),V06DF,g,900,0,0,1,O,Oral,,,,
 02977Q,AMPICILLIN,Powder for injection 1 g (as sodium),J01CA01,g,1,0,0,1,P,Parenteral,6.0,g,,6.0
 02978R,COLESTYRAMINE,"Sachets containing 9.4 g oral powder (equivalent to 8 g cholestyramine), 50",C10AC01,g,470.0,1,1,1,O,Oral,14.0,g,,0.029787234042553193
@@ -1765,7 +1765,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 03030L,CLIOQUINOL,"Cream 10 mg per g, 30 g",D08AH30,mg,10,1,0,1,,,,,,
 03031M,ADRENALINE (EPINEPHRINE),"Eye drops equivalent to 5 mg adrenaline per mL, 10 mL",S01EA01,mg,50.0,1,1,1,,,,,,
 03032N,NYSTATIN,"Lozenge 100,000 units",A01AB11,,,,,1,SL,Sublingual/Buccal/Oromucosal,,,,
-03033P,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,mL,24,1,0,1,O,Oral,,,,
+03033P,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,U,2400000.0,1,1,1,O,Oral,,,,
 03036T,STRONTIUM,Sachet containing granules for oral suspension containing strontium ranelate 2 g,M05BX03,g,2,0,0,1,O,Oral,2.0,g,,1.0
 03037W,MINOCYCLINE,Capsule 100 mg (as hydrochloride),J01AA08,mg,100,0,0,1,O,Oral,0.2,g,,2.0
 03038X,BENZATROPINE,Injection containing benzatropine mesilate 2 mg in 2 mL,N04AC01,mg,2,1,0,1,P,Parenteral,2.0,mg,,1.0
@@ -1814,7 +1814,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 03098C,FLUPHENAZINE DECANOATE,Injection 25 mg in 1 mL ampoule,N05AB02,mg,25,1,0,1,P,Parenteral,1.0,mg,depot,0.04
 03099D,PREDNISOLONE,Tablet 6.65 mg,H02AB06,mg,6.65,0,0,1,O,Oral,10.0,mg,,1.5037593984962405
 03100E,FERROUS SULFATE,"Capsule 320 mg, equivalent to 96 mg ferrous iron (delayed release)",B03AA07,mg,320,1,0,1,O,Oral,0.2,g,Fe2+,0.625
-03102G,NYSTATIN,"Vaginal cream 100,000 units per dose, 15 doses, 75 g",G01AA01,g,84375.0,1,1,1,V,Vaginal,,,,
+03102G,NYSTATIN,"Vaginal cream 100,000 units per dose, 15 doses, 75 g",G01AA01,U,1500000.0,1,1,1,V,Vaginal,,,,
 03103H,TRIMETHOPRIM + SULFAMETHOXAZOLE,"Paediatric oral suspension 40 mg-200 mg per 5 mL, 100 mL",J01EE01,mg,40,1,0,0,O,Oral,,,,
 03104J,GLUCOSE INDICATOR URINE,"Test strips, 50 (Diastix)",V04B,,,,,1,,,,,,
 03106L,GLUCOSE and KETONE INDICATOR URINE,"Test strips, 50 (Keto-Diabur-Test 5000)",V04B,,,,,1,,,,,,
@@ -1989,11 +1989,11 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 03339R,METRONIDAZOLE,Tablet 200 mg,J01XD01,mg,200,0,0,0,O,Oral,,,,
 03341W,METRONIDAZOLE,"Oral suspension containing metronidazole benzoate 320 mg per 5 mL, 100 mL",J01XD01,mg,6400.0,1,1,0,O,Oral,,,,
 03342X,NYSTATIN,"Tablet 500,000 units",A07AA02,,,,,0,O,Oral,,,,
-03343Y,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,mL,24,1,0,1,O,Oral,,,,
+03343Y,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,U,2400000.0,1,1,1,O,Oral,,,,
 03344B,NYSTATIN,"Lozenge 100,000 units",A01AB11,,,,,1,SL,Sublingual/Buccal/Oromucosal,,,,
 03345C,NYSTATIN,"Capsule 500,000 units",A07AA02,,,,,0,O,Oral,,,,
-03346D,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
-03347E,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
+03346D,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
+03347E,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
 03348F,PARACETAMOL,"Oral liquid 120 mg per 5 mL, 100 mL",N02BE01,mg,2400.0,1,1,1,O,Oral,3.0,g,,1.25
 03349G,PARACETAMOL,"Oral liquid 240 mg per 5 mL, 200 mL",N02BE01,mg,9600.0,1,1,0,O,Oral,3.0,g,,0.3125
 03353L,PHENETHICILLIN,Capsule equivalent to 250 mg phenethicillin,J01CE05,mg,250,0,0,1,O,Oral,1.0,g,,4.0
@@ -2242,8 +2242,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 03720T,"GROUP 102-ONE-PIECE COLOSTOMY BAGS, CLOSED","Dansac Light closed bag with Solo/Soft Skin Barrier and filter, opaque, standard, pre-cut 25mm, 30mm, 35mm, 40mm, 45mm, 50mm and 60mm, non-woven fabric both sides",V07AS,,,,,1,,,,,,
 03724B,"GROUP 102-ONE-PIECE COLOSTOMY BAGS, CLOSED","Dansac Light closed bag with Solo/Soft Skin Barrier and filter, opaque, standard, cut-to-fit 20mm to 60mm, non-woven fabric both sides",V07AS,,,,,1,,,,,,
 03726D,GROUP 123-CLEANSERS AND SOLVENTS,Dansac Skin Lotion 200mL,V07AS,mL,200,0,0,1,,,,,,
-04001N,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
-04002P,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,g,15,1,0,1,,,,,,
+04001N,NYSTATIN,"Cream 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
+04002P,NYSTATIN,"Ointment 100,000 units per g, 15 g",D01AA01,U,1500000.0,1,1,1,,,,,,
 04003Q,BIFONAZOLE,"Cream 10 mg per g (1%), 15 g",D01AC10,mg,10,1,0,1,,,,,,
 04004R,CLOTRIMAZOLE,"Cream 10 mg per g, 20 g",D01AC01,mg,10,1,0,0,,,,,,
 04005T,CLOTRIMAZOLE,"Lotion 10 mg per mL (1%), 20 mL",D01AC01,mg,200.0,1,1,1,,,,,,
@@ -2254,7 +2254,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 04010C,AMOROLFINE,"Nail treatment kit containing nail lacquer 50 mg (base) per mL (5%), 5 mL, 60 isopropyl alcohol cleaning pads, 10 spatulas and 30 nail files",D01AE16,mg,250.0,1,1,0,,,,,,
 04011D,TERBINAFINE,Tablet 250 mg (as hydrochloride),D01BA02,mg,250,0,0,0,O,Oral,0.25,g,,1.0
 04012E,NYSTATIN,"Cream pessaries 100,000 units, 15",G01AA01,,,,,1,,,,,,
-04013F,NYSTATIN,"Vaginal cream 100,000 units per dose, 15 doses, 75 g",G01AA01,g,84375.0,1,1,0,V,Vaginal,,,,
+04013F,NYSTATIN,"Vaginal cream 100,000 units per dose, 15 doses, 75 g",G01AA01,U,1500000.0,1,1,0,V,Vaginal,,,,
 04014G,CLOTRIMAZOLE,"Pessaries 100 mg, 6",G01AF02,mg,600.0,1,1,1,,,,,,
 04015H,CLOTRIMAZOLE,Pessary 500 mg,G01AF02,mg,500,0,0,1,V,Vaginal,0.1,g,,0.2
 04016J,CLOTRIMAZOLE,"Vaginal cream 50 mg per 5 g (1%), 35 g",G01AF02,mg,350.0,1,1,0,,,,,,
@@ -2392,8 +2392,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 04221E,ENOXAPARIN SODIUM,"Injection 40 mg (4,000 i.u. anti-Xa) in 0.4 mL pre-filled syringe",B01AB05,mg,40,1,0,1,P,Parenteral,,,,
 04222F,FLUOROURACIL,"Cream 50 mg per g (5%), 20 g",L01BC02,mg,50,1,0,0,,,,,,
 04223G,FLUOROURACIL,"Solution 10 mg per mL (1%), 30 mL",L01BC02,mg,300.0,1,1,1,,,,,,
-04224H,DALTEPARIN SODIUM,"Injection 2,500 units (anti-Xa) in 0.2 mL single dose pre-filled syringe",B01AB04,mL,0.2,1,0,1,P,Parenteral,,,,
-04225J,DALTEPARIN SODIUM,"Injection 5,000 units (anti-Xa) in 0.2 mL single dose pre-filled syringe",B01AB04,mL,0.2,1,0,1,P,Parenteral,,,,
+04224H,DALTEPARIN SODIUM,"Injection 2,500 units (anti-Xa) in 0.2 mL single dose pre-filled syringe",B01AB04,U,2500.0,1,0,1,P,Parenteral,2.5,TU,anti Xa,1.0
+04225J,DALTEPARIN SODIUM,"Injection 5,000 units (anti-Xa) in 0.2 mL single dose pre-filled syringe",B01AB04,U,5000.0,1,0,1,P,Parenteral,2.5,TU,anti Xa,0.5
 04226K,FLURAZEPAM DIHYDROCHLORIDE,Capsule 15 mg,N05CD01,mg,15,0,0,1,O,Oral,30.0,mg,,2.0
 04227L,FLURAZEPAM DIHYDROCHLORIDE,Capsule 30 mg,N05CD01,mg,30,0,0,1,O,Oral,30.0,mg,,1.0
 04230P,DRESSING FOAM with SILICONE HEAVY EXUDATE,"Dressings 10 cm x 10 cm, 10",V07AY,,,,,0,,,,,,
@@ -2512,7 +2512,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 04405W,TAR + CADE OIL + COAL TAR + ARACHIS OIL EXTRACT OF COAL TAR,"Scalp cleanser 3 mg-3 mg-1 mg-3 mg-10 mg per mL (0.3%-0.3%-0.1%-0.3%-1%), 300 mL",D11AC30,mg,3,1,0,1,,,,,,
 04408B,TAR + TROLAMINE LAURIL SULFATE,"Solution 23 mg-60 mg per mL (2.3%-6%), 500 mL",D04AX,mg,191.66666666666669,1,1,0,,,,,,
 04409C,TAR + CADE OIL + COAL TAR + ARACHIS OIL EXTRACT OF COAL TAR,"Scalp cleanser 3 mg-3 mg-1 mg-3 mg-10 mg per mL (0.3%-0.3%-0.1%-0.3%-1%), 350 mL",D11AC30,mg,3,1,0,1,,,,,,
-04410D,"POLYMYXIN B SULFATE, ZINC BACITRACIN and NEOMYCIN SULFATE","Irrigant consisting of a dry powder vial containing 75,000 units-1,000 units-20,000 units and one ampoule of normal saline 10 mL",B05CA,mL,10,1,0,1,,,,,,
+04410D,"POLYMYXIN B SULFATE, ZINC BACITRACIN and NEOMYCIN SULFATE","Irrigant consisting of a dry powder vial containing 75,000 units-1,000 units-20,000 units and one ampoule of normal saline 10 mL",B05CA,U,75000.0,1,0,1,,,,,,
 04411E,POVIDONE-IODINE,"Solution 100 mg per mL (10%), 100 mL",D08AG02,mg,10000.0,1,1,0,,,,,,
 04412F,PREDNISOLONE HEXANOATE + CINCHOCAINE,"Ointment 1.9 mg-5 mg-10 mg per g (0.19%-0.5%-1%), 10 g",C05AA04,mg,1.9,1,0,1,,,,,,
 04413G,PREDNISOLONE HEXANOATE + CINCHOCAINE,"Ointment 1.9 mg-5 mg-10 mg per g (0.195-0.5%-1%), 30 g",C05AA04,mg,1.9,1,0,1,,,,,,
@@ -2564,12 +2564,12 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 04477P,"TETRA-BROMO-ORTHOCRESOL, UNDECENOIC ACID, ZINC UNDECENOATE and ZINC OXIDE","Powder 10 mg-10 mg-50 mg-50 mg per g (1%-1%-5%- 5%), 50 g",D01AE20,mg,10,1,0,1,,,,,,
 04479R,TOLNAFTATE,"Powder 10 mg per g (1%), 30 g",D01AE18,mg,10,1,0,1,,,,,,
 04481W,TOLNAFTATE,"Spray aerosol 0.7 mg per g (0.07%), 100 g",D01AE18,mg,0.7,1,0,0,,,,,,
-04482X,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ointment containing triamcinolone acetonide 1 mg with neomycin 2.5 mg (as sulfate), gramicidin 250 micrograms and nystatin 100,000 units per g, 15 g",D07CB01,mg,1,1,0,1,,,,,,
-04483Y,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Cream 1 mg-2.5 mg (base)-250 micrograms-100,000 units per g (0.1%-0.25% (base)-0.025%- 100,000 units in 1 g), 15 g",D07CB01,mg,1,1,0,1,,,,,,
+04482X,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Ointment containing triamcinolone acetonide 1 mg with neomycin 2.5 mg (as sulfate), gramicidin 250 micrograms and nystatin 100,000 units per g, 15 g",D07CB01,U,1500000.0,1,1,1,,,,,,
+04483Y,TRIAMCINOLONE + NEOMYCIN + GRAMICIDIN + NYSTATIN,"Cream 1 mg-2.5 mg (base)-250 micrograms-100,000 units per g (0.1%-0.25% (base)-0.025%- 100,000 units in 1 g), 15 g",D07CB01,U,1,1,1,1,,,,,,
 04486D,UROKINASE,"Injection set containing 1 vial powder for injection 500,000 i.u. and 1 vial solvent 2 mL",B01AD04,mL,2,1,0,1,P,Parenteral,,,,
 04488F,RETINOL PALMITATE,"Ointment 540 micrograms per g, 50 g",D03AX,mcg,540,1,0,1,,,,,,
 04489G,UROKINASE,"Injection set containing 1 vial powder for injection 100,000 i.u. and 1 vial solvent 2 mL",B01AD04,mL,2,1,0,1,P,Parenteral,,,,
-04490H,"VITAMIN A, CALAMINE and SILICONE OIL","Cream 150 micrograms-100 mg-10 mg per g (500 units per g-10%-1%), 50 g",D03AX,mcg,150,1,0,1,,,,,,
+04490H,"VITAMIN A, CALAMINE and SILICONE OIL","Cream 150 micrograms-100 mg-10 mg per g (500 units per g-10%-1%), 50 g",D03AX,U,150,1,1,1,,,,,,
 04491J,ASCORBIC ACID + NICOTINAMIDE + PYRIDOXINE + RIBOFLAVIN + THIAMINE,Tablet with calcium pantothenate,A11EX,,,,,1,O,Oral,,,,
 04493L,LYSINE + THIAMINE + PYRIDOXINE + CYANOCOBALAMIN + FERRIC PYROPHOSPHATE,Oral liquid 200 mL,A11EA,mL,200,0,0,0,O,Oral,,,,
 04495N,ASCORBIC ACID + NICOTINAMIDE + PYRIDOXINE + RIBOFLAVIN + THIAMINE,Tablet,A11EB,,,,,1,O,Oral,,,,
@@ -3043,7 +3043,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 05024K,PHENOXYMETHYLPENICILLIN,"Powder for oral liquid 125 mg (as potassium) per 5 mL, 100 mL",J01CE02,mg,2500.0,1,1,0,O,Oral,2.0,g,,0.8
 05025L,BENZATHINE PENICILLIN,Injection 900 mg in 2 mL cartridge-needle unit (for use with Tubex Injector),J01CE08,mg,900,1,0,1,P,Parenteral,3.6,g,Expressed as benzylpenicillin,4.0
 05026M,BENZATHINE PENICILLIN,Injection 1.8 g in 4 mL disposable syringe,J01CE08,g,1.8,1,0,1,P,Parenteral,3.6,g,Expressed as benzylpenicillin,2.0
-05027N,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,mL,2.3,1,0,0,P,Parenteral,,,,
+05027N,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 05028P,BENZATHINE PENICILLIN with PROCAINE PENICILLIN and BENZYLPENICILLIN POTASSIUM,Injection set containing 1 vial powder for injection 450 mg-300 mg-187 mg and 2 mL sterilised water for injections,J01CE30,mg,450,1,0,1,P,Parenteral,,,,
 05029Q,PHENOXYMETHYLPENICILLIN,"Powder for oral liquid 250 mg (as potassium) per 5 mL, 100 mL",J01CE02,mg,5000.0,1,1,0,O,Oral,2.0,g,,0.4
 05030R,EPOPROSTENOL,"Powder for I.V. infusion, 500 micrograms (as sodium) infusion administration set",C02KX,mcg,500,0,0,1,P,Parenteral,,,,
@@ -3469,8 +3469,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 05450W,LEFLUNOMIDE,Tablet 20 mg,L04AK01,mg,20,0,0,0,O,Oral,20.0,mg,,1.0
 05451X,TACROLIMUS,Capsule 5 mg (once daily prolonged release),L04AD02,mg,5,0,0,0,O,Oral,5.0,mg,,1.0
 05452Y,LOSARTAN,Tablet containing losartan potassium 25 mg,C09CA01,mg,25,0,0,1,O,Oral,50.0,mg,,2.0
-05453B,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,mg,100,1,0,0,O,Oral,,,,
-05454C,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,mg,100,1,0,1,O,Oral,,,,
+05453B,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,U,100,1,1,0,O,Oral,,,,
+05454C,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,U,100,1,1,1,O,Oral,,,,
 05455D,DEGARELIX,"Powder for injection 80 mg (as acetate), injection set",L02BX02,mg,80,0,0,1,P,Parenteral,2.7,mg,,0.03375
 05456E,DEGARELIX,"Powder for injection 120 mg (as acetate), 2, injection set",L02BX02,mg,120,1,0,1,P,Parenteral,2.7,mg,,0.022500000000000003
 05457F,DENOSUMAB,Injection 60 mg in 1 mL pre-filled syringe,M05BX04,mg,60,1,0,0,P,Parenteral,0.33,mg,,0.0055000000000000005
@@ -3679,7 +3679,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 05701C,PAMIDRONATE DISODIUM,Injection set containing 4 vials powder for I.V. infusion containing disodium pamidronate 15 mg and 4 ampoules solvent 5 mL,M05BA03,mg,15,1,0,1,P,Parenteral,60.0,mg,course dose,4.0
 05702D,PAMIDRONATE DISODIUM,Injection set containing 2 vials powder for I.V. infusion containing disodium pamidronate 30 mg and 2 ampoules solvent 10 mL,M05BA03,mg,30,1,0,1,P,Parenteral,60.0,mg,course dose,2.0
 05703E,PAMIDRONATE DISODIUM,Injection set containing 1 vial powder for I.V. infusion containing disodium pamidronate 90 mg and 1 ampoule solvent 10 mL,M05BA03,mg,90,1,0,1,P,Parenteral,60.0,mg,course dose,0.6666666666666666
-05704F,DORNASE ALFA,"Solution for inhalation 2.5 mg (2,500 units) in 2.5 mL",R05CB13,mg,2.5,1,0,0,Inhal.solution,Inhal.solution,2.5,mg,,1.0
+05704F,DORNASE ALFA,"Solution for inhalation 2.5 mg (2,500 units) in 2.5 mL",R05CB13,U,2500.0,1,0,0,Inhal.solution,Inhal.solution,,,,
 05705G,DOXORUBICIN HYDROCHLORIDE (AS PEGYLATED LIPOSOMAL),Suspension for I.V. infusion containing pegylated liposomal doxorubicin hydrochloride 20 mg in 10 mL,L01DB01,mg,20,1,0,0,P,Parenteral,,,,
 05706H,EFAVIRENZ,Tablet 600 mg,J05AG03,mg,600,0,0,1,O,Oral,0.6,g,,1.0
 05707J,EFAVIRENZ,"Oral solution 30 mg per mL, 180 mL",J05AG03,mg,5400.0,1,1,1,O,Oral,0.6,g,,0.1111111111111111
@@ -3688,24 +3688,24 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 05710M,ENFUVIRTIDE,Pack containing 60 vials powder for injection 90 mg with 60 vials water for injections 1.1 mL (with syringes and swabs),J05AX07,mg,90,1,0,1,P,Parenteral,0.18,g,,2.0
 05711N,ENTECAVIR,Tablet 0.5 mg (as monohydrate),J05AF10,mg,0.5,0,0,1,O,Oral,0.5,mg,,1.0
 05712P,ENTECAVIR,Tablet 1 mg (as monohydrate),J05AF10,mg,1,0,0,1,O,Oral,0.5,mg,,0.5
-05713Q,EPOETIN ALFA PRODUCT,"Injection 20,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-05714R,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-05715T,EPOETIN ALFA PRODUCT,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-05716W,EPOETIN ALFA PRODUCT,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-05717X,EPOETIN ALFA PRODUCT,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,mL,0.8,1,0,0,P,Parenteral,,,,
-05718Y,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
-05719B,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-05720C,EPOETIN ALFA PRODUCT,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05721D,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,mL,0.4,1,0,0,P,Parenteral,,,,
-05722E,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
-05723F,EPOETIN ALFA PRODUCT,"Injection 30,000 units in 0.75 mL pre-filled syringe",B03XA01,mL,0.75,1,0,1,P,Parenteral,,,,
-05724G,EPOETIN BETA,"Injection 2,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05725H,EPOETIN BETA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05726J,EPOETIN BETA,"Injection 4,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05727K,EPOETIN BETA,"Injection 5,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05728L,EPOETIN BETA,"Injection 6,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-05729M,EPOETIN BETA,"Injection 10,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-05730N,EPOETIN BETA,"Injection 20,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,1,P,Parenteral,,,,
+05713Q,EPOETIN ALFA PRODUCT,"Injection 20,000 units in 0.5 mL pre-filled syringe",B03XA01,U,20000.0,1,0,0,P,Parenteral,1.0,TU,,0.05
+05714R,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,U,1000.0,1,0,0,P,Parenteral,1.0,TU,,1.0
+05715T,EPOETIN ALFA PRODUCT,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+05716W,EPOETIN ALFA PRODUCT,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+05717X,EPOETIN ALFA PRODUCT,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,U,8000.0,1,0,0,P,Parenteral,1.0,TU,,0.125
+05718Y,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL pre-filled syringe",B03XA01,U,40000.0,1,0,0,P,Parenteral,1.0,TU,,0.025
+05719B,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 0.5 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+05720C,EPOETIN ALFA PRODUCT,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
+05721D,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
+05722E,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
+05723F,EPOETIN ALFA PRODUCT,"Injection 30,000 units in 0.75 mL pre-filled syringe",B03XA01,U,30000.0,1,0,1,P,Parenteral,1.0,TU,,0.03333333333333333
+05724G,EPOETIN BETA,"Injection 2,000 units in 0.3 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+05725H,EPOETIN BETA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
+05726J,EPOETIN BETA,"Injection 4,000 units in 0.3 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
+05727K,EPOETIN BETA,"Injection 5,000 units in 0.3 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+05728L,EPOETIN BETA,"Injection 6,000 units in 0.3 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+05729M,EPOETIN BETA,"Injection 10,000 units in 0.6 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
+05730N,EPOETIN BETA,"Injection 20,000 units in 0.6 mL pre-filled syringe",B03XA01,U,20000.0,1,0,1,P,Parenteral,1.0,TU,,0.05
 05731P,EPOPROSTENOL,Powder for I.V. infusion 500 micrograms (as sodium) with diluent,C02KX,mcg,500,0,0,1,P,Parenteral,,,,
 05732Q,EPOPROSTENOL,Powder for I.V. infusion 1.5 mg (as sodium) with diluent,C02KX,mg,1.5,0,0,1,P,Parenteral,,,,
 05733R,ETANERCEPT,"Injections 50 mg in 1 mL single use pre-filled syringes, 4",L04AB01,mg,200.0,1,1,0,P,Parenteral,7.0,mg,,0.035
@@ -3978,8 +3978,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06008F,FLUOROURACIL,Injection 250mg in 10mL,L01BC02,mg,250,1,0,1,P,Parenteral,,,,
 06009G,FLUOROURACIL,Injection 500mg in 10mL,L01BC02,mg,500,1,0,1,P,Parenteral,,,,
 06010H,FLUOROURACIL,Injection 500mg in 10mL,L01BC02,mg,500,1,0,1,P,Parenteral,,,,
-06011J,NYSTATIN,"Vaginal cream 100,000units per dose, 15 doses, 75g",G01AA01,g,84375.0,1,1,1,V,Vaginal,,,,
-06012K,NYSTATIN,"Vaginal cream 100,000units per dose, 15 doses, 75g",G01AA01,g,84375.0,1,1,1,V,Vaginal,,,,
+06011J,NYSTATIN,"Vaginal cream 100,000units per dose, 15 doses, 75g",G01AA01,U,1500000.0,1,1,1,V,Vaginal,,,,
+06012K,NYSTATIN,"Vaginal cream 100,000units per dose, 15 doses, 75g",G01AA01,U,1500000.0,1,1,1,V,Vaginal,,,,
 06013L,DEODORANT CONCENTRATE,Liquid 15mL,V07AY,mL,15,0,0,1,,,,,,
 06014M,DEODORANT CONCENTRATE,Liquid 15mL,V07AY,mL,15,0,0,1,,,,,,
 06015N,DOXYCYCLINE,Tablet 100mg,J01AA02,mg,100,0,0,1,O,Oral,0.1,g,,1.0
@@ -4086,10 +4086,10 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06117Y,DIDANOSINE,Tablet 100 mg (chewable/dispersible),J05AF02,mg,100,0,0,1,O,Oral,0.4,g,,4.0
 06118B,DIDANOSINE,Tablet 150 mg (chewable/dispersible),J05AB07,mg,150,0,0,1,O,Oral,,,,
 06119C,DIDANOSINE,Powder for paediatric oral solution 2 g in 120 mL bottle,J05AF02,g,2,1,0,1,O,Oral,0.4,g,,0.2
-06120D,DORNASE ALFA,"Solution for inhalation 2.5 mg (2,500 units) in 2.5 mL",R05CB13,mg,2.5,1,0,0,Inhal.solution,Inhal.solution,2.5,mg,,1.0
-06121E,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 1 mL vial",B03XA01,mL,1,1,0,1,P,Parenteral,,,,
-06122F,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 1 mL vial",B03XA01,mL,1,1,0,1,P,Parenteral,,,,
-06123G,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL vial",B03XA01,mL,1,1,0,1,P,Parenteral,,,,
+06120D,DORNASE ALFA,"Solution for inhalation 2.5 mg (2,500 units) in 2.5 mL",R05CB13,U,2500.0,1,0,0,Inhal.solution,Inhal.solution,,,,
+06121E,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 1 mL vial",B03XA01,U,2000.0,1,0,1,P,Parenteral,1.0,TU,,0.5
+06122F,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 1 mL vial",B03XA01,U,4000.0,1,0,1,P,Parenteral,1.0,TU,,0.25
+06123G,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL vial",B03XA01,U,10000.0,1,0,1,P,Parenteral,1.0,TU,,0.1
 06124H,LENOGRASTIM,"Powder for injection 33,600,000 i.u. (263 micrograms) vial",L03AA10,mcg,263,1,0,1,P,Parenteral,0.35,mg,,1.3307984790874525
 06125J,CICLOSPORIN,"Oral liquid 100 mg per mL, 50 mL",L04AD01,mg,5000.0,1,1,0,O,Oral,0.25,g,,0.05
 06126K,FILGRASTIM,Injection 300 micrograms in 1 mL,L03AA02,mcg,300,1,0,1,P,Parenteral,0.35,mg,,1.1666666666666667
@@ -4142,23 +4142,23 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06173X,METHADONE,Powder 1 kg (for preparation of other dosage forms),N02AC02,,,,,1,,,,,,
 06174Y,METHADONE,Powder 1 g (methadone as hydrochloride) (for preparation of other dosage forms),N07BC02,g,1,0,0,1,,,,,,
 06175B,OXANDROLONE,Tablet 2.5 mg,A14AA08,mg,2.5,0,0,1,O,Oral,,,,
-06176C,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-06177D,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-06178E,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,500 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-06179F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 2,000 units and 3 ampoules solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
-06180G,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 1 ampoule powder for injection 5,000 units and 1 ampoule solvent 1 mL",G03GA01,mL,1,1,0,1,P,Parenteral,,,,
+06176C,HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 3 ampoules powder for injection 500 units and 3 ampoules solvent 1 mL,G03GA01,U,500.0,1,0,1,P,Parenteral,250.0,U,,0.5
+06177D,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,000 units and 3 ampoules solvent 1 mL",G03GA01,U,1000.0,1,0,1,P,Parenteral,250.0,U,,0.25
+06178E,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 1,500 units and 3 ampoules solvent 1 mL",G03GA01,U,1500.0,1,0,1,P,Parenteral,250.0,U,,0.16666666666666666
+06179F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 3 ampoules powder for injection 2,000 units and 3 ampoules solvent 1 mL",G03GA01,U,2000.0,1,0,1,P,Parenteral,250.0,U,,0.125
+06180G,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing 1 ampoule powder for injection 5,000 units and 1 ampoule solvent 1 mL",G03GA01,U,5000.0,1,0,1,P,Parenteral,250.0,U,,0.05
 06181H,HUMAN CHORIONIC GONADOTROPHIN,"Powder for injection 5,000 units with solvent",G03GA01,,,,,1,P,Parenteral,,,,
 06182J,CHORIOGONADOTROPIN ALFA,Solution for injection 250 micrograms in 0.5 mL pre-filled pen,G03GA08,mcg,250,1,0,0,P,Parenteral,0.25,mg,,1.0
-06183K,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
-06184L,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,mL,1,1,0,1,P,Parenteral,,,,
+06183K,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,U,75.0,1,0,1,P,Parenteral,75.0,U,,1.0
+06184L,HUMAN MENOPAUSAL GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising hormone and 10 ampoules solvent 1 mL,G03GA02,U,150.0,1,0,1,P,Parenteral,75.0,U,,0.5
 06185M,STAVUDINE,Capsule 15 mg,J05AF04,mg,15,0,0,1,O,Oral,80.0,mg,,5.333333333333333
 06186N,STAVUDINE,Capsule 20 mg,J05AF04,mg,20,0,0,1,O,Oral,80.0,mg,,4.0
 06187P,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 75 units luteinising activity (approximately two thirds of the latter is of placental origin and approximately one third is of pituitary origin),G03GA02,,,,,1,P,Parenteral,,,,
 06188Q,HUMAN MENOPAUSAL GONADOTROPHIN STANDARDISED with HUMAN CHORIONIC GONADOTROPHIN,Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 150 units luteinising activity (approximately two thirds of the latter is of placental origin and approximately one third is of pituitary origin,G03GA02,,,,,1,P,Parenteral,,,,
 06189R,STAVUDINE,Capsule 30 mg,J05AF04,mg,30,0,0,1,O,Oral,80.0,mg,,2.6666666666666665
 06190T,STAVUDINE,Capsule 40 mg,J05AF04,mg,40,0,0,1,O,Oral,80.0,mg,,2.0
-06191W,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,mL,1,1,0,1,P,Parenteral,,,,
-06192X,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,mL,1,1,0,1,P,Parenteral,,,,
+06191W,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 75 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,U,75.0,1,0,1,P,Parenteral,75.0,U,,1.0
+06192X,UROFOLLITROPHIN  (HIGHLY PURIFIED),Injection set containing 10 ampoules powder for injection providing 150 units follicle stimulating hormone and 10 ampoules solvent 1 mL,G03GA04,U,150.0,1,0,1,P,Parenteral,75.0,U,,0.5
 06193Y,LAMIVUDINE,Tablet 150 mg,J05AF05,mg,150,0,0,1,O,Oral,0.3,g,,2.0
 06194B,LAMIVUDINE,"Oral solution 10 mg per mL, 240 mL",J05AF05,mg,2400.0,1,1,1,O,Oral,0.3,g,,0.125
 06195C,RIFABUTIN,Capsule 150 mg,J04AB04,mg,150,0,0,0,O,Oral,0.15,g,,1.0
@@ -4166,14 +4166,14 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06197E,INTERFERON ALFA-2A,"Solution for injection 4,500,000 i.u. in 1 mL single use vial",L03AA04,mL,1,1,0,1,P,Parenteral,,,,
 06198F,INTERFERON ALFA-2A,"Solution for injection 9,000,000 i.u. in 1 mL single use vial",L03AA04,mL,1,1,0,1,P,Parenteral,,,,
 06199G,SAQUINAVIR PRODUCT,Capsule 200 mg (as mesylate),J05AE01,mg,200,0,0,1,O,Oral,1.8,g,,9.0
-06200H,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL vial",B03XA01,mL,0.5,1,0,1,P,Parenteral,,,,
+06200H,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL vial",B03XA01,U,1000.0,1,0,1,P,Parenteral,1.0,TU,,1.0
 06201J,INDINAVIR,Capsule 200 mg (as sulfate),J05AE02,mg,200,0,0,1,O,Oral,2.4,g,,12.0
 06202K,INDINAVIR,Capsule 400 mg (as sulfate),J05AE02,mg,400,0,0,1,O,Oral,2.4,g,,6.0
 06203L,RITONAVIR,Capsule 100 mg,J05AE03,mg,100,0,0,1,O,Oral,1.2,g,,12.0
-06204M,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-06205N,EPOETIN ALFA PRODUCT,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06206P,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,mL,0.4,1,0,0,P,Parenteral,,,,
-06207Q,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
+06204M,EPOETIN ALFA PRODUCT,"Injection 2,000 units in 0.5 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+06205N,EPOETIN ALFA PRODUCT,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
+06206P,EPOETIN ALFA PRODUCT,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
+06207Q,EPOETIN ALFA PRODUCT,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
 06208R,MYCOPHENOLATE,Capsule containing mycophenolate mofetil 250 mg,L04AA06,mg,250,0,0,0,O,Oral,2.0,g,as mycophenolate mofetil,8.0
 06209T,MYCOPHENOLATE,Tablet containing mycophenolate mofetil 500 mg,L04AA06,mg,500,0,0,0,O,Oral,2.0,g,as mycophenolate mofetil,4.0
 06210W,INTERFERON ALFA-2A,"Injection 3,000,000 I.U. in 0.5 mL single dose pre-filled syringe",L03AB04,mL,0.5,1,0,1,P,Parenteral,,,,
@@ -4217,7 +4217,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06248W,SAQUINAVIR PRODUCT,Soft gelatin capsule 200 mg,J05AE01,mg,200,0,0,1,O,Oral,1.8,g,,9.0
 06249X,DOXORUBICIN HYDROCHLORIDE (AS PEGYLATED LIPOSOMAL),Suspension for I.V. infusion containing pegylated liposomal doxorubicin hydrochloride 20 mg in 10 mL,L01DB01,mg,20,1,0,0,P,Parenteral,,,,
 06250Y,STAVUDINE,"Powder for oral solution 1 mg per mL, 200 mL",J05AF04,mg,200.0,1,1,1,O,Oral,80.0,mg,,0.4
-06251B,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
+06251B,EPOETIN ALFA PRODUCT,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,U,1000.0,1,0,0,P,Parenteral,1.0,TU,,1.0
 06252C,INDINAVIR,Capsule equivalent to 400 mg indinavir,J05AE02,mg,400,0,0,1,O,Oral,2.4,g,,6.0
 06253D,INTERFERON ALFA-2B,"Solution for injection 18,000,000 I.U. in 1.2 mL multi-dose injection pen",L03AB05,mL,1.2,1,0,1,P,Parenteral,,,,
 06254E,INTERFERON ALFA-2B,"Solution for injection 30,000,000 I.U. in 1.2 mL multi-dose injection pen",L03AB05,mL,1.2,1,0,1,P,Parenteral,,,,
@@ -4260,7 +4260,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06291D,FILGRASTIM,Injection 300 micrograms in 0.5 mL single-use pre-filled syringe,L03AA02,mcg,300,1,0,0,P,Parenteral,0.35,mg,,1.1666666666666667
 06292E,FILGRASTIM,Injection 480 micrograms in 0.5 mL single-use pre-filled syringe,L03AA02,mcg,480,1,0,0,P,Parenteral,0.35,mg,,0.7291666666666666
 06293F,CLOSTRIDIUM BOTULINUM TYPE A TOXIN-HAEMAGGLUTININ COMPLEX,Lyophilised powder for I.M. injection 500 units,M03AX01,,,,,1,P,Parenteral,,,,
-06294G,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL vial",B03XA01,mL,1,1,0,1,P,Parenteral,,,,
+06294G,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL vial",B03XA01,U,40000.0,1,0,1,P,Parenteral,1.0,TU,,0.025
 06295H,SOMATROPIN,Solution for injection 5 mg (15 i.u.) in 1.5 mL cartridge (with preservative),H01AC01,mg,5,1,0,1,P,Parenteral,,,,
 06296J,SOMATROPIN,Solution for injection 10 mg (30 i.u.) in 1.5 mL cartridge (with preservative),H01AC01,mg,10,1,0,1,P,Parenteral,,,,
 06297K,SOMATROPIN,Solution for injection 15 mg (45 i.u.) in 1.5 mL cartridge (with preservative),H01AC01,mg,15,1,0,1,P,Parenteral,,,,
@@ -4268,11 +4268,11 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06299M,DIDANOSINE,Capsule 200 mg (containing enteric coated beadlets),J05AF02,mg,200,0,0,1,O,Oral,0.4,g,,2.0
 06300N,DIDANOSINE,Capsule 250 mg (containing enteric coated beadlets),J05AF02,mg,250,0,0,1,O,Oral,0.4,g,,1.6
 06301P,DIDANOSINE,Capsule 400 mg (containing enteric coated beadlets),J05AF02,mg,400,0,0,1,O,Oral,0.4,g,,1.0
-06302Q,EPOETIN ALFA PRODUCT,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-06303R,EPOETIN ALFA PRODUCT,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-06304T,EPOETIN ALFA PRODUCT,"Injection 7,000 units in 0.7 mL pre-filled syringe",B03XA01,mL,0.7,1,0,1,P,Parenteral,,,,
-06305W,EPOETIN ALFA PRODUCT,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,mL,0.8,1,0,0,P,Parenteral,,,,
-06306X,EPOETIN ALFA PRODUCT,"Injection 9,000 units in 0.9 mL pre-filled syringe",B03XA01,mL,0.9,1,0,1,P,Parenteral,,,,
+06302Q,EPOETIN ALFA PRODUCT,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+06303R,EPOETIN ALFA PRODUCT,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+06304T,EPOETIN ALFA PRODUCT,"Injection 7,000 units in 0.7 mL pre-filled syringe",B03XA01,U,7000.0,1,0,1,P,Parenteral,1.0,TU,,0.14285714285714285
+06305W,EPOETIN ALFA PRODUCT,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,U,8000.0,1,0,0,P,Parenteral,1.0,TU,,0.125
+06306X,EPOETIN ALFA PRODUCT,"Injection 9,000 units in 0.9 mL pre-filled syringe",B03XA01,U,9000.0,1,0,1,P,Parenteral,1.0,TU,,0.1111111111111111
 06307Y,BUPRENORPHINE,Tablet (sublingual) 400 micrograms (as hydrochloride),N07BC01,mcg,400,0,0,1,SL,Sublingual/Buccal/Oromucosal,8.0,mg,,20.0
 06308B,BUPRENORPHINE,Tablet (sublingual) 2 mg (as hydrochloride),N07BC01,mg,2,0,0,1,SL,Sublingual/Buccal/Oromucosal,8.0,mg,,4.0
 06309C,BUPRENORPHINE,Tablet (sublingual) 8 mg (as hydrochloride),N07BC01,mg,8,0,0,1,SL,Sublingual/Buccal/Oromucosal,8.0,mg,,1.0
@@ -4305,7 +4305,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06336L,FOLLITROPIN BETA,Solution for injection 600 I.U. in 0.72 mL multi-dose cartridge,G03GA06,mL,0.72,1,0,0,P,Parenteral,,,,
 06337M,LENOGRASTIM,"Powder for injection 13,400,000 I.U. (105 micrograms)",L03AA10,mcg,105,1,0,1,P,Parenteral,0.35,mg,,3.3333333333333335
 06338N,LENOGRASTIM,"Powder for injection 33,600,000 I.U. (263 micrograms)",L03AA10,mcg,263,1,0,1,P,Parenteral,0.35,mg,,1.3307984790874525
-06339P,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
+06339P,EPOETIN ALFA PRODUCT,"Injection 40,000 units in 1 mL pre-filled syringe",B03XA01,U,40000.0,1,0,0,P,Parenteral,1.0,TU,,0.025
 06340Q,LOPINAVIR + RITONAVIR,Capsule 133.3 mg-33.3 mg,J05AR,mg,133.3,1,0,1,O,Oral,,,,
 06341R,LOPINAVIR + RITONAVIR,"Oral liquid 400 mg-100 mg per 5 mL, 60 mL",J05AR10,mg,400,1,0,1,O,Oral,0.8,g,Refers to lopinavir,2.0
 06342T,PYRIDOSTIGMINE,Tablet 180 mg (sustained release),N07AA02,mg,180,0,0,1,O,Oral,0.18,g,,1.0
@@ -4400,7 +4400,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06431L,FOLLITROPIN ALFA,Injection 300 I.U. in 0.5 mL multi-dose cartridge,G03GA05,mL,0.5,1,0,0,P,Parenteral,,,,
 06432M,FOLLITROPIN ALFA,Injection 450 I.U. in 0.75 mL multi-dose cartridge,G03GA05,mL,0.75,1,0,0,P,Parenteral,,,,
 06433N,FOLLITROPIN ALFA,Injection 900 I.U. in 1.5 mL multi-dose cartridge,G03GA05,mL,1.5,1,0,0,P,Parenteral,,,,
-06434P,EPOETIN ALFA PRODUCT,"Injection 20,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
+06434P,EPOETIN ALFA PRODUCT,"Injection 20,000 units in 0.5 mL pre-filled syringe",B03XA01,U,20000.0,1,0,0,P,Parenteral,1.0,TU,,0.05
 06435Q,LAMIVUDINE,Tablet 300 mg,J05AF05,mg,300,0,0,1,O,Oral,0.3,g,,1.0
 06436R,SIROLIMUS,Tablet 1 mg,L04AH01,mg,1,0,0,0,O,Oral,3.0,mg,,3.0
 06437T,SIROLIMUS,"Oral solution 1 mg per mL, 60 mL",L04AH01,mg,60.0,1,1,0,O,Oral,3.0,mg,,0.05
@@ -4441,15 +4441,15 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 06476W,SOMATROPIN,Solution for injection 5 mg (15 i.u.) in 1.5 mL cartridge (with preservative),H01AC01,mg,5,1,0,0,P,Parenteral,,,,
 06477X,EPOPROSTENOL,Powder for I.V. infusion 500 micrograms (as sodium) with diluent,C02KX,mcg,500,0,0,1,P,Parenteral,,,,
 06478Y,EPOPROSTENOL,Powder for I.V. infusion 1.5 mg (as sodium) with diluent,C02KX,mg,1.5,0,0,1,P,Parenteral,,,,
-06479B,EPOETIN BETA,"Injection 1,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,1,P,Parenteral,,,,
-06480C,EPOETIN BETA,"Injection 2,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06481D,EPOETIN BETA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06482E,EPOETIN BETA,"Injection 4,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06483F,EPOETIN BETA,"Injection 5,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06484G,EPOETIN BETA,"Injection 6,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-06485H,EPOETIN BETA,"Injection 10,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-06486J,EPOETIN BETA,"Injection 20,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,1,P,Parenteral,,,,
-06487K,EPOETIN BETA,"Injection 30,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,1,P,Parenteral,,,,
+06479B,EPOETIN BETA,"Injection 1,000 units in 0.3 mL pre-filled syringe",B03XA01,U,1000.0,1,0,1,P,Parenteral,1.0,TU,,1.0
+06480C,EPOETIN BETA,"Injection 2,000 units in 0.3 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+06481D,EPOETIN BETA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
+06482E,EPOETIN BETA,"Injection 4,000 units in 0.3 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
+06483F,EPOETIN BETA,"Injection 5,000 units in 0.3 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+06484G,EPOETIN BETA,"Injection 6,000 units in 0.3 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+06485H,EPOETIN BETA,"Injection 10,000 units in 0.6 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
+06486J,EPOETIN BETA,"Injection 20,000 units in 0.6 mL pre-filled syringe",B03XA01,U,20000.0,1,0,1,P,Parenteral,1.0,TU,,0.05
+06487K,EPOETIN BETA,"Injection 30,000 units in 0.6 mL pre-filled syringe",B03XA01,U,30000.0,1,0,1,P,Parenteral,1.0,TU,,0.03333333333333333
 06488L,DARBEPOETIN ALFA,Injection 20 micrograms in 0.5 mL pre-filled injection pen,B03XA02,mcg,20,1,0,0,P,Parenteral,4.5,mcg,,0.225
 06489M,DARBEPOETIN ALFA,Injection 40 micrograms in 0.4 mL pre-filled injection pen,B03XA02,mcg,40,1,0,0,P,Parenteral,4.5,mcg,,0.1125
 06490N,DARBEPOETIN ALFA,Injection 60 micrograms in 0.3 mL pre-filled injection pen,B03XA02,mcg,60,1,0,0,P,Parenteral,4.5,mcg,,0.075
@@ -5122,7 +5122,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08003F,MOCLOBEMIDE,Tablet 300 mg,N06AG02,mg,300,0,0,0,O,Oral,0.3,g,,1.0
 08004G,ATOVAQUONE,Tablet 250 mg,P01AX06,mg,250,0,0,1,O,Oral,2.25,g,,9.0
 08005H,SALMETEROL PRODUCT,"Powder for oral inhalation, refill disks (for use in Serevent Diskhaler), equivalent to 50 micrograms salmeterol per dose, 4 doses per disk, 15",R03AC12,mcg,200.0,1,1,1,Inhal.powder,Inhal.powder,0.1,mg,,0.5
-08006J,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 20 units-80 units per mL, 3 mL, 5",A10AD01,mL,15.0,1,1,1,P,Parenteral,,,,
+08006J,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 20 units-80 units per mL, 3 mL, 5",A10AD01,U,300.0,1,1,1,P,Parenteral,40.0,U,,0.13333333333333333
 08007K,PANTOPRAZOLE,Tablet (enteric coated) 40 mg (as sodium sesquihydrate),A02BC02,mg,40,0,0,0,O,Oral,40.0,mg,,1.0
 08008L,PANTOPRAZOLE,Tablet (enteric coated) 40 mg (as sodium sesquihydrate),A02BC02,mg,40,0,0,0,O,Oral,40.0,mg,,1.0
 08009M,FLURBIPROFEN,"Eye drops 300 micrograms per mL, 5 mL",S01BC04,mcg,1500.0,1,1,1,,,,,,
@@ -5204,8 +5204,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08082J,ESTRADIOL,"Transdermal patches 4 mg, 8 (Dermestril 50)",G03CA03,mg,4,1,0,1,TD,Transdermal,1.0,mg,gel,0.25
 08082J,ESTRADIOL,"Transdermal patches 4 mg, 8 (Dermestril 50)",G03CA03,mg,4,1,0,1,TD,Transdermal,1.53,mg,spray,0.3825
 08083K,APRACLONIDINE,"Eye drops 5 mg (as hydrochloride) per mL, 10 mL",S01EA03,mg,50.0,1,1,1,,,,,,
-08084L,INSULIN LISPRO,"Injection (human analogue) 100 units per mL, 10 mL vial",A10AB04,mL,10,1,0,0,P,Parenteral,,,,
-08085M,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 1.5 mL, 5",A10AB04,mL,7.5,1,1,1,P,Parenteral,,,,
+08084L,INSULIN LISPRO,"Injection (human analogue) 100 units per mL, 10 mL vial",A10AB04,U,1000.0,1,1,0,P,Parenteral,40.0,U,,0.04
+08085M,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 1.5 mL, 5",A10AB04,U,750.0,1,1,1,P,Parenteral,40.0,U,,0.05333333333333334
 08086N,OLSALAZINE,Tablet containing olsalazine sodium 500 mg,A07EC03,mg,500,0,0,0,O,Oral,1.0,g,,2.0
 08087P,ALPROSTADIL,Intracavernosal injection 5 micrograms in 1 mL ampoule,G04BE01,mcg,5,1,0,1,P,Parenteral,20.0,mcg,,4.0
 08088Q,ALPROSTADIL,Intracavernosal injection 10 micrograms in 1 mL ampoule,G04BE01,mcg,10,1,0,1,P,Parenteral,20.0,mcg,,2.0
@@ -5239,7 +5239,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08115D,CABERGOLINE,Tablet 500 micrograms,G02CB03,mcg,500,0,0,0,O,Oral,0.5,mg,,1.0
 08117F,BISMUTH SUBCITRATE and METRONIDAZOLE and TETRACYCLINE HYDROCHLORIDE (BUFFERED),"Pack containing 56 tablets bismuth subcitrate equivalent to 107.7 mg bismuth, 70 tablets metronidazole 200 mg and 112 capsules tetracycline hydrochloride (buffered) 250 mg",A02BD,mg,107.7,1,0,1,O,Oral,,,,
 08118G,ALPRAZOLAM,Tablet 2 mg,N05BA12,mg,2,0,0,1,O,Oral,1.0,mg,,0.5
-08119H,GLYCERYL TRINITRATE,Transdermal patch 54 mg,C01DA02,mg,54,0,0,0,TD,Transdermal,5.0,mg,,0.09259259259259259
+08119H,GLYCERYL TRINITRATE,Transdermal patch 54 mg,C01DA02,mg,54,0,0,1,TD,Transdermal,5.0,mg,,0.09259259259259259
 08120J,ETOPOSIDE,Powder for I.V. infusion 100 mg (as phosphate),L01CB01,mg,100,0,0,1,P,Parenteral,,,,
 08121K,DICLOXACILLIN,Capsule 250 mg (as sodium),J01CF01,mg,250,0,0,0,O,Oral,2.0,g,,8.0
 08122L,DICLOXACILLIN,Capsule 500 mg (as sodium),J01CF01,mg,500,0,0,0,O,Oral,2.0,g,,4.0
@@ -5342,7 +5342,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08210D,OESTROGENS-CONJUGATED and OESTROGENS-CONJUGATED with MEDROXYPROGESTERONE ACETATE,Pack containing 14 tablets conjugated oestrogens 625 micrograms and 14 tablets conjugated oestrogens 625 micrograms with medroxyprogesterone acetate 5 mg,G03FB06,mcg,625,1,0,1,O,Oral,,,,
 08211E,LEUPRORELIN,"I.M. injection (modified release), set containing 1 vial powder for injection 22.5 mg, 1 ampoule diluent 2 mL and 1 syringe with 2 needles",L02AE02,mg,22.5,1,0,1,P,Parenteral,1.0,mg,,0.044444444444444446
 08211E,LEUPRORELIN,"I.M. injection (modified release), set containing 1 vial powder for injection 22.5 mg, 1 ampoule diluent 2 mL and 1 syringe with 2 needles",L02AE02,mg,22.5,1,0,1,P,Parenteral,0.134,mg,depot inj,0.005955555555555556
-08212F,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB04,mL,15.0,1,1,0,P,Parenteral,,,,
+08212F,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB04,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 08213G,ATORVASTATIN,Tablet 10 mg (as calcium),C10AA05,mg,10,0,0,0,O,Oral,20.0,mg,,2.0
 08214H,ATORVASTATIN,Tablet 20 mg (as calcium),C10AA05,mg,20,0,0,0,O,Oral,20.0,mg,,1.0
 08215J,ATORVASTATIN,Tablet 40 mg (as calcium),C10AA05,mg,40,0,0,0,O,Oral,20.0,mg,,0.5
@@ -5526,7 +5526,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08387K,OXYCODONE,Tablet containing oxycodone hydrochloride 40 mg (controlled release),N02AA05,mg,40,0,0,0,O,Oral,75.0,mg,,1.875
 08388L,OXYCODONE,Tablet containing oxycodone hydrochloride 80 mg (controlled release),N02AA05,mg,80,0,0,0,O,Oral,75.0,mg,,0.9375
 08389M,GABAPENTIN,Tablet 800 mg,N03AX,mg,800,0,0,0,O,Oral,,,,
-08390N,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 25 units-75 units per mL, 3 mL, 5",A10AD04,mL,15.0,1,1,0,P,Parenteral,,,,
+08390N,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 25 units-75 units per mL, 3 mL, 5",A10AD04,U,375.0,1,1,0,P,Parenteral,40.0,U,,0.10666666666666667
 08393R,CABERGOLINE,Tablet 1 mg,N04BC06,mg,1,0,0,0,O,Oral,3.0,mg,,3.0
 08394T,CABERGOLINE,Tablet 2 mg,N04BC06,mg,2,0,0,0,O,Oral,3.0,mg,,1.5
 08395W,CABERGOLINE,Tablet 4 mg,N04BC06,mg,4,0,0,1,O,Oral,3.0,mg,,0.75
@@ -5568,7 +5568,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08432T,FLUTICASONE PROPIONATE + SALMETEROL,"Powder for oral inhalation in breath actuated device containing fluticasone propionate 500 micrograms with salmeterol 50 micrograms (as xinafoate) per dose, 60 doses",R03AK06,mcg,30000.0,1,1,0,Inhal.powder,Inhal.powder,,,,
 08433W,OLANZAPINE,Wafer 5 mg,N05AH03,mg,5,0,0,0,O,Oral,10.0,mg,,2.0
 08434X,OLANZAPINE,Wafer 10 mg,N05AH03,mg,10,0,0,0,O,Oral,10.0,mg,,1.0
-08435Y,INSULIN ASPART,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB05,mL,15.0,1,1,0,P,Parenteral,,,,
+08435Y,INSULIN ASPART,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB05,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 08436B,FOLLITROPIN BETA,Solution for injection 50 I.U. in 0.5 mL single use vial,G03GA06,mL,0.5,1,0,1,P,Parenteral,,,,
 08437C,FOLLITROPIN BETA,Solution for injection 100 I.U. in 0.5 mL single use vial,G03GA06,mL,0.5,1,0,1,P,Parenteral,,,,
 08438D,FOLLITROPIN BETA,Solution for injection 150 I.U. in 0.5 mL single use vial,G03GA06,mL,0.5,1,0,1,P,Parenteral,,,,
@@ -5710,7 +5710,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08568Y,BENZYDAMINE + CHLORHEXIDINE,"Mouth and throat rinse 22.5 mg-18 mg per 15 mL, 500 mL",A01AD02,mg,22.5,1,0,1,,,,,,
 08569B,DOXORUBICIN HYDROCHLORIDE (AS PEGYLATED LIPOSOMAL),Suspension for I.V. infusion containing pegylated liposomal doxorubicin hydrochloride 20 mg in 10 mL,L01DB01,mg,20,1,0,1,P,Parenteral,,,,
 08570C,DOXORUBICIN HYDROCHLORIDE (AS PEGYLATED LIPOSOMAL),Suspension for I.V. infusion containing pegylated liposomal doxorubicin hydrochloride 50 mg in 25 mL,L01DB01,mg,50,1,0,1,P,Parenteral,,,,
-08571D,INSULIN ASPART,"Injection (human analogue) 100 units per mL, 10 mL vial",A10AB05,mL,10,1,0,0,P,Parenteral,,,,
+08571D,INSULIN ASPART,"Injection (human analogue) 100 units per mL, 10 mL vial",A10AB05,U,1000.0,1,1,0,P,Parenteral,40.0,U,,0.04
 08572E,INTERFERON ALFA-2B,"Solution for injection 18,000,000 I.U. in 1.2 mL multi-dose injection pen",L03AB05,mL,1.2,1,0,1,P,Parenteral,,,,
 08573F,GLUCOSE INDICATOR BLOOD,"Test strips, 100 (SofTact)",V04CA02,,,,,1,,,,,,
 08574G,AMINO ACID SYNTHETIC FORMULA,Oral powder 400 g (EleCare),V06DB,g,400,0,0,0,O,Oral,,,,
@@ -5747,7 +5747,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08606Y,BISOPROLOL,Tablet containing bisoprolol fumarate 10 mg,C07AB07,mg,10,0,0,0,O,Oral,10.0,mg,,1.0
 08607B,METFORMIN,Tablet containing metformin hydrochloride 1 g,A10BA02,g,1,0,0,0,O,Oral,2.0,g,,2.0
 08608C,GLUCOSE INDICATOR BLOOD,"Electrode strips, 100 (TrueSense)",V04CA02,,,,,1,,,,,,
-08609D,INSULIN ASPART + INSULIN ASPART PROTAMINE,"Injections (human analogue), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD05,mL,15.0,1,1,0,P,Parenteral,,,,
+08609D,INSULIN ASPART + INSULIN ASPART PROTAMINE,"Injections (human analogue), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD05,U,450.0,1,1,0,P,Parenteral,40.0,U,,0.08888888888888889
 08610E,NIFEDIPINE,Tablet 20 mg (controlled release),C08CA05,mg,20,0,0,1,O,Oral,30.0,mg,,1.5
 08611F,TRAMADOL,Capsule containing tramadol hydrochloride 50 mg,N02AX02,mg,50,0,0,1,O,Oral,0.3,g,,6.0
 08612G,MACROGOL-3350 + SODIUM CHLORIDE + BICARBONATE + POTASSIUM CHLORIDE,"Sachets containing powder for oral solution 13.125 g with electrolytes, 30",A06AD15,g,393.75,1,1,0,O,Oral,10.0,g,,0.025396825396825397
@@ -6027,7 +6027,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 08871X,FOLLITROPIN BETA,Solution for injection 900 I.U. in 1.08 mL multi-dose cartridge,G03GA06,mL,1.08,1,0,0,P,Parenteral,,,,
 08872Y,TOBRAMYCIN,Injection 80 mg (as sulfate) in 2 mL (without preservative),J01GB01,mg,80,1,0,0,P,Parenteral,0.24,g,,3.0
 08873B,GRANISETRON PRODUCT,Tablet 2 mg (as hydrochloride),A04AA02,mg,2,0,0,0,O,Oral,2.0,mg,,1.0
-08874C,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD04,mL,15.0,1,1,0,P,Parenteral,,,,
+08874C,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD04,U,750.0,1,1,0,P,Parenteral,40.0,U,,0.05333333333333334
 08875D,LEUPRORELIN,"I.M. injection (modified release), powder for injection containing leuprorelin acetate 7.5 mg with diluent in pre-filled dual-chamber syringe",L02AE02,mg,7.5,0,0,0,P,Parenteral,1.0,mg,,0.13333333333333333
 08875D,LEUPRORELIN,"I.M. injection (modified release), powder for injection containing leuprorelin acetate 7.5 mg with diluent in pre-filled dual-chamber syringe",L02AE02,mg,7.5,0,0,0,P,Parenteral,0.134,mg,depot inj,0.017866666666666666
 08876E,LEUPRORELIN,"I.M. injection (modified release), powder for injection containing leuprorelin acetate 22.5 mg with diluent in pre-filled dual-chamber syringe",L02AE02,mg,22.5,0,0,0,P,Parenteral,1.0,mg,,0.044444444444444446
@@ -6188,8 +6188,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09036N,ETANERCEPT,Injection set containing 4 vials powder for injection 25 mg and 4 pre-filled syringes solvent 1 mL,L04AB01,mg,25,1,0,0,P,Parenteral,7.0,mg,,0.28
 09037P,ETANERCEPT,Injection set containing 4 vials powder for injection 25 mg and 4 pre-filled syringes solvent 1 mL,L04AB01,mg,25,1,0,0,P,Parenteral,7.0,mg,,0.28
 09038Q,ETANERCEPT,Injection set containing 4 vials powder for injection 50 mg and 4 pre-filled syringes solvent 1 mL,L04AB01,mg,50,1,0,1,P,Parenteral,7.0,mg,,0.14
-09039R,INSULIN GLARGINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE04,mL,15.0,1,1,0,P,Parenteral,,,,
-09040T,INSULIN DETEMIR,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE05,mL,15.0,1,1,0,P,Parenteral,,,,
+09039R,INSULIN GLARGINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE04,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+09040T,INSULIN DETEMIR,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE05,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 09041W,FOLINIC ACID,Injection containing calcium folinate equivalent to 300 mg folinic acid in 30 mL,V03AF03,mg,300,1,0,1,P,Parenteral,60.0,mg,Expressed as folinic acid,0.2
 09042X,ROSUVASTATIN,Tablet 5 mg (as calcium),C10AA07,mg,5,0,0,1,O,Oral,10.0,mg,,2.0
 09043Y,ROSUVASTATIN,Tablet 10 mg (as calcium),C10AA07,mg,10,0,0,1,O,Oral,10.0,mg,,1.0
@@ -6369,7 +6369,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09221H,POLYVINYL ALCOHOL,"Eye drops 14 mg per mL, 15 mL (contains sodium chlorite/hydrogen peroxide as preservative)",S01XA20,mg,210.0,1,1,1,,,,,,
 09222J,POLYVINYL ALCOHOL,"Eye drops 30 mg per mL, 15 mL",S01XA20,mg,450.0,1,1,1,,,,,,
 09223K,POLYVINYL ALCOHOL,"Eye drops 30 mg per mL, 15 mL (contains sodium chlorite/hydrogen peroxide as preservative)",S01XA20,mg,450.0,1,1,1,,,,,,
-09224L,INSULIN GLULISINE,"Injection (human analogue) 100 units per mL, 10 mL",A10AB06,mL,10,1,0,0,P,Parenteral,,,,
+09224L,INSULIN GLULISINE,"Injection (human analogue) 100 units per mL, 10 mL",A10AB06,U,1000.0,1,1,0,P,Parenteral,40.0,U,,0.04
 09225M,PANCREATIC EXTRACT,"Capsule (containing enteric coated minimicrospheres) providing not less than 5,000 BP units of lipase activity",A09AA02,,,,,1,O,Oral,,,,
 09226N,PANCREATIC EXTRACT,"Capsule (containing enteric coated minimicrospheres) providing not less than 10,000 BP units of lipase activity",A09AA02,,,,,1,O,Oral,,,,
 09227P,PANCREATIC EXTRACT,"Capsule (containing enteric coated minimicrospheres) providing not less than 25,000 BP units of lipase activity",A09AA02,,,,,1,O,Oral,,,,
@@ -6732,15 +6732,15 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09584K,GANIRELIX,Injection 250 micrograms (as acetate) in 0.5 mL pre-filled syringe,H01CC01,mcg,250,1,0,0,P,Parenteral,0.25,mg,,1.0
 09585L,SOMATROPIN,Powder for injection 5 mg (15 i.u.) with diluent in pre-filled pen (with preservative),H01AC01,mg,5,1,0,0,P,Parenteral,,,,
 09586M,SOMATROPIN,Powder for injection 12 mg (36 i.u.) with diluent in pre-filled pen (with preservative),H01AC01,mg,12,1,0,0,P,Parenteral,,,,
-09587N,EPOETIN LAMBDA,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,mL,0.4,1,0,0,P,Parenteral,,,,
-09588P,EPOETIN LAMBDA,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-09589Q,EPOETIN LAMBDA,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-09590R,EPOETIN LAMBDA,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-09591T,EPOETIN LAMBDA,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,mL,0.6,1,0,0,P,Parenteral,,,,
-09593X,EPOETIN LAMBDA,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,mL,0.8,1,0,0,P,Parenteral,,,,
-09594Y,EPOETIN LAMBDA,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,mL,0.8,1,0,0,P,Parenteral,,,,
-09595B,EPOETIN LAMBDA,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
-09596C,EPOETIN LAMBDA,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
+09587N,EPOETIN LAMBDA,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
+09588P,EPOETIN LAMBDA,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+09589Q,EPOETIN LAMBDA,"Injection 5,000 units in 0.5 mL pre-filled syringe",B03XA01,U,5000.0,1,0,0,P,Parenteral,1.0,TU,,0.2
+09590R,EPOETIN LAMBDA,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+09591T,EPOETIN LAMBDA,"Injection 6,000 units in 0.6 mL pre-filled syringe",B03XA01,U,6000.0,1,0,0,P,Parenteral,1.0,TU,,0.16666666666666666
+09593X,EPOETIN LAMBDA,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,U,8000.0,1,0,0,P,Parenteral,1.0,TU,,0.125
+09594Y,EPOETIN LAMBDA,"Injection 8,000 units in 0.8 mL pre-filled syringe",B03XA01,U,8000.0,1,0,0,P,Parenteral,1.0,TU,,0.125
+09595B,EPOETIN LAMBDA,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
+09596C,EPOETIN LAMBDA,"Injection 10,000 units in 1 mL pre-filled syringe",B03XA01,U,10000.0,1,0,0,P,Parenteral,1.0,TU,,0.1
 09597D,AZACITIDINE,Powder for injection 100 mg,L01BC07,mg,100,0,0,0,P,Parenteral,,,,
 09598E,AZACITIDINE,Powder for injection 100 mg,L01BC07,mg,100,0,0,0,P,Parenteral,,,,
 09599F,CETRORELIX,Powder for injection 250 micrograms (as acetate) with diluent,H01CC02,mcg,250,0,0,0,P,Parenteral,0.25,mg,,1.0
@@ -6767,7 +6767,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09620H,SEVELAMER,Tablet containing sevelamer hydrochloride 800 mg,V03AE02,mg,800,0,0,0,O,Oral,6.4,g,,8.0
 09621J,ABATACEPT,Powder for I.V. infusion 250 mg,L04AA24,mg,250,0,0,0,P,Parenteral,27.0,mg,,0.108
 09622K,SITAXENTAN,Tablet containing sitaxentan sodium 100 mg,C02KX03,mg,100,0,0,1,O,Oral,0.1,g,,1.0
-09623L,EPOETIN ALFA PRODUCT,"Injection 30,000 units in 0.75 mL pre-filled syringe",B03XA01,mL,0.75,1,0,1,P,Parenteral,,,,
+09623L,EPOETIN ALFA PRODUCT,"Injection 30,000 units in 0.75 mL pre-filled syringe",B03XA01,U,30000.0,1,0,1,P,Parenteral,1.0,TU,,0.03333333333333333
 09624M,NATALIZUMAB,Solution concentrate for I.V. infusion 300 mg in 15 mL,L04AG03,mg,300,1,0,0,P,Parenteral,10.0,mg,,0.03333333333333333
 09625N,CINACALCET,Tablet 30 mg (as hydrochloride),H05BX01,mg,30,0,0,0,O,Oral,60.0,mg,,2.0
 09626P,CINACALCET,Tablet 60 mg (as hydrochloride),H05BX01,mg,60,0,0,0,O,Oral,60.0,mg,,1.0
@@ -6812,9 +6812,9 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09665Q,TACROLIMUS,Capsule 1 mg (once daily prolonged release),L04AD02,mg,1,0,0,0,O,Oral,5.0,mg,,5.0
 09666R,TACROLIMUS,Capsule 5 mg (once daily prolonged release),L04AD02,mg,5,0,0,0,O,Oral,5.0,mg,,1.0
 09667T,THALIDOMIDE,Capsule 100 mg,L04AX02,mg,100,0,0,0,O,Oral,0.1,g,,1.0
-09668W,EPOETIN LAMBDA,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-09669X,EPOETIN LAMBDA,"Injection 2,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
-09670Y,EPOETIN LAMBDA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
+09668W,EPOETIN LAMBDA,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,U,1000.0,1,0,0,P,Parenteral,1.0,TU,,1.0
+09669X,EPOETIN LAMBDA,"Injection 2,000 units in 1 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+09670Y,EPOETIN LAMBDA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
 09671B,TOCILIZUMAB,Concentrate for injection 80 mg in 4 mL,L04AC07,mg,80,1,0,0,P,Parenteral,20.0,mg,,0.25
 09672C,TOCILIZUMAB,Concentrate for injection 200 mg in 10 mL,L04AC07,mg,200,1,0,0,P,Parenteral,20.0,mg,,0.1
 09673D,TOCILIZUMAB,Concentrate for injection 400 mg in 20 mL,L04AC07,mg,400,1,0,0,P,Parenteral,20.0,mg,,0.05
@@ -6829,10 +6829,10 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 09682N,TACROLIMUS,Capsule 1 mg (once daily prolonged release),L04AD02,mg,1,0,0,0,O,Oral,5.0,mg,,5.0
 09683P,TACROLIMUS,Capsule 5 mg (once daily prolonged release),L04AD02,mg,5,0,0,0,O,Oral,5.0,mg,,1.0
 09684Q,THALIDOMIDE,Capsule 100 mg,L04AX02,mg,100,0,0,0,O,Oral,0.1,g,,1.0
-09685R,EPOETIN LAMBDA,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,mL,0.5,1,0,0,P,Parenteral,,,,
-09686T,EPOETIN LAMBDA,"Injection 2,000 units in 1 mL pre-filled syringe",B03XA01,mL,1,1,0,0,P,Parenteral,,,,
-09687W,EPOETIN LAMBDA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,mL,0.3,1,0,0,P,Parenteral,,,,
-09688X,EPOETIN LAMBDA,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,mL,0.4,1,0,0,P,Parenteral,,,,
+09685R,EPOETIN LAMBDA,"Injection 1,000 units in 0.5 mL pre-filled syringe",B03XA01,U,1000.0,1,0,0,P,Parenteral,1.0,TU,,1.0
+09686T,EPOETIN LAMBDA,"Injection 2,000 units in 1 mL pre-filled syringe",B03XA01,U,2000.0,1,0,0,P,Parenteral,1.0,TU,,0.5
+09687W,EPOETIN LAMBDA,"Injection 3,000 units in 0.3 mL pre-filled syringe",B03XA01,U,3000.0,1,0,0,P,Parenteral,1.0,TU,,0.3333333333333333
+09688X,EPOETIN LAMBDA,"Injection 4,000 units in 0.4 mL pre-filled syringe",B03XA01,U,4000.0,1,0,0,P,Parenteral,1.0,TU,,0.25
 09689Y,TRASTUZUMAB,Powder for I.V. infusion 150 mg,L01XC03,mg,150,0,0,1,P,Parenteral,,,,
 09690B,TRASTUZUMAB,Powder for I.V. infusion 60 mg,L01XC03,mg,60,0,0,1,P,Parenteral,,,,
 09691C,TRASTUZUMAB,Powder for I.V. infusion 60 mg,L01XC03,mg,60,0,0,1,P,Parenteral,,,,
@@ -7713,7 +7713,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 10851D,METHYLPREDNISOLONE,"Cream containing methylprednisolone aceponate 1 mg per g, 15 g",D07AC14,mg,1,1,0,0,,,,,,
 10852E,METHYLPREDNISOLONE,"Lotion containing methylprednisolone aceponate 1 mg per g, 20 g",D07AC14,mg,1,1,0,0,,,,,,
 10853F,METHYLPREDNISOLONE,"Ointment containing methylprednisolone aceponate 1 mg per g, 15 g",D07AC14,mg,1,1,0,0,,,,,,
-10854G,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,mL,24,1,0,0,O,Oral,,,,
+10854G,NYSTATIN,"Oral suspension 100,000 units per mL, 24 mL",A01AB11,U,2400000.0,1,1,0,O,Oral,,,,
 10855H,METHYLPREDNISOLONE,"Cream containing methylprednisolone aceponate 1 mg per g, 15 g",D07AC14,mg,1,1,0,0,,,,,,
 10856J,METHYLPREDNISOLONE,"Lotion containing methylprednisolone aceponate 1 mg per g, 20 g",D07AC14,mg,1,1,0,0,,,,,,
 10857K,DRESSING ALGINATE with MANUKA HONEY,Ribbon 2.5 cm x 20 cm,V07AY,,,,,0,,,,,,
@@ -8008,13 +8008,13 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11145N,SOFOSBUVIR + VELPATASVIR,Tablet containing 400 mg sofosbuvir with 100 mg velpatasvir,J05AP55,mg,400,1,0,0,O,Oral,,,,
 11146P,TENOFOVIR DISOPROXIL + EMTRICITABINE,Tablet containing tenofovir disoproxil phosphate 291 mg with emtricitabine 200 mg,J05AR03,mg,291,1,0,1,O,Oral,,,,
 11147Q,SOFOSBUVIR + VELPATASVIR,Tablet containing 400 mg sofosbuvir with 100 mg velpatasvir,J05AP55,mg,400,1,0,0,O,Oral,,,,
-11148R,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3",G03GA01,mL,3.0,1,1,1,P,Parenteral,,,,
+11148R,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3",G03GA01,U,1500.0,1,1,1,P,Parenteral,250.0,U,,0.16666666666666666
 11149T,TENOFOVIR DISOPROXIL + EMTRICITABINE,Tablet containing tenofovir disoproxil maleate 300 mg with emtricitabine 200 mg,J05AR03,mg,300,1,0,0,O,Oral,,,,
 11150W,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 11151X,AMINO ACID FORMULA with VITAMINS and MINERALS without PHENYLALANINE and TYROSINE,"Sachets containing oral powder 34 g, 30 (TYR express 20)",V06DX,g,34,1,0,1,O,Oral,,,,
 11152Y,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 11153B,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
-11154C,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3",G03GA01,mL,3.0,1,1,1,P,Parenteral,,,,
+11154C,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3",G03GA01,U,1500.0,1,1,1,P,Parenteral,250.0,U,,0.16666666666666666
 11155D,TENOFOVIR DISOPROXIL,Tablet containing tenofovir disoproxil maleate 300 mg,J05AF07,mg,300,0,0,0,O,Oral,0.245,g,,0.8166666666666667
 11156E,HUMAN CHORIONIC GONADOTROPHIN,"Powder for injection 5,000 units with solvent",G03GA01,,,,,1,P,Parenteral,,,,
 11157F,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
@@ -8160,13 +8160,13 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11299Q,SAXAGLIPTIN + METFORMIN,Tablet (modified release) containing 5 mg saxagliptin (as hydrochloride) with 1000 mg metformin hydrochloride,A10BD10,mg,5,1,0,1,O,Oral,,,,
 11300R,DAPAGLIFLOZIN + METFORMIN,Tablet (modified release) containing 5 mg dapagliflozin (as propanediol monohydrate) with 1000 mg metformin hydrochloride,A10BD15,mg,5,1,0,1,O,Oral,,,,
 11301T,BUDESONIDE + FORMOTEROL,"Powder for oral inhalation in breath actuated device containing budesonide 400 micrograms with formoterol fumarate dihydrate 12 micrograms per dose, 60 doses",R03AK07,mcg,24000.0,1,1,0,Inhal.powder,Inhal.powder,,,,
-11302W,INSULIN GLARGINE,"Injections (human analogue), cartridges, 300 units per mL, 1.5 mL, 5",A10AE04,mL,7.5,1,1,0,P,Parenteral,,,,
+11302W,INSULIN GLARGINE,"Injections (human analogue), cartridges, 300 units per mL, 1.5 mL, 5",A10AE04,U,2250.0,1,1,0,P,Parenteral,40.0,U,,0.017777777777777778
 11303X,EMPAGLIFLOZIN + LINAGLIPTIN,Tablet containing 25 mg empagliflozin with 5 mg linagliptin,A10BD19,mg,25,1,0,0,O,Oral,,,,
 11304Y,SONIDEGIB,Capsule 200 mg,L01XJ02,mg,200,0,0,0,O,Oral,,,,
 11305B,SAXAGLIPTIN + DAPAGLIFLOZIN,Tablet containing saxagliptin 5 mg with dapaglifozin 10 mg,A10BD21,mg,5,1,0,1,O,Oral,,,,
 11306C,TENOFOVIR DISOPROXIL + EMTRICITABINE,Tablet containing tenofovir disoproxil phosphate 291 mg with emtricitabine 200 mg,J05AR03,mg,291,1,0,1,O,Oral,,,,
 11307D,VERTEPORFIN,Powder for I.V. infusion 15 mg,S01LA01,mg,15,0,0,1,P,Parenteral,,,,
-11308E,INSULIN GLARGINE,"Injections (human analogue), cartridge, 300 units per mL, 1.5 mL, 3",A10AE04,mL,4.5,1,1,0,P,Parenteral,,,,
+11308E,INSULIN GLARGINE,"Injections (human analogue), cartridge, 300 units per mL, 1.5 mL, 3",A10AE04,U,1350.0,1,1,0,P,Parenteral,40.0,U,,0.02962962962962963
 11309F,ATEZOLIZUMAB,Solution concentrate for I.V. infusion 1200 mg in 20 mL,L01FF05,mg,1200,1,0,0,P,Parenteral,,,,
 11310G,EMPAGLIFLOZIN + LINAGLIPTIN,Tablet containing 10 mg empagliflozin with 5 mg linagliptin,A10BD19,mg,10,1,0,1,O,Oral,,,,
 11311H,SAXAGLIPTIN,Tablet 5 mg (as hydrochloride),A10BH03,mg,5,0,0,1,O,Oral,5.0,mg,,1.0
@@ -8275,7 +8275,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11414R,FOLLITROPIN DELTA,Injection 72 micrograms in 2.16 mL pre-filled multi-dose pen,G03GA10,mcg,72,1,0,0,P,Parenteral,12.0,mcg,,0.16666666666666666
 11415T,CLOZAPINE,"Oral liquid 50 mg per mL, 100 mL",N05AH02,mg,5000.0,1,1,0,O,Oral,0.3,g,,0.06
 11416W,PEGINTERFERON ALFA-2A,Injection 135 micrograms in 0.5 mL single use pre-filled syringe,L03AB11,mcg,135,1,0,0,P,Parenteral,26.0,mcg,,0.1925925925925926
-11417X,INSULIN DEGLUDEC + INSULIN ASPART,"Injections, pre-filled pen, 70 units-30 units per mL, 3 mL, 5",A10AD06,mL,15.0,1,1,1,P,Parenteral,,,,
+11417X,INSULIN DEGLUDEC + INSULIN ASPART,"Injections, pre-filled pen, 70 units-30 units per mL, 3 mL, 5",A10AD06,U,1050.0,1,1,1,P,Parenteral,40.0,U,,0.0380952380952381
 11418Y,PERAMPANEL,Tablet 4 mg (as hemisesquihydrate),N03AX22,mg,4,0,0,0,O,Oral,8.0,mg,,2.0
 11419B,IBRUTINIB,Capsule 140 mg,L01EL01,mg,140,0,0,0,O,Oral,0.42,g,,3.0
 11420C,BACLOFEN,Intrathecal injection 10 mg in 5 mL,M03BX01,mg,10,1,0,1,P,Parenteral,0.55,mg,,0.05500000000000001
@@ -8284,7 +8284,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11423F,INFLIXIMAB,Powder for I.V. infusion 100 mg,L04AB02,mg,100,0,0,0,P,Parenteral,3.75,mg,,0.0375
 11424G,INFLIXIMAB,Powder for I.V. infusion 100 mg,L04AB02,mg,100,0,0,0,P,Parenteral,3.75,mg,,0.0375
 11425H,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
-11426J,INSULIN DEGLUDEC + INSULIN ASPART,"Injections, cartridges, 70 units-30 units per mL, 3 mL, 5",A10AD06,mL,15.0,1,1,0,P,Parenteral,,,,
+11426J,INSULIN DEGLUDEC + INSULIN ASPART,"Injections, cartridges, 70 units-30 units per mL, 3 mL, 5",A10AD06,U,1050.0,1,1,0,P,Parenteral,40.0,U,,0.0380952380952381
 11427K,PERICIAZINE,"Tablet 10 mg, 84",N05AC01,mg,840.0,1,1,1,O,Oral,50.0,mg,,0.05952380952380952
 11428L,PERAMPANEL,Tablet 10 mg (as hemisesquihydrate),N03AX22,mg,10,0,0,0,O,Oral,8.0,mg,,0.8
 11429M,PERAMPANEL,Tablet 8 mg (as hemisesquihydrate),N03AX22,mg,8,0,0,0,O,Oral,8.0,mg,,1.0
@@ -8496,7 +8496,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11642R,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 11643T,HYPROMELLOSE,"Eye drops 3 mg per mL, 10 mL",S01XA20,mg,30.0,1,1,1,,,,,,
 11644W,IPILIMUMAB,Injection concentrate for I.V. infusion 50 mg in 10 mL,L01FX04,mg,50,1,0,0,P,Parenteral,,,,
-11645X,INSULIN LISPRO,"Injections (human analogue), pre-filled pen, 200 units per mL, 3 mL, 5",A10AB04,mL,15.0,1,1,0,P,Parenteral,,,,
+11645X,INSULIN LISPRO,"Injections (human analogue), pre-filled pen, 200 units per mL, 3 mL, 5",A10AB04,U,3000.0,1,1,0,P,Parenteral,40.0,U,,0.013333333333333334
 11646Y,PEMBROLIZUMAB,Solution concentrate for I.V. infusion 100 mg in 4 mL,L01FF02,mg,100,1,0,0,P,Parenteral,,,,
 11647B,IPILIMUMAB,Injection concentrate for I.V. infusion 50 mg in 10 mL,L01XC11,mg,50,1,0,1,P,Parenteral,,,,
 11648C,VENETOCLAX,Tablet 50 mg,L01XX52,mg,50,0,0,0,O,Oral,,,,
@@ -8556,8 +8556,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11702X,FERRIC CARBOXYMALTOSE,Injection 1000 mg (iron) in 20 mL,B03AC,mg,1000,1,0,0,P,Parenteral,0.1,g,Fe,0.1
 11703Y,ETHOSUXIMIDE,Capsule 250 mg,N03AD01,mg,250,0,0,0,O,Oral,1.25,g,,5.0
 11704B,BLEOMYCIN,"Powder for injection containing bleomycin sulfate 15,000 I.U. in 1 vial",L01DC01,,,,,1,P,Parenteral,,,,
-11705C,INSULIN ASPART,"Injection (human analogue) (fast acting) 100 units per mL, 10 mL vial",A10AB05,mL,10,1,0,1,P,Parenteral,,,,
-11706D,INSULIN ASPART,"Injections (human analogue) (fast acting), pre-filled pen, 100 units per mL, 3 mL, 5",A10AB05,mL,15.0,1,1,1,P,Parenteral,,,,
+11705C,INSULIN ASPART,"Injection (human analogue) (fast acting) 100 units per mL, 10 mL vial",A10AB05,U,1000.0,1,1,1,P,Parenteral,40.0,U,,0.04
+11706D,INSULIN ASPART,"Injections (human analogue) (fast acting), pre-filled pen, 100 units per mL, 3 mL, 5",A10AB05,U,1500.0,1,1,1,P,Parenteral,40.0,U,,0.02666666666666667
 11707E,METHYL SALICYLATE + MENTHOL + CAMPHOR + EUCALYPTUS OIL + PINE OIL PUMILIO + TURPENTINE OIL + PEPPERMINT OIL + CAJUPUT OIL + CAPSICUM EXTRACT,"Cream 20%-5%-3.5%-3%-1%-1%-0.5%-0.5%-0.15%, 100 g",M02AC,g,100,1,0,0,,,,,,
 11708F,GLYCEROL,"Solution 15%, 1 kg",D11AX,,,,,0,,,,,,
 11709G,DRESSING HYDROGEL,"Dressings 10 cm x 10 cm, 5",V07AY,,,,,0,,,,,,
@@ -8574,7 +8574,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11720W,TOCILIZUMAB,Injection 162 mg in 0.9 mL single use pre-filled syringe,L04AC07,mg,162,1,0,0,P,Parenteral,20.0,mg,,0.12345679012345678
 11721X,TOCILIZUMAB,Injection 162 mg in 0.9 mL single use pre-filled syringe,L04AC07,mg,162,1,0,0,P,Parenteral,20.0,mg,,0.12345679012345678
 11722Y,TOCILIZUMAB,Injection 162 mg in 0.9 mL single use pre-filled pen,L04AC07,mg,162,1,0,0,P,Parenteral,20.0,mg,,0.12345679012345678
-11723B,BENZATHINE BENZYLPENICILLIN,"Injection containing 600,000 units benzathine benzylpenicillin tetrahydrate in 1.17 mL single use pre-filled syringe",J01CE08,mL,1.17,1,0,0,P,Parenteral,,,,
+11723B,BENZATHINE BENZYLPENICILLIN,"Injection containing 600,000 units benzathine benzylpenicillin tetrahydrate in 1.17 mL single use pre-filled syringe",J01CE08,U,600000.0,1,0,0,P,Parenteral,,,,
 11724C,DEFERIPRONE,Tablet 1000 mg,V03AC02,mg,1000,0,0,0,O,Oral,,,,
 11725D,TOCILIZUMAB,Injection 162 mg in 0.9 mL single use pre-filled pen,L04AC07,mg,162,1,0,0,P,Parenteral,20.0,mg,,0.12345679012345678
 11726E,CALCIUM,"Tablet, chewable, 500 mg (as carbonate)",A12AA04,mg,500,0,0,0,O,Oral,3.0,g,,6.0
@@ -8586,7 +8586,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11732L,TENOFOVIR DISOPROXIL + EMTRICITABINE + EFAVIRENZ,Tablet containing tenofovir disoproxil maleate 300 mg with emtricitabine 200 mg and efavirenz 600 mg,J05AR06,mg,300,1,0,0,O,Oral,,,,
 11733M,FLOXACILLIN,Capsule 250 mg (as sodium),J01CF05,mg,250,0,0,1,O,Oral,2.0,g,,8.0
 11734N,TOCILIZUMAB,Injection 162 mg in 0.9 mL single use pre-filled pen,L04AC07,mg,162,1,0,0,P,Parenteral,20.0,mg,,0.12345679012345678
-11735P,BENZATHINE BENZYLPENICILLIN,"Injection containing 600,000 units benzathine benzylpenicillin tetrahydrate in 1.17 mL single use pre-filled syringe",J01CE08,mL,1.17,1,0,0,P,Parenteral,,,,
+11735P,BENZATHINE BENZYLPENICILLIN,"Injection containing 600,000 units benzathine benzylpenicillin tetrahydrate in 1.17 mL single use pre-filled syringe",J01CE08,U,600000.0,1,0,0,P,Parenteral,,,,
 11736Q,LANREOTIDE,Injection 120 mg (as acetate) in single dose pre-filled syringe,H01CB03,mg,120,0,0,0,P,Parenteral,3.0,mg,,0.025
 11737R,FLOXACILLIN,Capsule 500 mg (as sodium),J01CF05,mg,500,0,0,1,O,Oral,2.0,g,,4.0
 11738T,FLOXACILLIN,Capsule 500 mg (as sodium),J01CF05,mg,500,0,0,1,O,Oral,2.0,g,,4.0
@@ -8607,7 +8607,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11752M,IMATINIB,Tablet 400 mg (as mesilate),L01EA01,mg,400,0,0,0,O,Oral,0.4,g,,1.0
 11753N,IMATINIB,Tablet 100 mg (as mesilate),L01EA01,mg,100,0,0,0,O,Oral,0.4,g,,4.0
 11754P,BUPRENORPHINE,Injection (modified release) 64 mg in 0.18 mL pre-filled syringe,N07BC01,mg,64,1,0,1,P,Parenteral,2.1,mg,,0.0328125
-11755Q,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,mL,2.3,1,0,0,P,Parenteral,,,,
+11755Q,BENZATHINE BENZYLPENICILLIN,"Injection containing 1,200,000 units benzathine benzylpenicillin tetrahydrate in 2.3 mL single use pre-filled syringe",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 11756R,IMATINIB,Capsule 400 mg (as mesilate),L01EA01,mg,400,0,0,0,O,Oral,0.4,g,,1.0
 11757T,IMATINIB,Capsule 100 mg (as mesilate),L01EA01,mg,100,0,0,0,O,Oral,0.4,g,,4.0
 11758W,IMATINIB,Tablet 400 mg (as mesilate),L01EA01,mg,400,0,0,0,O,Oral,0.4,g,,1.0
@@ -8667,7 +8667,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 11812Q,TEDUGLUTIDE,Powder for injection 5 mg with diluent,A16AX08,mg,5,0,0,0,P,Parenteral,5.0,mg,,1.0
 11813R,RITUXIMAB,Solution for I.V. infusion 100 mg in 10 mL,L01FA01,mg,100,1,0,1,P,Parenteral,,,,
 11814T,BLINATUMOMAB,Powder for I.V. infusion 38.5 micrograms,L01XC19,mcg,38.5,0,0,1,P,Parenteral,,,,
-11815W,INSULIN GLARGINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE04,mL,15.0,1,1,0,P,Parenteral,,,,
+11815W,INSULIN GLARGINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE04,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 11816X,NALOXONE,"Nasal spray 1.8 mg (as hydrochloride dihydrate) in 0.1 mL single dose unit, 2",V03AB15,mg,3.6,1,1,0,N,Nasal,,,,
 11817Y,NALOXONE,"Nasal spray 1.8 mg (as hydrochloride dihydrate) in 0.1 mL single dose unit, 2",V03AB15,mg,3.6,1,1,0,N,Nasal,,,,
 11818B,FINGOLIMOD,Capsule 250 micrograms (as hydrochloride),L04AE01,mcg,250,0,0,0,O,Oral,0.5,mg,,2.0
@@ -9089,11 +9089,11 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 12231R,DARATUMUMAB,Solution concentrate for I.V. infusion 100 mg in 5 mL,L01FC01,mg,100,1,0,0,P,Parenteral,,,,
 12232T,OSIMERTINIB,Tablet 80 mg,L01EB04,mg,80,0,0,0,O,Oral,80.0,mg,,1.0
 12233W,OSIMERTINIB,Tablet 40 mg,L01EB04,mg,40,0,0,0,O,Oral,80.0,mg,,2.0
-12234X,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 25 units-75 units per mL, 3 mL, 5",A10AD04,mL,15.0,1,1,0,P,Parenteral,,,,
+12234X,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 25 units-75 units per mL, 3 mL, 5",A10AD04,U,375.0,1,1,0,P,Parenteral,40.0,U,,0.10666666666666667
 12235Y,SELEXIPAG,Tablet 400 micrograms,C02KX,mcg,400,0,0,0,O,Oral,,,,
-12236B,INSULIN DETEMIR,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE05,mL,15.0,1,1,0,P,Parenteral,,,,
-12237C,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB04,mL,15.0,1,1,0,P,Parenteral,,,,
-12238D,INSULIN ASPART + INSULIN ASPART PROTAMINE,"Injections (human analogue), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD05,mL,15.0,1,1,0,P,Parenteral,,,,
+12236B,INSULIN DETEMIR,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AE05,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+12237C,INSULIN LISPRO,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB04,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+12238D,INSULIN ASPART + INSULIN ASPART PROTAMINE,"Injections (human analogue), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD05,U,450.0,1,1,0,P,Parenteral,40.0,U,,0.08888888888888889
 12239E,PHENELZINE,Tablet 15 mg (as sulfate) (USP),N06AF03,mg,15,0,0,1,O,Oral,60.0,mg,,4.0
 12240F,SELEXIPAG,Tablet 1.4 mg,C02KX,mg,1.4,0,0,0,O,Oral,,,,
 12241G,SELEXIPAG,Tablet 200 micrograms,C02KX,mcg,200,0,0,0,O,Oral,,,,
@@ -9109,21 +9109,21 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 12251T,SELEXIPAG,Tablet 1.4 mg,C02KX,mg,1.4,0,0,0,O,Oral,,,,
 12252W,SELEXIPAG,Tablet 1.2 mg,C02KX,mg,1.2,0,0,0,O,Oral,,,,
 12253X,SELEXIPAG,Tablet 800 micrograms,C02KX,mcg,800,0,0,0,O,Oral,,,,
-12254Y,INSULIN ASPART,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB05,mL,15.0,1,1,0,P,Parenteral,,,,
-12255B,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD01,mL,15.0,1,1,1,P,Parenteral,,,,
+12254Y,INSULIN ASPART,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB05,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
+12255B,INSULIN NEUTRAL HUMAN + INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 30 units-70 units per mL, 3 mL, 5",A10AD01,U,450.0,1,1,1,P,Parenteral,40.0,U,,0.08888888888888889
 12256C,FLUOXETINE,Capsule 20 mg (as hydrochloride) (USP),N06AB03,mg,20,0,0,1,O,Oral,20.0,mg,,1.0
 12257D,SELEXIPAG,Tablet 1.2 mg,C02KX,mg,1.2,0,0,0,O,Oral,,,,
 12258E,SELEXIPAG,Tablet 200 micrograms,C02KX,mcg,200,0,0,0,O,Oral,,,,
 12259F,SELEXIPAG,Tablet 1 mg,C02KX,mg,1,0,0,0,O,Oral,,,,
 12260G,SELEXIPAG,Tablet 400 micrograms,C02KX,mcg,400,0,0,0,O,Oral,,,,
-12261H,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD04,mL,15.0,1,1,0,P,Parenteral,,,,
-12262J,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AC01,mL,15.0,1,1,1,P,Parenteral,,,,
+12261H,INSULIN LISPRO + INSULIN LISPRO PROTAMINE,"Injections (human analogue), cartridges, 50 units-50 units per mL, 3 mL, 5",A10AD04,U,750.0,1,1,0,P,Parenteral,40.0,U,,0.05333333333333334
+12262J,INSULIN ISOPHANE HUMAN,"Injections (human), cartridges, 100 units per mL, 3 mL, 5",A10AC01,U,1500.0,1,1,1,P,Parenteral,40.0,U,,0.02666666666666667
 12263K,SELEXIPAG,Tablet 600 micrograms,C02KX,mcg,600,0,0,0,O,Oral,,,,
 12264L,SELEXIPAG,Tablet 1.6 mg,C02KX,mg,1.6,0,0,0,O,Oral,,,,
 12265M,SELEXIPAG,Tablet 1.6 mg,C02KX,mg,1.6,0,0,0,O,Oral,,,,
 12266N,SELEXIPAG,Tablet 800 micrograms,C02KX,mcg,800,0,0,0,O,Oral,,,,
 12267P,TERBUTALINE,"Powder for oral inhalation in breath actuated device containing terbutaline sulfate 500 micrograms per dose, 120 doses",R03AC03,mcg,60000.0,1,1,0,Inhal.powder,Inhal.powder,2.0,mg,,0.03333333333333333
-12268Q,INSULIN GLULISINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB06,mL,15.0,1,1,0,P,Parenteral,,,,
+12268Q,INSULIN GLULISINE,"Injections (human analogue), cartridges, 100 units per mL, 3 mL, 5",A10AB06,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 12269R,INDACATEROL + MOMETASONE,Capsule containing powder for oral inhalation indacaterol 125 micrograms (as acetate) with mometasone furoate 62.5 micrograms (for use in Breezhaler),R03AK14,mcg,125,1,0,0,Inhal.powder,Inhal.powder,,,,
 12270T,OMEPRAZOLE,Tablet 20 mg (as magnesium),A02BC01,mg,20,0,0,0,O,Oral,20.0,mg,,1.0
 12271W,OZANIMOD,Capsule 920 micrograms,L04AE02,mcg,920,0,0,0,O,Oral,0.92,mg,,1.0
@@ -9704,7 +9704,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 12848F,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12849G,DASATINIB,Tablet 20 mg,L01EA02,mg,20,0,0,0,O,Oral,0.1,g,,5.0
 12850H,DASATINIB,Tablet 20 mg,L01EA02,mg,20,0,0,0,O,Oral,0.1,g,,5.0
-12851J,HUMAN CHORIONIC GONADOTROPHIN,"Powder for injection 5,000 units with solvent (s19A)",G03GA01,,,,,0,P,Parenteral,,,,
+12851J,HUMAN CHORIONIC GONADOTROPHIN,"Powder for injection 5,000 units with solvent (s19A)",G03GA01,,,,,1,P,Parenteral,,,,
 12852K,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12853L,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12854M,METHOXSALEN,"Solution for blood fraction 20 microgram per mL, 10 mL",D05BA02,mcg,200.0,1,1,0,,,,,,
@@ -9731,7 +9731,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 12876Q,METHOXSALEN,"Solution for blood fraction 20 microgram per mL, 10 mL",D05BA02,mcg,200.0,1,1,0,,,,,,
 12877R,ECULIZUMAB,Solution concentrate for I.V. infusion 300 mg in 30 mL,L04AJ01,mg,300,1,0,0,P,Parenteral,64.0,mg,,0.21333333333333335
 12878T,GEMTUZUMAB OZOGAMICIN,Powder for injection 5 mg,L01FX02,mg,5,0,0,0,P,Parenteral,,,,
-12879W,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3 (s19A)",G03GA01,mL,1,1,0,0,P,Parenteral,,,,
+12879W,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3 (s19A)",G03GA01,U,1500.0,1,0,0,P,Parenteral,250.0,U,,0.16666666666666666
 12880X,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12881Y,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12882B,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
@@ -9756,7 +9756,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 12902C,DASATINIB,Tablet 100 mg,L01EA02,mg,100,0,0,0,O,Oral,0.1,g,,1.0
 12903D,DASATINIB,Tablet 70 mg,L01EA02,mg,70,0,0,0,O,Oral,0.1,g,,1.4285714285714286
 12904E,GEMTUZUMAB OZOGAMICIN,Powder for injection 5 mg,L01FX02,mg,5,0,0,0,P,Parenteral,,,,
-12905F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3 (s19A)",G03GA01,mL,1,1,0,0,P,Parenteral,,,,
+12905F,HUMAN CHORIONIC GONADOTROPHIN,"Injection set containing powder for injection 1,500 units, 3 and solvent 1 mL, 3 (s19A)",G03GA01,U,1500.0,1,0,0,P,Parenteral,250.0,U,,0.16666666666666666
 12906G,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12907H,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
 12908J,ETANERCEPT,"Injection 50 mg in 1 mL single use dose-dispenser cartridges, 4",L04AB01,mg,200.0,1,1,1,P,Parenteral,7.0,mg,,0.035
@@ -10221,7 +10221,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13372T,PERINDOPRIL,Tablet containing perindopril erbumine 8 mg,C09AA04,mg,8,0,0,0,O,Oral,4.0,mg,,0.5
 13373W,SIMVASTATIN,Tablet 20 mg,C10AA01,mg,20,0,0,0,O,Oral,30.0,mg,,1.5
 13374X,ATORVASTATIN,Tablet 80 mg (as calcium),C10AA05,mg,80,0,0,0,O,Oral,20.0,mg,,0.25
-13375Y,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,mg,100,1,0,0,O,Oral,,,,
+13375Y,PANCREATIC EXTRACT,"Granules (enteric coated) providing not less than 5,000 BP units of lipase activity per 100 mg, 20 g",A09AA02,U,100,1,1,0,O,Oral,,,,
 13376B,NIFEDIPINE,Tablet 60 mg (controlled release),C08CA05,mg,60,0,0,0,O,Oral,30.0,mg,,0.5
 13377C,FELODIPINE,Tablet 2.5 mg (extended release),C08CA02,mg,2.5,0,0,0,O,Oral,5.0,mg,,2.0
 13378D,INDAPAMIDE,Tablet containing indapamide hemihydrate 2.5 mg,C03BA11,mg,2.5,0,0,0,O,Oral,2.5,mg,,1.0
@@ -10487,7 +10487,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13648H,ENFORTUMAB VEDOTIN,Powder for I.V. infusion 20 mg,L01FX13,mg,20,0,0,0,P,Parenteral,,,,
 13649J,DEUCRAVACITINIB,Tablet 6 mg,L04AF07,mg,6,0,0,0,O,Oral,6.0,mg,,1.0
 13650K,FOSNETUPITANT + PALONOSETRON,Solution concentrate for I.V. infusion containing fosnetupitant 235 mg (as chloride hydrochloride) and palonosetron 250 microgram (as hydrochloride),A04AA,mg,235,1,0,0,P,Parenteral,,,,
-13651L,INSULIN ASPART,"Injections (human analogue) (fast acting), cartridges, 100 units per mL, 3 mL, 5",A10AB05,mL,15.0,1,1,0,P,Parenteral,,,,
+13651L,INSULIN ASPART,"Injections (human analogue) (fast acting), cartridges, 100 units per mL, 3 mL, 5",A10AB05,U,1500.0,1,1,0,P,Parenteral,40.0,U,,0.02666666666666667
 13652M,BIMEKIZUMAB,Injection 160 mg in 1 mL single use pre-filled pen,L04AC21,mg,160,1,0,0,P,Parenteral,5.7,mg,,0.035625000000000004
 13653N,CEFUROXIME,"Powder for oral suspension 125 mg (as axetil) per 5 mL, 70 mL (S19A)",J01DC02,mg,1750.0,1,1,0,O,Oral,0.5,g,,0.2857142857142857
 13654P,RISDIPLAM,"Powder for oral solution 750 micrograms per mL, 80 mL",M09AX10,mcg,60000.0,1,1,0,O,Oral,5.0,mg,,0.08333333333333333
@@ -10593,7 +10593,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13754X,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 13755Y,TOFACITINIB,Tablet 5 mg,L04AF01,mg,5,0,0,0,O,Oral,10.0,mg,,2.0
 13756B,MORPHINE,"Oral solution containing morphine sulfate 10 mg per 5 mL in 300 mL bottle, 1 mL (S19A)",N02AA01,mg,10,1,0,1,O,Oral,0.1,g,,10.0
-13757C,TOFACITINIB,Tablet 5 mg,L04AF01,mg,5,0,0,0,O,Oral,10.0,mg,,2.0
+13757C,TOFACITINIB,Tablet 5 mg,L04AF01,mg,5,0,0,1,O,Oral,10.0,mg,,2.0
 13758D,FLUOROURACIL,"Cream 40 mg per g (4%), 20 g",L01BC02,mg,40,1,0,0,,,,,,
 13759E,ESSENTIAL AMINO ACIDS FORMULA with VITAMINS and MINERALS,"Sachets containing oral powder 12.5 g, 30 (EAA Supplement)",V06DX,g,12.5,1,0,0,O,Oral,,,,
 13760F,MORPHINE,"Oral solution containing morphine sulfate 2 mg per mL in 500 mL bottle, 1 mL (S19A)",N02AA01,mg,0.004,1,1,1,O,Oral,0.1,g,,25000.0
@@ -10612,7 +10612,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13773X,ZOLEDRONIC ACID,Injection concentrate for I.V. infusion 4 mg (as monohydrate) in 5 mL,M05BA08,mg,4,1,0,0,P,Parenteral,4.0,mg,course dose,1.0
 13774Y,ETANERCEPT,"Injection 50 mg in 1 mL single use auto-injector, 4",L04AB01,mg,200.0,1,1,0,P,Parenteral,7.0,mg,,0.035
 13775B,DURVALUMAB,Solution concentrate for I.V. infusion 120 mg in 2.4 mL,L01FF03,mg,120,1,0,0,P,Parenteral,,,,
-13776C,TOFACITINIB,"Oral solution 1 mg per mL, 240 mL",L04AF01,mg,240.0,1,1,0,O,Oral,10.0,mg,,0.041666666666666664
+13776C,TOFACITINIB,"Oral solution 1 mg per mL, 240 mL",L04AF01,mg,240.0,1,1,1,O,Oral,10.0,mg,,0.041666666666666664
 13777D,ADEFOVIR,Tablet containing adefovir dipivoxil 10 mg (S19A),J05AF08,mg,10,1,0,1,O,Oral,10.0,mg,,1.0
 13778E,INFLIXIMAB,Powder for I.V. infusion 100 mg,L04AB02,mg,100,0,0,0,P,Parenteral,3.75,mg,,0.0375
 13779F,DURVALUMAB,Solution concentrate for I.V. infusion 120 mg in 2.4 mL,L01FF03,mg,120,1,0,0,P,Parenteral,,,,
@@ -10626,7 +10626,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13787P,OBINUTUZUMAB,Solution for I.V. infusion 1000 mg in 40 mL,L01FA03,mg,1000,1,0,0,P,Parenteral,,,,
 13788Q,POMALIDOMIDE,Capsule 2 mg,L04AX06,mg,2,0,0,0,O,Oral,3.0,mg,,1.5
 13789R,USTEKINUMAB,Injection 90 mg in 1 mL single use pre-filled syringe,L04AC05,mg,90,1,0,0,P,Parenteral,0.54,mg,,0.006
-13790T,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,mL,5,1,0,0,P,Parenteral,,,,
+13790T,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,U,1200000.0,1,0,1,P,Parenteral,,,,
 13791W,RAVULIZUMAB,Solution concentrate for I.V. infusion 300 mg in 3 mL,L04AJ02,mg,300,1,0,0,P,Parenteral,70.0,mg,,0.23333333333333334
 13792X,ACALABRUTINIB,Tablet 100 mg,L01EL02,mg,100,0,0,0,O,Oral,0.2,g,,2.0
 13793Y,OBINUTUZUMAB,Solution for I.V. infusion 1000 mg in 40 mL,L01FA03,mg,1000,1,0,0,P,Parenteral,,,,
@@ -10637,7 +10637,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13798F,LUMACAFTOR + IVACAFTOR,"Sachet containing granules, lumacaftor 75 mg and ivacaftor 94 mg",R07AX30,mg,75,1,0,0,O,Oral,,,,
 13799G,HYDROMORPHONE,"Oral solution containing hydromorphone hydrochloride 1 mg per mL, 1 mL (S19A)",N02AA03,mg,1.0,1,1,0,O,Oral,20.0,mg,,20.0
 13800H,OLAPARIB,Tablet 150 mg,L01XK01,mg,150,0,0,0,O,Oral,,,,
-13801J,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,mL,5,1,0,0,P,Parenteral,,,,
+13801J,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,U,1200000.0,1,0,1,P,Parenteral,,,,
 13802K,RAVULIZUMAB,"Solution concentrate for I.V. infusion 1,100 mg in 11 mL",L04AJ02,mg,1100,1,0,0,P,Parenteral,70.0,mg,,0.06363636363636363
 13803L,POMALIDOMIDE,Capsule 1 mg,L04AX06,mg,1,0,0,0,O,Oral,3.0,mg,,3.0
 13804M,USTEKINUMAB,Solution for I.V. infusion 130 mg in 26 mL,L04AC05,mg,130,1,0,0,P,Parenteral,0.54,mg,,0.004153846153846154
@@ -10652,7 +10652,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 13813B,POMALIDOMIDE,Capsule 1 mg,L04AX06,mg,1,0,0,0,O,Oral,3.0,mg,,3.0
 13814C,POMALIDOMIDE,Capsule 1 mg,L04AX06,mg,1,0,0,0,O,Oral,3.0,mg,,3.0
 13815D,POMALIDOMIDE,Capsule 2 mg,L04AX06,mg,2,0,0,0,O,Oral,3.0,mg,,1.5
-13816E,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,mL,5,1,0,0,P,Parenteral,,,,
+13816E,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 5 mL (S19A)",J01CE08,U,1200000.0,1,0,1,P,Parenteral,,,,
 13817F,NIVOLUMAB + RELATLIMAB,Solution concentrate for I.V. infusion containing 240 mg nivolumab and 80 mg relatlimab in 20 mL,L01FY02,mg,240,1,0,1,P,Parenteral,,,,
 13818G,TEBENTAFUSP,Solution concentrate for I.V. infusion 100 micrograms in 0.5 mL,L01XX75,mcg,100,1,0,0,P,Parenteral,,,,
 13819H,TEBENTAFUSP,Solution concentrate for I.V. infusion 100 micrograms in 0.5 mL,L01XX75,mcg,100,1,0,0,P,Parenteral,,,,
@@ -11066,7 +11066,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14220K,MORPHINE,"Oral solution containing morphine hydrochloride trihydrate 5 mg per mL, 1 mL (S19A)",N02AA01,mg,5.0,1,1,1,O,Oral,0.1,g,,20.0
 14221L,ADALIMUMAB,Injection 40 mg in 0.4 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 14222M,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled syringe,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14223N,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14223N,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14224P,CABOZANTINIB,Tablet 60 mg,L01EX07,mg,60,0,0,0,O,Oral,60.0,mg,,1.0
 14225Q,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14226R,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
@@ -11078,7 +11078,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14232C,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 14233D,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 14234E,ADALIMUMAB,Injection 40 mg in 0.4 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14235F,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14235F,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14236G,SELUMETINIB,Capsule 10 mg,L01EE04,mg,10,0,0,0,O,Oral,,,,
 14237H,CABOZANTINIB,Tablet 60 mg,L01EX07,mg,60,0,0,0,O,Oral,60.0,mg,,1.0
 14238J,MIDAZOLAM,Oromucosal solution (as maleate) 7.5 mg in 0.75 mL single use pre-filled oral syringe,N05CD08,mg,7.5,1,0,0,SL,Sublingual/Buccal/Oromucosal,10.0,mg,,1.3333333333333333
@@ -11095,14 +11095,14 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14249Y,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14250B,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14251C,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled syringe,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14252D,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14253E,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14252D,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
+14253E,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14254F,CABOZANTINIB,Tablet 40 mg,L01EX07,mg,40,0,0,0,O,Oral,60.0,mg,,1.5
 14255G,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14256H,LAROTRECTINIB,"Oral solution 20 mg per mL (as sulfate), 50 mL, 2",L01EX12,mg,40.0,1,1,0,O,Oral,0.2,g,,5.0
 14257J,LAROTRECTINIB,Capsule 25 mg (as sulfate),L01EX12,mg,25,0,0,0,O,Oral,0.2,g,,8.0
 14258K,LAROTRECTINIB,Capsule 25 mg (as sulfate),L01EX12,mg,25,0,0,0,O,Oral,0.2,g,,8.0
-14259L,PERMETHRIN,"Cream 50 mg per g, 60 g (S19A)",P03AC04,mg,50,1,0,0,,,,,,
+14259L,PERMETHRIN,"Cream 50 mg per g, 60 g (S19A)",P03AC04,mg,50,1,0,1,,,,,,
 14260M,NIVOLUMAB,Injection concentrate for I.V. infusion 100 mg in 10 mL,L01FF01,mg,100,1,0,0,P,Parenteral,,,,
 14261N,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 14262P,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
@@ -11116,10 +11116,10 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14270C,MIDAZOLAM,Oromucosal solution (as maleate) 10 mg in 1 mL single use pre-filled oral syringe,N05CD08,mg,10,1,0,0,SL,Sublingual/Buccal/Oromucosal,10.0,mg,,1.0
 14271D,TADALAFIL,Tablet 20 mg,C02KX,mg,20,0,0,0,O,Oral,,,,
 14272E,ADALIMUMAB,Injection 40 mg in 0.4 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14273F,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14274G,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14273F,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
+14274G,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14275H,ADALIMUMAB,Injection 20 mg in 0.2 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14276J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14276J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14277K,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14278L,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14279M,ELEXACAFTOR + TEZACAFTOR + IVACAFTOR (&) IVACAFTOR,Pack containing 28 sachets containing granules elexacaftor 80 mg with tezacaftor 40 mg and with ivacaftor 60 mg and 28 sachets containing granules ivacaftor 59.5 mg,R07AX32,mg,80,1,0,0,O,Oral,,,,
@@ -11128,8 +11128,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14282Q,LAROTRECTINIB,Capsule 100 mg (as sulfate),L01EX12,mg,100,0,0,0,O,Oral,0.2,g,,2.0
 14283R,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled syringe,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 14284T,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14285W,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14286X,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14285W,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
+14286X,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14287Y,SELUMETINIB,Capsule 25 mg,L01EE04,mg,25,0,0,0,O,Oral,,,,
 14288B,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
 14289C,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
@@ -11137,8 +11137,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14291E,MIDAZOLAM,Oromucosal solution (as maleate) 7.5 mg in 0.75 mL single use pre-filled oral syringe,N05CD08,mg,7.5,1,0,0,SL,Sublingual/Buccal/Oromucosal,10.0,mg,,1.3333333333333333
 14292F,MIDAZOLAM,Oromucosal solution (as maleate) 5 mg in 0.5 mL single use pre-filled oral syringe,N05CD08,mg,5,1,0,0,SL,Sublingual/Buccal/Oromucosal,10.0,mg,,2.0
 14293G,MIDAZOLAM,Oromucosal solution (as maleate) 5 mg in 0.5 mL single use pre-filled oral syringe,N05CD08,mg,5,1,0,0,SL,Sublingual/Buccal/Oromucosal,10.0,mg,,2.0
-14294H,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14295J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14294H,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
+14295J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14296K,PATISIRAN,Solution concentrate for I.V. infusion 10 mg in 5 mL,N07XX12,mg,10,1,0,0,P,Parenteral,,,,
 14297L,CABOZANTINIB,Tablet 20 mg,L01EX07,mg,20,0,0,0,O,Oral,60.0,mg,,3.0
 14298M,ATEZOLIZUMAB,Solution for subcutaneous injection 1875 mg in 15 mL,L01FF05,mg,1875,1,0,0,P,Parenteral,,,,
@@ -11178,7 +11178,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14332H,INDACATEROL + MOMETASONE,Capsule containing powder for oral inhalation indacaterol 125 micrograms (as acetate) with mometasone furoate 62.5 micrograms (for use in Breezhaler),R03AK14,mcg,125,1,0,0,Inhal.powder,Inhal.powder,,,,
 14333J,INDACATEROL + MOMETASONE,Capsule containing powder for oral inhalation indacaterol 125 micrograms (as acetate) with mometasone furoate 127.5 micrograms (for use in Breezhaler),R03AK14,mcg,125,1,0,0,Inhal.powder,Inhal.powder,,,,
 14334K,INDACATEROL,Capsule containing powder for oral inhalation 150 micrograms (as maleate) (for use in Breezhaler),R03AC18,mcg,150,0,0,0,Inhal.powder,Inhal.powder,0.15,mg,,1.0
-14335L,GLYCERYL TRINITRATE,Transdermal patch 54 mg,C01DA02,mg,54,0,0,0,TD,Transdermal,5.0,mg,,0.09259259259259259
+14335L,GLYCERYL TRINITRATE,Transdermal patch 54 mg,C01DA02,mg,54,0,0,1,TD,Transdermal,5.0,mg,,0.09259259259259259
 14336M,ESTRADIOL + NORETHISTERONE ACETATE,"Transdermal patches containing 510 micrograms estradiol (as hemihydrate) with 4.8 mg norethisterone acetate, 8",G03FA01,mcg,4080.0,1,1,0,TD,Transdermal,,,,
 14337N,EPROSARTAN + HYDROCHLOROTHIAZIDE,Tablet 600 mg eprosartan (as mesilate) with 12.5 mg hydrochlorothiazide,C09DA02,mg,600,1,0,0,O,Oral,,,,
 14338P,CARBAMAZEPINE,Tablet 200 mg,N03AF01,mg,200,0,0,0,O,Oral,1.0,g,,5.0
@@ -11615,8 +11615,8 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14747E,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
 14748F,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
 14749G,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14750H,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-14751J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14750H,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
+14751J,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14752K,DABRAFENIB,Tablet (dispersible) 10 mg (as mesilate),L01EC02,mg,10,0,0,0,O,Oral,0.3,g,,30.0
 14753L,DABRAFENIB,Tablet (dispersible) 10 mg (as mesilate),L01EC02,mg,10,0,0,0,O,Oral,0.3,g,,30.0
 14754M,DABRAFENIB,Capsule 75 mg (as mesilate),L01EC02,mg,75,0,0,0,O,Oral,0.3,g,,4.0
@@ -11629,7 +11629,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14761X,TRAMETINIB,"Powder for oral solution 50 micrograms per mL (as dimethylsulfoxide), 90 mL",L01EE01,mcg,4500.0,1,1,0,O,Oral,2.0,mg,,0.4444444444444444
 14762Y,MOMELOTINIB,Tablet 150 mg (as dihydrochloride monohydrate),L01EJ04,mg,150,0,0,0,O,Oral,,,,
 14763B,MOMELOTINIB,Tablet 200 mg (as dihydrochloride monohydrate),L01EJ04,mg,200,0,0,0,O,Oral,,,,
-14764C,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14764C,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14765D,TISLELIZUMAB,Solution concentrate for I.V. infusion 100 mg in 10 mL,L01FF09,mg,100,1,0,0,P,Parenteral,,,,
 14766E,DABRAFENIB,Capsule 75 mg (as mesilate),L01EC02,mg,75,0,0,0,O,Oral,0.3,g,,4.0
 14767F,TRAMETINIB,Tablet 2 mg,L01EE01,mg,2,0,0,0,O,Oral,2.0,mg,,1.0
@@ -11642,7 +11642,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14774N,TRAMETINIB,Tablet 2 mg,L01EE01,mg,2,0,0,0,O,Oral,2.0,mg,,1.0
 14775P,"AMINO ACID FORMULA with VITAMINS and MINERALS without METHIONINE, THREONINE and VALINE and LOW IN ISOLEUCINE","Sachets containing oral powder 12.5 g, pack of 30 (MMA/PA explore5)",V06DX,g,12.5,1,0,0,O,Oral,,,,
 14776Q,RAVULIZUMAB,"Solution concentrate for I.V. infusion 1,100 mg in 11 mL",L04AJ02,mg,1100,1,0,0,P,Parenteral,70.0,mg,,0.06363636363636363
-14777R,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14777R,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14778T,DABRAFENIB,Capsule 50 mg (as mesilate),L01EC02,mg,50,0,0,0,O,Oral,0.3,g,,6.0
 14779W,TRAMETINIB,Tablet 500 micrograms,L01EE01,mcg,500,0,0,0,O,Oral,2.0,mg,,4.0
 14780X,TRAMETINIB,Tablet 500 micrograms,L01EE01,mcg,500,0,0,0,O,Oral,2.0,mg,,4.0
@@ -11841,7 +11841,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14971Y,SECUKINUMAB,Injection 300 mg in 2 mL pre-filled pen,L04AC10,mg,300,1,0,0,P,Parenteral,10.0,mg,,0.03333333333333333
 14972B,SECUKINUMAB,Injection 300 mg in 2 mL pre-filled pen,L04AC10,mg,300,1,0,0,P,Parenteral,10.0,mg,,0.03333333333333333
 14973C,ADALIMUMAB,Injection 40 mg in 0.4 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
-14974D,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14974D,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14975E,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
 14976F,ADALIMUMAB,Injection 20 mg in 0.2 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
 14977G,DUPILUMAB,Injection 200 mg in 1.14 mL single dose pre-filled syringe,R03DX,mg,200,1,0,0,P,Parenteral,,,,
@@ -11851,7 +11851,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 14981L,PALOVAROTENE,Capsule 5 mg,M09AX11,mg,5,0,0,0,O,Oral,,,,
 14982M,PALOVAROTENE,Capsule 2.5 mg,M09AX11,mg,2.5,0,0,0,O,Oral,,,,
 14983N,SECUKINUMAB,Injection 300 mg in 2 mL pre-filled pen,L04AC10,mg,300,1,0,0,P,Parenteral,10.0,mg,,0.03333333333333333
-14984P,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+14984P,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 14985Q,ADALIMUMAB,Injection 40 mg in 0.8 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 14986R,DUPILUMAB,Injection 300 mg in 2 mL single dose pre-filled syringe,R03DX,mg,300,1,0,0,P,Parenteral,,,,
 14987T,DUPILUMAB,Injection 200 mg in 1.14 mL single dose pre-filled pen,R03DX,mg,200,1,0,0,P,Parenteral,,,,
@@ -11907,7 +11907,7 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 15037K,RIVAROXABAN,Capsule 15 mg,B01AF01,mg,15,0,0,0,O,Oral,20.0,mg,,1.3333333333333333
 15038L,ADALIMUMAB,Injection 40 mg in 0.4 mL pre-filled pen,L04AB04,mg,40,1,0,0,P,Parenteral,2.9,mg,,0.0725
 15039M,ADALIMUMAB,Injection 20 mg in 0.2 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
-15040N,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,0,P,Parenteral,2.9,mg,,0.145
+15040N,ADALIMUMAB,Injection 20 mg in 0.4 mL pre-filled syringe,L04AB04,mg,20,1,0,1,P,Parenteral,2.9,mg,,0.145
 15041P,DUPILUMAB,Injection 200 mg in 1.14 mL single dose pre-filled syringe,R03DX,mg,200,1,0,0,P,Parenteral,,,,
 15042Q,DUPILUMAB,Injection 300 mg in 2 mL single dose pre-filled syringe,R03DX,mg,300,1,0,0,P,Parenteral,,,,
 15043R,DUPILUMAB,Injection 200 mg in 1.14 mL single dose pre-filled syringe,R03DX,mg,200,1,0,0,P,Parenteral,,,,
@@ -11920,17 +11920,17 @@ ITEM_CODE,DRUG_NAME,FORM/STRENGTH,ATC5_Code,ITEM_UOM,ITEM_STRENGTH,MULTI_NUM_FLA
 15050D,ETANERCEPT,"Injections 50 mg in 1 mL single use pre-filled syringes, 4",L04AB01,mg,200.0,1,1,0,P,Parenteral,7.0,mg,,0.035
 15051E,TRAMETINIB,Tablet 500 micrograms,L01EE01,mcg,500,0,0,0,O,Oral,2.0,mg,,4.0
 15052F,LUMASIRAN,Solution for subcutaneous injection 94.5 mg (as sodium) in 0.5 mL,A16AX18,mg,94.5,1,0,0,P,Parenteral,,,,
-15053G,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,mL,4,1,0,0,P,Parenteral,,,,
+15053G,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 15054H,ESTETROL + DROSPIRENONE,Pack containing 24 tablets estetrol 14.2 mg (as monohydrate) with drospirenone 3 mg and 4 inert tablets,G03AA18,mg,14.2,1,0,0,O,Oral,,,,
 15055J,DABRAFENIB,Capsule 75 mg (as mesilate),L01EC02,mg,75,0,0,0,O,Oral,0.3,g,,4.0
 15056K,DABRAFENIB,Capsule 50 mg (as mesilate),L01EC02,mg,50,0,0,0,O,Oral,0.3,g,,6.0
 15057L,TRAMETINIB,Tablet 2 mg,L01EE01,mg,2,0,0,0,O,Oral,2.0,mg,,1.0
-15058M,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,mL,4,1,0,0,P,Parenteral,,,,
+15058M,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 15059N,CAPIVASERTIB,Tablet 200 mg,L01EX27,mg,200,0,0,0,O,Oral,,,,
 15060P,LUMASIRAN,Solution for subcutaneous injection 94.5 mg (as sodium) in 0.5 mL,A16AX18,mg,94.5,1,0,0,P,Parenteral,,,,
 15061Q,FAMOTIDINE,Tablet 40 mg,A02BA03,mg,40,0,0,0,O,Oral,40.0,mg,,1.0
 15062R,TIMOLOL,"Eye drops (gellan gum solution) 5 mg (as maleate) per mL, 2.5 mL",S01ED01,mg,12.5,1,1,0,,,,,,
-15063T,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,mL,4,1,0,0,P,Parenteral,,,,
+15063T,BENZATHINE BENZYLPENICILLIN,"Powder for injection 1,200,000 units with diluent 4 mL (S19A)",J01CE08,U,1200000.0,1,0,0,P,Parenteral,,,,
 15064W,IPTACOPAN,Capsule 200 mg,L04AJ08,mg,200,0,0,0,O,Oral,,,,
 15065X,DARATUMUMAB,Solution concentrate for I.V. infusion 100 mg in 5 mL,L01FC01,mg,100,1,0,0,P,Parenteral,,,,
 15066Y,DARATUMUMAB,Solution concentrate for I.V. infusion 100 mg in 5 mL,L01FC01,mg,100,1,0,0,P,Parenteral,,,,
