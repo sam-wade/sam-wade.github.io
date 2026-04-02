@@ -21,22 +21,14 @@
 		cursor: pointer;
 	}
 
-	.ItemCodesList > .label {
+	.RestrictionDate {
 		transition: 0.5s !important;
 		cursor: pointer;
 	}
 
-	.RestrictionDate, .AuthorityDate, .AuthCodeContainer, .ItemInfo, .ItemCode {
+	.AuthorityDate {
 		transition: 0.5s !important;
 		cursor: pointer;
-	}
-
-	.AuthCodeContainer.blue {
-		background-color:#eef5fb !important;
-	}
-
-	.ItemInfo.blue {
-		background-color:#2185d1 !important;
 	}
 </style>
 
@@ -328,20 +320,9 @@
 		</div>
 	</template>
 
-	<template id="ItemCodeIcon">
-		<div class="ui label" onclick="HighlightCodes(this, 'item', '.Code', this.parentElement.parentElement.parentElement);">
-			<i class="barcode icon"></i>
-			<span class="Code"></span>
-		</div>
-	</template>
- 
 	<template id="AuthCodeHeader">
 		<div class="ui blue segment attached" style="margin-top:1rem !important;">
 			<h2 class="ui header drugname"><div class="sub header drugatc"></div></h2>
-			<h1 class="ui header"><div class="sub header">Item Codes</div></h1>
-			<div class="ui labels ItemCodesList">
-			
-			</div>
 			<h1 class="ui header"><div class="sub header">Restriction IDs</div></h1>
 			<div class="ui labels RestrictionIdsList">
 			
@@ -354,41 +335,24 @@
 		</div>
 	</template>
 
-	<template id="AuthRestrictionCode">
-		<div class="ui small label RestrictionDate" title="" onclick="HighlightCodes(this, 'restriction', '.RestrictionCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
-			<i class="project diagram icon"></i>
-			<span class="RestrictionCode ui"></span>
-		</div>
-	</template>
-
-	<template id="AuthAuthorityCode">
-		<div class="ui small label AuthorityDate" title="" onclick="HighlightCodes(this, 'authority', '.AuthorityCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
-			<i class="code icon"></i>
-			<span class="AuthorityCode ui"></span>
-		</div>
-	</template>
-
 	<template id="AuthCodeContainer">
 		<div class="ui card AuthCodeContainer">
-			<div class="ItemInfo content" onclick="HighlightCodes(this, 'item', '.ItemCode', this.parentElement.parentElement.parentElement.parentElement.parentElement);"">
+			<div class="content">
 				<!-- <i class="ui right floated close icon" style="cursor: pointer;" onclick="this.parentElement.parentElement.remove();"></i> -->
 				<button class="ui right floated icon button red mini compact" type="button" onclick="Delete(this, 'Item')"><i class="close icon"></i></button>
-				<div class="header"><span class="ItemCode ui text"></span></div>
+				<div class="header ItemCode"></div>
 				<div class="meta ItemForm"></div>
 			</div>
-			<div class="extra content ">
-				<div class="ui centered container ItemRestrictions">
+			<div class="extra content">
+					<div class="ui centered container">
 					<div class="ui small label RestrictionDate" title="" onclick="HighlightCodes(this, 'restriction', '.RestrictionCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
 						<i class="project diagram icon"></i>
-						<span class="RestrictionCode ui"></span>
+						<span class="RestrictionCode"></span>
 					</div>
-				</div>
-			</div>
-			<div class="extra content">
-				<div class="ui centered container ItemAuthorities">		
+					
 					<div class="ui small label AuthorityDate" title="" onclick="HighlightCodes(this, 'authority', '.AuthorityCode', this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);">
 						<i class="code icon"></i>
-						<span class="AuthorityCode ui"></span>
+						<span class="AuthorityCode"></span>
 					</div>
 				</div>
 
@@ -404,8 +368,6 @@
 			<p class="AuthorityTitle"></p>
 		</div>
 		<div class="content">
-
-			<button class="ui button" type="button" onclick="HighlightAllCodes(this.nextElementSibling)">Select all</button>
 
 			<div class="ui five stackable cards centered AuthorityGroup">			
 				
@@ -437,7 +399,7 @@
 
 			</div>
 		</div>
-	</template> 
+	</template>
 
 	<template id="ATCTemplate">
 		<div class="ui green segment">
@@ -644,118 +606,34 @@
 
 			const DrugNode = RestrictionTemplate.content.cloneNode(true);
 
-			// Create a list of item codes that have been generated already
-
-			let GeneratedCodes = [];
+			let ReadableRestriction;
 
 			// Create an input for each item code associated with the drug name
-
+			// val is a tuple of [drug name, strength/form]
 			RestrictionItemDict[RestrictionText].forEach((drug) => {
+				const AuthClone = AuthTemplate.content.cloneNode(true);
 
-				if (GeneratedCodes.includes(drug.ITEM_CODE)) {
+				AuthClone.querySelector(".ItemForm").innerText = drug.FORM_STRENGTH;
+				AuthClone.querySelector(".ItemCode").innerText = drug.ITEM_CODE;
 
-					ItemNode = DrugNode.querySelector(`.AuthorityGroup > div[ItemCode="${drug.ITEM_CODE}"]`);
-					ItemRestrictionCodes = Array.from(ItemNode.querySelectorAll(".RestrictionCode"), el => el.innerText);
-					ItemAuthorityCodes = Array.from(ItemNode.querySelectorAll(".AuthorityCode"), el => el.innerText);
+				AuthClone.querySelector(".RestrictionCode").innerText = drug.RSTR_NUM;
+				AuthClone.querySelector(".RestrictionDate").title = "Last Approved: " +  drug.LAST_APPR_DATE;
 
-					if (drug.RSTR_NUM && !(ItemRestrictionCodes.includes(drug.RSTR_NUM))) {
-
-						const RestrictionCodeClone = document.getElementById("AuthRestrictionCode").content.cloneNode(true);
-
-						RestrictionCodeClone.querySelector(".RestrictionCode").innerText = drug.RSTR_NUM;
-						RestrictionCodeClone.querySelector(".RestrictionDate").title = "Last Approved: " +  drug.LAST_APPR_DATE;
-
-						if (drug.HISTORICAL_RST_FLAG == 1) {
-							// Restriction codes aren't represented in the PBS API when they're alone (e.g. no accompanying streamline code). So historical flags will be inaccurate. 
-							// As a clunky fix, we check to see if there was an approval in the five years
-							// Since we can't be sure that the mapping file creation date will be available (someone could change the name, and the modified date changes on a new download)
-							let currentYear = new Date().getFullYear();
-							let approvalYear = drug.LAST_APPR_DATE.slice(-4); 
-							if (drug.STREAMLINE_AUTHORITY_CODE || +approvalYear < +currentYear - 4) {
-								RestrictionCodeClone.querySelector(".RestrictionDate > .icon").classList.add("brown");
-							};
-
-						};
-
-						ItemNode.querySelector(".ItemRestrictions").appendChild(RestrictionCodeClone);
-
-					};
-
-					if (drug.STREAMLINE_AUTHORITY_CODE && !(ItemAuthorityCodes.includes(drug.STREAMLINE_AUTHORITY_CODE))) {
-
-						const AuthorityCodeClone = document.getElementById("AuthAuthorityCode").content.cloneNode(true);
-						// Handles the streamline authority codes
-						AuthorityCodeClone.querySelector(".AuthorityCode").innerText = drug.STREAMLINE_AUTHORITY_CODE;
-						AuthorityCodeClone.querySelector(".AuthorityDate").title = "Last Claimed: " + drug.LAST_CLAIM_DATE;
-						
-						// Adds a visual indicator if the streamlined authority code for the item wasn't in the PBS API.
-						if (drug.HISTORICAL_SL_FLAG == 1) {
-							AuthorityCodeClone.querySelector(".AuthorityDate > .icon").classList.add("brown");
-						};
-
-						ItemNode.querySelector(".ItemAuthorities").appendChild(AuthorityCodeClone);
-
-					};
-				} else {
-
-					const AuthClone = AuthTemplate.content.cloneNode(true); 
-					AuthClone.firstElementChild.setAttribute("ItemCode", drug.ITEM_CODE); 
-
-					AuthClone.querySelector(".ItemForm").innerText = drug.FORM_STRENGTH;
-					AuthClone.querySelector(".ItemCode").innerText = drug.ITEM_CODE;
-					
-					// Adds an icon to represent that the item code is historical.
-					if (drug.Historical_Flag == 1) {
-						const historicalIcon = document.createElement("i");
-						historicalIcon.classList.add("small", "brown", "skull", "crossbones", "icon");
-						historicalIcon.title = "Item Code is Historical!";
-						AuthClone.querySelector(".header").appendChild(historicalIcon);
-
-					};
-
-					// Handles the restriction code 
-					AuthClone.querySelector(".RestrictionCode").innerText = drug.RSTR_NUM;
-					AuthClone.querySelector(".RestrictionDate").title = "Last Approved: " +  drug.LAST_APPR_DATE;
-
-					if (drug.HISTORICAL_RST_FLAG == 1 && drug.RSTR_NUM) {
-						// Restriction codes aren't represented in the PBS API when they're alone (e.g. no accompanying streamline code). So historical flags will be inaccurate. 
-						// As a clunky fix, we check to see if there was an approval in the five years
-						// Since we can't be sure that the mapping file creation date will be available (someone could change the name, and the modified date changes on a new download)
-						let currentYear = new Date().getFullYear();
-						let approvalYear = drug.LAST_APPR_DATE.slice(-4); 
-						if (drug.STREAMLINE_AUTHORITY_CODE || +approvalYear < +currentYear - 4) {
-							AuthClone.querySelector(".RestrictionDate > .icon").classList.add("brown");
-						};
-
-					};
-					// Removes the restriction code if there isn't one available
-					if (!(drug.RSTR_NUM)) {		
-						AuthClone.querySelector(".RestrictionDate").remove();
-					};
-
-					// Handles the streamline authority codes
-					AuthClone.querySelector(".AuthorityCode").innerText = drug.STREAMLINE_AUTHORITY_CODE;
-					AuthClone.querySelector(".AuthorityDate").title = "Last Claimed: " + drug.LAST_CLAIM_DATE;
-					
-					// Adds a visual indicator if the streamlined authority code for the item wasn't in the PBS API.
-					if (drug.HISTORICAL_SL_FLAG == 1 && drug.STREAMLINE_AUTHORITY_CODE) {
-						AuthClone.querySelector(".AuthorityDate > .icon").classList.add("brown");
-					};
-					// Removes the streamlined authority code if there isn't one available 
-					if (!(drug.STREAMLINE_AUTHORITY_CODE)) {
-						AuthClone.querySelector(".AuthorityDate").remove();
-					};
-
-					DrugNode.querySelector(".AuthorityGroup").appendChild(AuthClone);
-					GeneratedCodes.push(drug.ITEM_CODE);
+				if (!(drug.RSTR_NUM)) {		
+					AuthClone.querySelector(".RestrictionDate").remove();
 				};
 
+				AuthClone.querySelector(".AuthorityCode").innerText = drug.STREAMLINE_AUTHORITY_CODE;
+				AuthClone.querySelector(".AuthorityDate").title = "Last Claimed: " + drug.LAST_CLAIM_DATE;
+
+				if (!(drug.STREAMLINE_AUTHORITY_CODE)) {
+					AuthClone.querySelector(".AuthorityDate").remove();
+				};
+
+				DrugNode.querySelector(".AuthorityGroup").appendChild(AuthClone);
+				ReadableRestriction = drug.Restriction_Text;
 			});
 
-			// RestrictionText has no spacing (to avoid the weird inconsistencies in punctuation bewteen some of the texts), so we want to grab the original version
-
-			let ReadableRestriction = RestrictionItemDict[RestrictionText][0].Restriction_Text;
-			// Makes the restriction text more readable for the div
 			let RestrictionTextFixed = ReadableRestriction.replace("Clinical criteria:", "<br><br>Clinical criteria:");
 			RestrictionTextFixed = RestrictionTextFixed.replace("Treatment Phase:", "<br><br>Treatment Phase:");
 			RestrictionTextFixed = RestrictionTextFixed.replace("Population criteria:", "<br><br>Population criteria:");
@@ -764,237 +642,100 @@
 			RestrictionTextFixed = RestrictionTextFixed.replaceAll("\x22", "");
 			const node = document.createTextNode(RestrictionTextFixed);
 	
+
 			DrugNode.querySelector(".AuthorityTitle").innerHTML = RestrictionTextFixed;
 
 		   OutputContainer.appendChild(DrugNode);
 
 		};
 
-		function HighlightCodes(Code, CodeType, TextLoc, DrugATCGroup, CodeProvided = false) {
+		function HighlightCodes(Code, CodeType, TextLoc, DrugATCGroup) {
 			//CodesContainer = Code.parentElement;
 			//DrugATCGroup = Code.parentElement.parentElement.nextElementSibling;
-			if (CodeProvided) {
-				CurrentCode = Code;
-			} else {
-				CurrentCode = Code.querySelector(TextLoc).innerText;
-			}
-			
+			CurrentCode = Code.querySelector(TextLoc).innerText;
 
 			if (CodeType == "restriction") {
 
-				
+				// Remove any existing color from the elements
 				DrugATCGroup.querySelectorAll(".RestrictionIdsList .label").forEach((label) => {
+					label.classList.remove("blue");
 					if (label.querySelector(".Code")) {
-						if (label.querySelector(".Code").innerText == CurrentCode) {
-								label.classList.toggle("blue");
-							};
-						};
-					});
-
-				DrugATCGroup.querySelectorAll(".RestrictionDate").forEach((label) => {
-					if (label.querySelector(".RestrictionCode")) {
-						if (label.querySelector(".RestrictionCode").innerText == CurrentCode) {
-							label.classList.toggle("blue");
+					if (label.querySelector(".Code").innerText == CurrentCode) {
+							label.classList.add("blue");
 						};
 					};
+				})
+
+				DrugATCGroup.querySelectorAll(".RestrictionDate").forEach((label) => {
+					label.classList.remove("blue");
+					if (label.querySelector(".RestrictionCode")) {
+					if (label.querySelector(".RestrictionCode").innerText == CurrentCode) {
+						label.classList.add("blue");
+					};
+				};
 				});
 
 			} else if (CodeType == "authority") {
 
 				DrugATCGroup.querySelectorAll(".StreamlinedCodesList .label").forEach((label) => {
+					label.classList.remove("blue");
 					if (label.querySelector(".Code")) {
 						if (label.querySelector(".Code").innerText == CurrentCode) {
-							label.classList.toggle("blue");
+							label.classList.add("blue");
 						};
 					};
 				});
 
 				DrugATCGroup.querySelectorAll(".AuthorityDate").forEach((label) => {
+					label.classList.remove("blue");
 					if (label.querySelector(".AuthorityCode")) {
 						if (label.querySelector(".AuthorityCode").innerText == CurrentCode) {
-							label.classList.toggle("blue");
+							label.classList.add("blue");
 						};
 					};
 				});
 
-			} else if (CodeType == "item") {
+			}
 
-				DrugATCGroup.querySelectorAll(".ItemCodesList .label").forEach((label) => {
-					if (label.querySelector(".Code")) {
-						if (label.querySelector(".Code").innerText == CurrentCode) {
-							label.classList.toggle("blue");
-						};
-					};
-				});
+			
 
-				DrugATCGroup.querySelectorAll(".AuthCodeContainer").forEach((label) => {
-						let ItemCode = label.querySelector(".ItemCode");
-						if (ItemCode.innerText == CurrentCode) {
-							ItemCode.classList.toggle("blue");
-							label.classList.toggle("blue");
-						};
-				});
-
-			};
 	
-		};
-
-		function TurnOnCodes(Code, CodeType, TextLoc, DrugATCGroup) {
-
-			// This is basically duplicated code - not good practice sam >:(
-
-			if (CodeType == "restriction") {
-
-				
-				DrugATCGroup.querySelectorAll(".RestrictionIdsList .label").forEach((label) => {
-					if (label.querySelector(".Code")) {
-						if (label.querySelector(".Code").innerText == Code) {
-								label.classList.add("blue");
-							};
-						};
-					});
-
-				DrugATCGroup.querySelectorAll(".RestrictionDate").forEach((label) => {
-					if (label.querySelector(".RestrictionCode")) {
-						if (label.querySelector(".RestrictionCode").innerText == Code) {
-							label.classList.add("blue");
-						};
-					};
-				});
-
-			} else if (CodeType == "authority") {
-
-				DrugATCGroup.querySelectorAll(".StreamlinedCodesList .label").forEach((label) => {
-					if (label.querySelector(".Code")) {
-						if (label.querySelector(".Code").innerText == Code) {
-							label.classList.add("blue");
-						};
-					};
-				});
-
-				DrugATCGroup.querySelectorAll(".AuthorityDate").forEach((label) => {
-					if (label.querySelector(".AuthorityCode")) {
-						if (label.querySelector(".AuthorityCode").innerText == Code) {
-							label.classList.add("blue");
-						};
-					};
-				});
-
-			} else if (CodeType == "item") {
-
-				DrugATCGroup.querySelectorAll(".ItemCodesList .label").forEach((label) => {
-					if (label.querySelector(".Code")) {
-						if (label.querySelector(".Code").innerText == Code) {
-							label.classList.add("blue");
-						};
-					};
-				});
-
-				DrugATCGroup.querySelectorAll(".AuthCodeContainer").forEach((label) => {
-						let ItemCode = label.querySelector(".ItemCode");
-						if (ItemCode.innerText == Code) {
-							ItemCode.classList.add("blue");
-							label.classList.add("blue");
-						};
-				});
-
-			};
-	
-		};
-
-		function HighlightAllCodes(CodeDiv) {
-			let DrugATCGroup = CodeDiv.parentElement.parentElement.parentElement;
-			// Get a list of all unique item codes, authority codes, and streamline codes in the current authgroup
-			let UnqItemCodes = new Set();
-			let UnqRestrictionIds = new Set();
-			let UnqAuthCodes = new Set();
-
-			CodeDiv.querySelectorAll(".ItemCode").forEach((Code) => {
-				UnqItemCodes.add(Code.innerText);
-			});
-
-			CodeDiv.querySelectorAll(".RestrictionCode").forEach((Code) => {
-				UnqRestrictionIds.add(Code.innerText);
-			});
-
-			CodeDiv.querySelectorAll(".AuthorityCode").forEach((Code) => {
-				UnqAuthCodes.add(Code.innerText);
-			});
-
-			// CodeDiv.querySelectorAll(".AuthCodeContainer").forEach((container) => {
-			// 	UnqItemCodes.add(container.querySelector(".ItemCode").innerText);
-			// 	if (container.querySelector(".RestrictionCode")) {	UnqRestrictionIds.add(container.querySelector(".RestrictionCode").innerText);	}
-			// 	if (container.querySelector(".AuthorityCode")) {	UnqAuthCodes.add(container.querySelector(".AuthorityCode").innerText);	}
-			// });
-			// console.log(UnqRestrictionIds);
-			UnqItemCodes.forEach((ItemCode) => {
-				TurnOnCodes(ItemCode, "item", ".ItemCode", DrugATCGroup);  
-			});
-
-			UnqRestrictionIds.forEach((RstrID) => {
-				TurnOnCodes(RstrID, "restriction", ".RestrictionCode", DrugATCGroup); 
-			});
-
-			UnqAuthCodes.forEach((AuthCode) => {
-				TurnOnCodes(AuthCode, "authority", ".AuthorityCode", DrugATCGroup);  
-			});
-		};
-
+		}
 
 		function GetUniqueCodes(DrugATCGroup) {
 
-			// Empties the current lists
-			DrugATCGroup.querySelector(".ItemCodesList").replaceChildren();
 			DrugATCGroup.querySelector(".RestrictionIdsList").replaceChildren();
 			DrugATCGroup.querySelector(".StreamlinedCodesList").replaceChildren();
 
-			let ItemCodesList = [];
-			let RestrictionIdsList = [];
-			let AuthorityCodesList = [];
-
-			DrugATCGroup.querySelectorAll(".ItemCode").forEach((ItemCodeDiv) => {
-				ItemCodesList.push([ItemCodeDiv.innerText, ItemCodeDiv.classList.contains('blue')]);
+			UnqRestrictionIds = new Set();
+			UnqAuthCodes = new Set();
+			// Gets the unique codes - sets can only contain unique items
+			DrugATCGroup.querySelectorAll(".AuthCodeContainer").forEach((container) => {
+				if (container.querySelector(".RestrictionCode")) {UnqRestrictionIds.add(container.querySelector(".RestrictionCode").innerText);};
+				if (container.querySelector(".AuthorityCode")) {UnqAuthCodes.add(container.querySelector(".AuthorityCode").innerText);};
 			});
 
-			DrugATCGroup.querySelectorAll(".RestrictionCode").forEach((RestrictionCodeDiv) => {
-				RestrictionIdsList.push([RestrictionCodeDiv.innerText, RestrictionCodeDiv.parentElement.classList.contains('blue')]);
-			});
+			// Turns them into an array, sorts them
+			SortRestrictionIds = Array.from(UnqRestrictionIds);
+			SortRestrictionIds.sort();
 
-			DrugATCGroup.querySelectorAll(".AuthorityCode").forEach((AuthorityCodeDiv) => {
-				AuthorityCodesList.push([AuthorityCodeDiv.innerText, AuthorityCodeDiv.parentElement.classList.contains('blue')]);
-			});
+			SortAuthCodes = Array.from(UnqAuthCodes);
+			SortAuthCodes.sort();
 
-			// Get the unique values
-			const UnqItemCodes = [...new Set(ItemCodesList.map(c => JSON.stringify(c)))].map(c => JSON.parse(c));
-			const UnqRestrictionIds = [...new Set(RestrictionIdsList.map(c => JSON.stringify(c)))].map(c => JSON.parse(c));
-			const UnqAuthCodes = [...new Set(AuthorityCodesList.map(c => JSON.stringify(c)))].map(c => JSON.parse(c));
-
-			// Sorts the list on the first element in the tuple
-			UnqItemCodes.sort((a, b) => a[0] - b[0]);
-			UnqRestrictionIds.sort((a, b) => a[0] - b[0]);
-			UnqAuthCodes.sort((a, b) => a[0] - b[0]);
-
-			UnqItemCodes.forEach((ItemCode) => {
-				const ItemCodeIcon =  document.getElementById("ItemCodeIcon").content.cloneNode(true);
-				ItemCodeIcon.querySelector(".Code").innerText = ItemCode[0];
-				if (ItemCode[1]) {	ItemCodeIcon.firstElementChild.classList.add('blue')	}; 
-				DrugATCGroup.querySelector(".ItemCodesList").appendChild(ItemCodeIcon);
-			});
-
-			UnqRestrictionIds.forEach((RstrID) => {
+			SortRestrictionIds.forEach((RstrID) => {
 				const RestrictionIcon = document.getElementById("RestrictionIDIcon").content.cloneNode(true);
-				RestrictionIcon.querySelector(".Code").innerText = RstrID[0]; 
-				if (RstrID[1]) {	RestrictionIcon.firstElementChild.classList.add('blue')	};
+				RestrictionIcon.querySelector(".Code").innerText = RstrID;
 				DrugATCGroup.querySelector(".RestrictionIdsList").appendChild(RestrictionIcon);
 			});
 
-			UnqAuthCodes.forEach((StreamlinedCode) => {
+			SortAuthCodes.forEach((StreamlinedCode) => {
 				const StreamlinedCodeIcon = document.getElementById("StreamlinedCodeIcon").content.cloneNode(true);
-				StreamlinedCodeIcon.querySelector(".Code").innerText = StreamlinedCode[0];
-				if (StreamlinedCode[1]) {	StreamlinedCodeIcon.firstElementChild.classList.add('blue')	}; 
-				DrugATCGroup.querySelector(".StreamlinedCodesList").appendChild(StreamlinedCodeIcon); 
-			}); 
+				StreamlinedCodeIcon.querySelector(".Code").innerText = StreamlinedCode;
+				DrugATCGroup.querySelector(".StreamlinedCodesList").appendChild(StreamlinedCodeIcon);
+			});
 
+			//console.log(UnqRestrictionIds);
+			//console.log(UnqAuthCodes);
 		};
 
 		function GenerateAuthorityCodes(DrugDiv, SearchType="DrugName") {
@@ -1015,7 +756,7 @@
 				// Reads drugs that match the keyword into a dictionary.
 				for (const Drug of DrugMapJson) {
 
-					if (((SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search)))) {
+					if (((SearchType == "DrugName" && Drug.DRUG_NAME.includes(Search)) || (SearchType == "ATC" && Drug.ATC5_Code.substring(0, Search.length).includes(Search))) && (Drug.STREAMLINE_AUTHORITY_CODE || Drug.Restriction_Text || Drug.RSTR_NUM)) {
 
 						let DrugNameATC = Drug.DRUG_NAME + "|" + Drug.ATC5_Code;
 
@@ -1053,7 +794,7 @@
 
 						let RestrictionText = Drug.Restriction_Text.replaceAll(" ", "");
 
-						if (!(Drug.Restriction_Text)) {Drug.Restriction_Text = "== No associated restriction text =="};
+						if (!(Drug.Restriction_Text)) {Drug.Restriction_Text = "-Invalid Code-"};
 
 						if (RestrictionText in FoundRestrictionsDict) {
 						  FoundRestrictionsDict[RestrictionText].push(Drug);
@@ -1128,7 +869,7 @@
 			// Get Generation Options
 			let GenerationOptions = document.getElementById("SaveGenerationOptions_Codes").querySelectorAll("input");
 
-			let OptionsDict = {}; 
+			OptionsDict = {};
 
 			GenerationOptions.forEach((Checkbox) => {
 				OptionsDict[Checkbox.getAttribute("saveoption")] = Checkbox.checked;
@@ -1155,58 +896,20 @@
 
 					Codes.querySelectorAll(".AuthCodeContainer").forEach((AuthCode) => {
 
-						let DrugObj = {}; 
+						const DrugObj = {};
 
 						if (OptionsDict["DRUG_NAME"]) {	DrugObj["DRUG_NAME"] = DrugName;	};
 						if (OptionsDict["DRUG_ATC"]) {	DrugObj["DRUG_ATC"] = DrugATC;	};
 						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
-
-						// Need to iterate through each potential combination of restriction code + authority code.
-						if (OptionsDict["RESTRICTION_ID"]) {	
-							
-							AuthCode.querySelectorAll(".RestrictionCode").forEach((RestrictionCode) => {
-								DrugObj["RESTRICTION_ID"] = RestrictionCode.innerText;
-								
-								if (OptionsDict["STREAMLINED_CODE"]) {	
-									AuthCode.querySelectorAll(".AuthorityCode").forEach((StreamlinedCode) => {
-										DrugObj["STREAMLINED_CODE"] = StreamlinedCode.innerText;
-										OutputArray.push(DrugObj);
-									});	
-									// Handle the cases when there this option is ticked, but there isn't an associated streamlined code
-									let OutputFlag = false;
-									if (OptionsDict["STREAMLINED_CODE"] && !(DrugObj["STREAMLINED_CODE"])) {
-										OutputFlag = true;
-										DrugObj["STREAMLINED_CODE"] = ".";
-									}
-									if (OutputFlag) {OutputArray.push({...DrugObj});};
-
-								} else {
-									OutputArray.push({...DrugObj}); 
-								};
-								
-							});
-						
+						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
+						// Janky fix for now, since some codes can have a restriction code, but not a streamlined
+						try {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						} catch (error) {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
 						};
-
-						if (OptionsDict["STREAMLINED_CODE"] && !(OptionsDict["RESTRICTION_ID"])) {
-							AuthCode.querySelectorAll(".AuthorityCode").forEach((StreamlinedCode) => {
-								DrugObj["STREAMLINED_CODE"] = StreamlinedCode.innerText;
-								OutputArray.push({...DrugObj});
-							});	
-						};
-
-						if (!(OptionsDict["STREAMLINED_CODE"]) && !(OptionsDict["RESTRICTION_ID"])) {
-							OutputArray.push({...DrugObj});
-						}
-
-						// // Janky fix for now, since some codes can have a restriction code, but not a streamlined
-						// try {
-						// 	if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
-						// } catch (error) {
-						// 	if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
-						// };
 						
-						
+						OutputArray.push(DrugObj);
 
 					});
 
@@ -1400,7 +1103,7 @@
 			// Get Generation Options
 			let GenerationOptions = document.getElementById("SaveGenerationOptions_Combos").querySelectorAll("input");
 
-			let OptionsDict = {};
+			OptionsDict = {};
 
 			GenerationOptions.forEach((Checkbox) => {
 				OptionsDict[Checkbox.getAttribute("saveoption")] = Checkbox.checked;
@@ -1427,7 +1130,7 @@
 
 					Codes.querySelectorAll(".AuthCodeContainer").forEach((AuthCode) => {
 
-						let DrugObj = {};
+						const DrugObj = {};
 
 						DrugObj["ITEM_CODE"] = AuthCode.querySelector(".ItemCode").innerText;
 
@@ -1435,77 +1138,17 @@
 						if (OptionsDict["DRUG_ATC"]) {	DrugObj["DRUG_ATC"] = DrugATC;	};
 						if (OptionsDict["FORM_STRENGTH"]) {	DrugObj["FORM_STRENGTH"] =  AuthCode.querySelector(".ItemForm").innerText;	};
 						if (OptionsDict["RESTRICTION_TEXT"]) {	DrugObj["RESTRICTION_TEXT"] = Item.querySelector(".AuthorityTitle").innerText.replaceAll("'", "");	};
-
-						// Need to iterate through each potential combination of restriction code + authority code.
-						if (OptionsDict["RESTRICTION_ID"] || OptionsDict["LAST_APPROVED"]) {	
-							
-							let NoRestrictionFlag = true;
-
-							AuthCode.querySelectorAll(".RestrictionDate").forEach((RestrictionDate) => {
-								NoRestrictionFlag = false;
-
-								if (OptionsDict["RESTRICTION_ID"]) { DrugObj["RESTRICTION_ID"] = RestrictionDate.querySelector(".RestrictionCode").innerText; };
-								if (OptionsDict["LAST_APPROVED"]) {	DrugObj["LAST_APPROVED"] = RestrictionDate.title.replace("Last Approved: ", "");	};
-
-								if (OptionsDict["STREAMLINED_CODE"] || OptionsDict["LAST_CLAIMED"]) {	
-									AuthCode.querySelectorAll(".AuthorityDate").forEach((StreamlinedDate) => {
-										if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = StreamlinedDate.querySelector(".AuthorityCode").innerText;	};
-										if (OptionsDict["LAST_CLAIMED"]) {	DrugObj["LAST_CLAIMED"] = StreamlinedDate.title.replace("Last Claimed: ", "");	};
-										OutputArray.push({...DrugObj}); 
-									});	
-									// Handle the cases when there this option is ticked, but there isn't an associated streamlined code
-									let OutputFlag = false;
-									if (OptionsDict["STREAMLINED_CODE"] && !(DrugObj["STREAMLINED_CODE"])) {
-										OutputFlag = true;
-										DrugObj["STREAMLINED_CODE"] = ".";
-									}
-
-									if (OptionsDict["LAST_CLAIMED"] && !(DrugObj["LAST_CLAIMED"])) {
-										OutputFlag = true;
-										DrugObj["LAST_CLAIMED"] = ".";
-									}
-
-									if (OutputFlag) {OutputArray.push({...DrugObj});};
-
-								} else {
-									OutputArray.push({...DrugObj}); 
-								};
-								
-							});
-
-							if (NoRestrictionFlag) {
-								if (OptionsDict["RESTRICTION_ID"]) { DrugObj["RESTRICTION_ID"] = ".";};
-								if (OptionsDict["LAST_APPROVED"]) {	DrugObj["LAST_APPROVED"] = ".";};
-								if (OptionsDict["STREAMLINED_CODE"]) {DrugObj["STREAMLINED_CODE"] = ".";};
-								if (OptionsDict["LAST_CLAIMED"]) {DrugObj["LAST_CLAIMED"] = ".";}; 
-								OutputArray.push({...DrugObj}); 
-							};
-						
+						if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
+						if (OptionsDict["LAST_APPROVED"]) {	DrugObj["LAST_APPROVED"] = AuthCode.querySelector(".RestrictionDate").title.replace("Last Approved: ", "");	};
+						// Janky fix for now, since some codes can have a restriction code, but not a streamlined
+						try {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
+						} catch (error) {
+							if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
 						};
+						if (OptionsDict["LAST_CLAIMED"]) {	DrugObj["LAST_CLAIMED"] = AuthCode.querySelector(".AuthorityDate").title.replace("Last Claimed: ", "");	};
 
-						if ((OptionsDict["STREAMLINED_CODE"] || OptionsDict["LAST_APPROVED"]) && !(OptionsDict["RESTRICTION_ID"])) {
-							AuthCode.querySelectorAll(".AuthorityDate").forEach((StreamlinedDate) => {
-								if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = StreamlinedDate.querySelector(".AuthorityCode").innerText;	};
-								if (OptionsDict["LAST_CLAIMED"]) {	DrugObj["LAST_CLAIMED"] = StreamlinedDate.title.replace("Last Claimed: ", "");	};
-								OutputArray.push({...DrugObj});
-							});	
-						};
-
-						if (!(OptionsDict["STREAMLINED_CODE"] || OptionsDict["LAST_APPROVED"]) && !(OptionsDict["RESTRICTION_ID"] || DrugObj["LAST_APPROVED"])) {
-							OutputArray.push({...DrugObj});
-						}
-
-						// if (OptionsDict["RESTRICTION_ID"]) {	DrugObj["RESTRICTION_ID"] = AuthCode.querySelector(".RestrictionCode").innerText;	};
-						// if (OptionsDict["LAST_APPROVED"]) {	DrugObj["LAST_APPROVED"] = AuthCode.querySelector(".RestrictionDate").title.replace("Last Approved: ", "");	};
-						// // Janky fix for now, since some codes can have a restriction code, but not a streamlined
-						// try {
-						// 	if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = AuthCode.querySelector(".AuthorityCode").innerText;	};
-						// } catch (error) {
-						// 	if (OptionsDict["STREAMLINED_CODE"]) {	DrugObj["STREAMLINED_CODE"] = "";	};
-						// };
-						// if (OptionsDict["LAST_CLAIMED"]) {	DrugObj["LAST_CLAIMED"] = AuthCode.querySelector(".AuthorityDate").title.replace("Last Claimed: ", "");	};
-
-						// OutputArray.push(DrugObj);
+						OutputArray.push(DrugObj);
 
 					})
 
@@ -1518,6 +1161,7 @@
 
 			// Only keep unique combinations
 			let filteredList = [...new Set(OutputArray.map(JSON.stringify))].map(JSON.parse);
+
 
 			if (OutputType == "CSV") {
 				OutputCSV_Combos(filteredList);
