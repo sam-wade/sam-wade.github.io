@@ -544,7 +544,7 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("/src/Maps/PBSItemDDDMap_2026-01-01.csv", {
+			Papa.parse("/src/Maps/PBSItemDDDMap_2026-04-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -554,7 +554,7 @@
 					DrugMapJson = results.data;
 					
 					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
-					document.getElementById("auto-filename").innerText = "PBSItemDDDMap_2026-01-01.csv " + document.getElementById("auto-filename").innerText;
+					document.getElementById("auto-filename").innerText = "PBSItemDDDMap_2026-04-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");
@@ -660,6 +660,14 @@
 
 				else if (PBS_UOM == "MU" && WHO_UOM == "U") {
 					CalcDDD = WHO_Dose / (PBS_Dose * 1000000);
+				}
+
+				else if (PBS_UOM == "TU" && WHO_UOM == "MU") {
+					CalcDDD = (WHO_Dose * 1000) / PBS_Dose;
+				}
+
+				else if (PBS_UOM == "MU" && WHO_UOM == "TU") {
+					CalcDDD = WHO_Dose / (PBS_Dose * 1000);
 				}
 
 

@@ -299,7 +299,7 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("/src/Maps/HistoricalFlagItemMap_2025-12-10.csv", {
+			Papa.parse("/src/Maps/HistoricalFlagItemMap_2026-04-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -313,7 +313,7 @@
 					DrugMapJson = results.data;
 					
 					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
-					document.getElementById("auto-filename").innerText = "HistoricalFlagItemMap_2025-06-01.csv " + document.getElementById("auto-filename").innerText;
+					document.getElementById("auto-filename").innerText = "HistoricalFlagItemMap_2026-04-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");

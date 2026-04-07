@@ -266,7 +266,7 @@
 		};
 
 		function LoadMapCSV_auto() {
-			Papa.parse("/src/Maps/PBS_Prices_2025-12-01.csv", {
+			Papa.parse("/src/Maps/PBS_Prices_2026-04-01.csv", {
 				header: true,
 				download: true,
 				skipEmptyLines: true,
@@ -276,7 +276,7 @@
 					DrugMapJson = results.data;
 					
 					document.getElementById("AutoLoadMessage").style.display = "inline-flex";
-					document.getElementById("auto-filename").innerText = "PBS_Prices_2025-12-01.csv " + document.getElementById("auto-filename").innerText;
+					document.getElementById("auto-filename").innerText = "PBS_Prices_2026-04-01.csv " + document.getElementById("auto-filename").innerText;
 
 					document.getElementById("NameSearchButton").classList.remove("disabled");
 					document.getElementById("ATCSearchButton").classList.remove("disabled");
