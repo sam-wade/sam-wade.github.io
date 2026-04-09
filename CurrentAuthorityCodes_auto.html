@@ -442,7 +442,6 @@
 		function LoadMapCSV(FileInput) {
 			Papa.parse(FileInput[0], {
 				header: true,
-				dynamicTyping: true,
 				skipEmptyLines: true,
 				complete: function(results) {
 					console.log(results);

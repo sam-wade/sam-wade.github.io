@@ -254,6 +254,19 @@
 			LoadMapCSV_auto();	
 		};
 
+		const MapSelector = document.getElementById("MapSelector");
+		MapSelector.addEventListener('change', (event) => {
+			const files = event.target.files;
+			console.log(files);
+			LoadMapCSV(files);
+
+			// Makes elements visible, removes the pulsing effect on the map button.
+			document.getElementById("NameSearchButton").classList.remove("disabled");
+			document.getElementById("ATCSearchButton").classList.remove("disabled");
+			document.getElementById("MapButton").classList.remove("pulsating");
+			document.getElementById("OutputSection").style.display = "revert";
+		});
+
 		function LoadMapCSV(FileInput) {
 			Papa.parse(FileInput[0], {
 				header: true,
